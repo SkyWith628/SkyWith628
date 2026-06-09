@@ -92,6 +92,13 @@
 - 📚 목표·기간 입력 시 AI가 주별 학습 커리큘럼 자동 생성
 - **Tech:** Electron · React · TypeScript · FastAPI · Google Gemini API · Edge TTS · SQLite
 
+#### ✅ [Todo List App](https://github.com/SkyWith628/todo-list)
+> React + TypeScript로 구현한 할 일 관리 웹 앱
+
+- 필터링, 통계 대시보드, 로그인 페이지 포함
+- Custom Hook으로 상태 로직 분리 (`useFilteredTodos`, `useTodoStats`)
+- **Tech:** React 19 · TypeScript · Vite · React Router · GitHub Pages
+
 #### ♻️ [OBLIGE — Responsible Beauty](https://skywith628.github.io/oblige/)
 > 공병을 반납하고, 지속가능한 아름다움을 채우다.
 
