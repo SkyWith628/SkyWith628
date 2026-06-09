@@ -40,18 +40,27 @@
 ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white)
 ![React](https://img.shields.io/badge/-React-20232A?style=flat&logo=react&logoColor=61DAFB)
 ![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat&logo=electron&logoColor=white)
+![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat&logo=vite&logoColor=white)
 
 ### 🗄️ Backend & Database
 ![PHP](https://img.shields.io/badge/-PHP-777BB4?style=flat&logo=php&logoColor=white)
 ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat&logo=laravel&logoColor=white)
 ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/-FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
 ![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/-MariaDB-003545?style=flat&logo=mariadb&logoColor=white)
+![SQLite](https://img.shields.io/badge/-SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
 ![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)
 ![Apache Spark](https://img.shields.io/badge/-Apache%20Spark-E25A1C?style=flat&logo=apachespark&logoColor=white)
+
+### 🤖 AI / ML
+![Google Gemini](https://img.shields.io/badge/-Google%20Gemini-4285F4?style=flat&logo=google&logoColor=white)
+![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat&logo=openai&logoColor=white)
 
 ### 📱 Mobile & Game
 ![Swift](https://img.shields.io/badge/-Swift-FA7343?style=flat&logo=swift&logoColor=white)
@@ -72,6 +81,16 @@
 ---
 
 ### 🔥 대표 프로젝트
+
+#### 🤖 [JABIS — AI 학습 비서](https://github.com/SkyWith628/jabis)
+> Just A Brilliant Intelligence System — 아이언맨 자비스에서 영감을 받은 AI 개인 학습 비서
+
+음성 대화, 학습 플랜 자동 생성, JARVIS 홀로그램 UI를 갖춘 **데스크탑 AI 비서 앱**
+
+- 🎤 음성 입력(STT) + 🔊 음성 출력(TTS) 으로 완전한 음성 대화 지원
+- 🌀 말할 때 반응하는 JARVIS 스타일 홀로그램 애니메이션
+- 📚 목표·기간 입력 시 AI가 주별 학습 커리큘럼 자동 생성
+- **Tech:** Electron · React · TypeScript · FastAPI · Google Gemini API · Edge TTS · SQLite
 
 #### ♻️ [OBLIGE — Responsible Beauty](https://skywith628.github.io/oblige/)
 > 공병을 반납하고, 지속가능한 아름다움을 채우다.
