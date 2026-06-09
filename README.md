@@ -13,7 +13,7 @@
 | 2025-03-03~ 2025-06-30| 해외 의류 쇼핑몰                 | Front End     |
 
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=SkyWith628&show_icons=true&theme=synthwave)
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=SkyWith628&show_icons=true&theme=synthwave&count_private=true&include_all_commits=true)
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=SkyWith628&layout=compact&theme=synthwave)
 </div>
 
