@@ -82,6 +82,16 @@
 
 ### 🔥 대표 프로젝트
 
+#### 💎 [CHECKMATE — 주얼리 이커머스](https://github.com/SkyWith628/checkmate)
+> Firebase 정적 사이트를 Next.js 16 + Supabase로 전면 재설계한 풀스택 이커머스
+
+카탈로그·장바구니·주문·결제·마이페이지·관리자 백오피스까지 갖춘 **풀스택 주얼리 쇼핑몰**
+
+- 🔒 신뢰 경계를 서버에 둔 설계 — 가격·재고·쿠폰을 `place_order` RPC(security definer)에서 **원자적으로 확정**
+- 🛡️ Postgres **RLS 53개 정책 + 트리거**로 접근 제어·리뷰 인증 위조 방지
+- 🎨 3D 럭셔리 UI — 스크롤 reveal·포인터 틸트·glass (순수 CSS + IntersectionObserver)
+- **Tech:** Next.js 16 · React 19 · TypeScript · Supabase (Postgres·Auth·RLS·RPC) · Tailwind v4 · Vercel
+
 #### 🤖 [JABIS — AI 학습 비서](https://github.com/SkyWith628/jabis)
 > Just A Brilliant Intelligence System — 아이언맨 자비스에서 영감을 받은 AI 개인 학습 비서
 
