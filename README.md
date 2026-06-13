@@ -89,9 +89,10 @@
 
 - 🧠 멀티에이전트 — ① 소싱 시장성 평가 ② 한글 상세페이지 생성(DeepL+LLM) ③ CS 자동응대(민감건 결정론 에스컬레이션)
 - 🛡️ **돈 판단은 LLM에 위임 안 함** — 통관·KC인증 필터, 전 비용 마진엔진, 발주 가드(매입 시 적자면 사람 승인)
-- 🔌 소스/채널 **Adapter(ABC)로 추상화** — Rainforest→PA-API, 네이버→쿠팡 교체 가능
-- ✅ pytest 94개 · **API 키 없이 전체 동작**(mock 모드 자동 전환)
-- **Tech:** Python · LLM Agent · Rainforest / 네이버 커머스 API · PyYAML · pytest
+- 🔌 소스/채널/저장소 **Adapter·Repository(ABC)로 추상화** — Rainforest→PA-API, 네이버→쿠팡, SQLite→PostgreSQL 교체 가능
+- 🖥️ **어드민 대시보드**(Next.js 16 + FastAPI) — 승인 큐·발주 가드·재고/가격 점검 + APScheduler 주기 모니터링
+- ✅ pytest 115개 · **API 키 없이 전체 동작**(mock 모드 자동 전환)
+- **Tech:** Python · FastAPI · LLM Agent · Next.js 16 / React 19 · SQLAlchemy · APScheduler · 네이버 커머스 API
 
 #### 🧙 [CodeSage — AI 코드리뷰 에이전트](https://github.com/SkyWith628/codesage)
 > Your AI pair-reviewer on every PR — GitHub PR을 자동 분석해 인라인 리뷰를 다는 LLM 에이전트 (CodeRabbit 벤치마킹)
