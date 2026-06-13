@@ -82,6 +82,17 @@
 
 ### 🔥 대표 프로젝트
 
+#### 📦 [구매대행 자동화 플랫폼](https://github.com/SkyWith628/sourcing-agent)
+> Amazon US → 네이버 스마트스토어 무재고 구매대행 자동화 — 돈은 결정론, 판단은 멀티에이전트
+
+소싱→통관·인증 필터→마진→등록→발주를 잇는 **결정론 파이프라인** + 정성판단만 맡는 **3개 LLM 에이전트**의 하이브리드 설계 (셀러오션·AutoDS 벤치마킹 재설계)
+
+- 🧠 멀티에이전트 — ① 소싱 시장성 평가 ② 한글 상세페이지 생성(DeepL+LLM) ③ CS 자동응대(민감건 결정론 에스컬레이션)
+- 🛡️ **돈 판단은 LLM에 위임 안 함** — 통관·KC인증 필터, 전 비용 마진엔진, 발주 가드(매입 시 적자면 사람 승인)
+- 🔌 소스/채널 **Adapter(ABC)로 추상화** — Rainforest→PA-API, 네이버→쿠팡 교체 가능
+- ✅ pytest 94개 · **API 키 없이 전체 동작**(mock 모드 자동 전환)
+- **Tech:** Python · LLM Agent · Rainforest / 네이버 커머스 API · PyYAML · pytest
+
 #### 🧙 [CodeSage — AI 코드리뷰 에이전트](https://github.com/SkyWith628/codesage)
 > Your AI pair-reviewer on every PR — GitHub PR을 자동 분석해 인라인 리뷰를 다는 LLM 에이전트 (CodeRabbit 벤치마킹)
 
