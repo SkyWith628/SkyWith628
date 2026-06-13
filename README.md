@@ -82,7 +82,7 @@
 
 ### 🔥 대표 프로젝트
 
-#### 📦 [구매대행 자동화 플랫폼](https://github.com/SkyWith628/sourcing-agent)
+#### 🐻 [직구곰 (jikgugom)](https://github.com/SkyWith628/jikgugom)
 > Amazon US → 네이버 스마트스토어 무재고 구매대행 자동화 — 돈은 결정론, 판단은 멀티에이전트
 
 소싱→통관·인증 필터→마진→등록→발주를 잇는 **결정론 파이프라인** + 정성판단만 맡는 **3개 LLM 에이전트**의 하이브리드 설계 (셀러오션·AutoDS 벤치마킹 재설계)
