@@ -83,15 +83,15 @@
 ### 🔥 대표 프로젝트
 
 #### 🧙 [CodeSage — AI 코드리뷰 에이전트](https://github.com/SkyWith628/codesage)
-> CodeRabbit를 벤치마킹한 GitHub PR 자동 리뷰 LLM 에이전트
+> Your AI pair-reviewer on every PR — GitHub PR을 자동 분석해 인라인 리뷰를 다는 LLM 에이전트 (CodeRabbit 벤치마킹)
 
-Webhook으로 깨어나 변경된 코드를 분석하고 인라인 리뷰·요약을 다는 **비동기 코드리뷰 봇**
+Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처리를 분리**한 비동기 코드리뷰 봇
 
-- ⚡ Webhook → Redis 큐 → Worker 비동기 파이프라인으로 수신·처리 분리 (GitHub 10초 타임아웃 회피)
-- 🔍 ruff(기계적) + Claude(의미적) **하이브리드 리뷰** — 역할 분담으로 비용↓ 품질↑
-- 🛡️ 프롬프트 인젝션 방어(diff 격리) · HMAC 서명 검증 · 증분 리뷰(변경분만)
-- ✅ pytest 38개 · Docker Compose 풀스택 · 모드 어댑터(콘솔/GitHub)
-- **Tech:** Python · FastAPI · Claude API · Redis · PostgreSQL · ruff · Docker
+- 🔍 PR 요약 + 버그/보안/성능 **인라인 리뷰** + ruff 정적분석 통합, 증분 리뷰(새 커밋만)
+- 🔐 **GitHub App 설치 토큰 자동 발급**(JWT→1시간 토큰·캐싱) + Webhook HMAC 서명 검증 + 프롬프트 인젝션 방어
+- 💬 코멘트에 `@codesage` 멘션 시 diff 컨텍스트로 답하는 **대화형 후속**
+- ✅ pytest 55개 · Docker Compose 풀스택(api·worker·redis·postgres)
+- **Tech:** Python · FastAPI · Claude API · Redis · PostgreSQL · Docker · pytest
 
 #### 💎 [CHECKMATE — 주얼리 이커머스](https://github.com/SkyWith628/checkmate)
 > Firebase 정적 사이트를 Next.js 16 + Supabase로 전면 재설계한 풀스택 이커머스
