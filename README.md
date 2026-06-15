@@ -6,6 +6,10 @@
 
 <div align="center">
 
+**LLM 에이전트 · 백엔드를 파고드는 풀스택 개발자 — 인덕대학교 컴퓨터소프트웨어 전공**
+*"돈·인증 같은 결정은 결정론으로, 판단은 LLM으로" — 신뢰할 수 있는 자동화를 설계합니다.*
+
+<br>
 
 ![GitHub Stats](https://github-stats-alpha.vercel.app/api?username=SkyWith628&cc=000&tc=61dafb&ic=fff&bc=000)
 ![GitHub Streak](https://streak-stats.demolab.com?user=SkyWith628&theme=synthwave&hide_border=true)
@@ -76,6 +80,15 @@
 
 ### 🔥 대표 프로젝트
 
+| 프로젝트 | 분야 | 한 줄 | 코드 / 데모 |
+| --- | --- | --- | --- |
+| 🐻 **직구곰** | AI · 백엔드 | 구매대행 자동화 — 결정론 파이프라인 + 멀티에이전트 | [Code](https://github.com/SkyWith628/jikgugom) |
+| 🧙 **CodeSage** | AI · 백엔드 | GitHub PR 자동 코드리뷰 에이전트 (비동기 큐) | [Code](https://github.com/SkyWith628/codesage) |
+| 💎 **CHECKMATE** | 풀스택 웹 | 주얼리 이커머스 (Next.js + Supabase RLS) | [Code](https://github.com/SkyWith628/checkmate) · [Live](https://checkmate-virid-kappa.vercel.app) |
+| 🤖 **JABIS** | AI · 데스크탑 | 음성 대화 AI 학습 비서 (Electron) | [Code](https://github.com/SkyWith628/jabis) |
+| ♻️ **OBLIGE** | 풀스택 웹 | 공병 반납 ESG 코스메틱 플랫폼 | [Code](https://github.com/SkyWith628/oblige) · [Live](https://skywith628.github.io/oblige/) |
+| ✅ **Todo List** | 프론트엔드 | React + TS 할 일 관리 앱 | [Code](https://github.com/SkyWith628/todo-list) · [Live](https://skywith628.github.io/todo-list/) |
+
 #### 🐻 [직구곰 (jikgugom)](https://github.com/SkyWith628/jikgugom)
 > Amazon US → 네이버 스마트스토어 무재고 구매대행 자동화 — 돈은 결정론, 판단은 멀티에이전트
 
@@ -86,7 +99,7 @@
 - 🔌 소스/채널/저장소 **Adapter·Repository(ABC)로 추상화** — Rainforest→PA-API, 네이버→쿠팡, SQLite→PostgreSQL 교체 가능
 - 🖥️ **어드민 대시보드**(Next.js 16 + FastAPI) — 승인 큐·발주 가드·재고/가격 점검 + APScheduler 주기 모니터링
 - ✅ pytest 115개 · **API 키 없이 전체 동작**(mock 모드 자동 전환)
-- **Tech:** Python · FastAPI · LLM Agent · Next.js 16 / React 19 · SQLAlchemy · APScheduler · 네이버 커머스 API
+- **Tech:** Python · FastAPI · Claude (Anthropic) · Next.js 16 / React 19 · SQLAlchemy · APScheduler · 네이버 커머스 API
 
 #### 🧙 [CodeSage — AI 코드리뷰 에이전트](https://github.com/SkyWith628/codesage)
 > Your AI pair-reviewer on every PR — GitHub PR을 자동 분석해 인라인 리뷰를 다는 LLM 에이전트 (CodeRabbit 벤치마킹)
@@ -107,6 +120,7 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 - 🔒 신뢰 경계를 서버에 둔 설계 — 가격·재고·쿠폰을 `place_order` RPC(security definer)에서 **원자적으로 확정**
 - 🛡️ Postgres **RLS 53개 정책 + 트리거**로 접근 제어·리뷰 인증 위조 방지
 - 🎨 3D 럭셔리 UI — 스크롤 reveal·포인터 틸트·glass (순수 CSS + IntersectionObserver)
+- 🔗 **Live:** https://checkmate-virid-kappa.vercel.app
 - **Tech:** Next.js 16 · React 19 · TypeScript · Supabase (Postgres·Auth·RLS·RPC) · Tailwind v4 · Vercel
 
 #### 🤖 [JABIS — AI 학습 비서](https://github.com/SkyWith628/jabis)
@@ -124,6 +138,7 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 
 - 필터링, 통계 대시보드, 로그인 페이지 포함
 - Custom Hook으로 상태 로직 분리 (`useFilteredTodos`, `useTodoStats`)
+- 🔗 **Live:** https://skywith628.github.io/todo-list/
 - **Tech:** React 19 · TypeScript · Vite · React Router · GitHub Pages
 
 #### ♻️ [OBLIGE — Responsible Beauty](https://skywith628.github.io/oblige/)
