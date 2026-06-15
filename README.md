@@ -105,6 +105,7 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 | 🤖 **JABIS** | AI · 데스크탑 | 음성 대화 AI 학습 비서 (Electron) — STT/TTS·학습플랜 자동생성·JARVIS 홀로그램 UI | [Code](https://github.com/SkyWith628/jabis) |
 | 📊 **환율-코스피 분석** | 데이터 · 논문 | 환율이 코스피에 미치는 영향 — 상관·회귀·PCA·ARIMA + KIPS 학술발표 논문 | [Code](https://github.com/SkyWith628/kospi-exchange-analysis) |
 | 📱 **iOS Practice** | 모바일 | Swift·UIKit 앱 실습 모음 (BMI·환율계산기 등) | [Code](https://github.com/SkyWith628/ios-practice) |
+| 🎮 **Unity Game Basics** | 게임 | Unity·C# 입문 — 충돌·태그·GameManager 패턴 | [Code](https://github.com/SkyWith628/unity-game-basics) |
 | ✅ **Todo List** | 프론트엔드 | React + TS 할 일 관리 앱 — 필터링·통계 대시보드·Custom Hook | [Code](https://github.com/SkyWith628/todo-list) · [Live](https://skywith628.github.io/todo-list/) |
 | 🐍 **Data Analysis** | 데이터 | pandas·numpy·시각화 chapter별 실습 노트북 | [Code](https://github.com/SkyWith628/Data_Analysis_Python) |
 
@@ -154,11 +155,13 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 ![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
 ![Figma](https://img.shields.io/badge/-Figma-F24E1E?style=flat&logo=figma&logoColor=white)
 
-### 📱 Mobile
+### 📱 Mobile & Game
 ![Swift](https://img.shields.io/badge/-Swift-FA7343?style=flat&logo=swift&logoColor=white)
 ![UIKit](https://img.shields.io/badge/-UIKit-2396F3?style=flat&logo=apple&logoColor=white)
+![Unity](https://img.shields.io/badge/-Unity-000000?style=flat&logo=unity&logoColor=white)
+![C#](https://img.shields.io/badge/-C%23-239120?style=flat&logo=csharp&logoColor=white)
 
-> *학습·수업 경험: Unity / C++ / C# / Apache Spark*
+> *학습·수업 경험: C++ / Apache Spark*
 
 ---
 
