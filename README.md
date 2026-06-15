@@ -102,8 +102,8 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 - 🔍 PR 요약 + 버그/보안/성능 **인라인 리뷰** + ruff 정적분석 통합, 증분 리뷰(새 커밋만)
 - 🔐 **GitHub App 설치 토큰 자동 발급**(JWT→1시간 토큰·캐싱) + Webhook HMAC 서명 검증 + 프롬프트 인젝션 방어
 - 💬 코멘트에 `@codesage` 멘션 시 diff 컨텍스트로 답하는 **대화형 후속**
-- ✅ pytest 55개 · Docker Compose 풀스택(api·worker·redis·postgres)
-- **Tech:** Python · FastAPI · Claude API · Redis · PostgreSQL · Docker · pytest
+- ✅ pytest 55개 · Docker Compose 풀스택(api·worker·redis·postgres) · 실제 GitHub PR 자동 리뷰 검증
+- **Tech:** Python · FastAPI · Google Gemini (google-genai) · Redis · PostgreSQL · Docker · pytest
 
 #### 💎 [CHECKMATE — 주얼리 이커머스](https://github.com/SkyWith628/checkmate)
 > Firebase 정적 사이트를 Next.js 16 + Supabase로 전면 재설계한 풀스택 이커머스
