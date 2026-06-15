@@ -19,12 +19,12 @@
 
 ## 🔥 대표 프로젝트
 
-| 프로젝트 | 분야 | 한 줄 | 코드 / 데모 |
-| --- | --- | --- | --- |
-| 🐻 **직구곰** | AI · 백엔드 | 구매대행 자동화 — 결정론 파이프라인 + 멀티에이전트 | [Code](https://github.com/SkyWith628/jikgugom) |
-| 🧙 **CodeSage** | AI · 백엔드 | GitHub PR 자동 코드리뷰 에이전트 (비동기 큐) | [Code](https://github.com/SkyWith628/codesage) |
-| 💎 **CHECKMATE** | 풀스택 웹 | 주얼리 이커머스 (Next.js + Supabase RLS) | [Code](https://github.com/SkyWith628/checkmate) · [Live](https://checkmate-virid-kappa.vercel.app) |
-| ♻️ **OBLIGE** | 풀스택 웹 | 공병 반납 ESG 코스메틱 플랫폼 | [Code](https://github.com/SkyWith628/oblige) · [Live](https://skywith628.github.io/oblige/) |
+| 프로젝트 | 분야 | 시기 | 한 줄 | 코드 / 데모 |
+| --- | --- | --- | --- | --- |
+| 🐻 **직구곰** | AI · 백엔드 | 2026.04 ~ 진행 중 | 구매대행 자동화 — 결정론 파이프라인 + 멀티에이전트 | [Code](https://github.com/SkyWith628/jikgugom) |
+| 🧙 **CodeSage** | AI · 백엔드 | 2026.02 ~ 04 | GitHub PR 자동 코드리뷰 에이전트 (비동기 큐) | [Code](https://github.com/SkyWith628/codesage) |
+| 💎 **CHECKMATE** | 풀스택 웹 | 2026.03 ~ 05 | 주얼리 이커머스 (Next.js + Supabase RLS) | [Code](https://github.com/SkyWith628/checkmate) · [Live](https://checkmate-virid-kappa.vercel.app) |
+| ♻️ **OBLIGE** | 풀스택 웹 | 2026.05 ~ 진행 중 | 공병 반납 ESG 코스메틱 플랫폼 | [Code](https://github.com/SkyWith628/oblige) · [Live](https://skywith628.github.io/oblige/) |
 
 <br>
 
@@ -100,14 +100,14 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 
 ## 🧪 서브 프로젝트
 
-| 프로젝트 | 분야 | 한 줄 | 코드 / 데모 |
-| --- | --- | --- | --- |
-| 🤖 **JABIS** | AI · 데스크탑 | 음성 대화 AI 학습 비서 (Electron) — STT/TTS·학습플랜 자동생성·JARVIS 홀로그램 UI | [Code](https://github.com/SkyWith628/jabis) |
-| 📊 **환율-코스피 분석** | 데이터 · 논문 | 환율이 코스피에 미치는 영향 — 상관·회귀·PCA·ARIMA + KIPS 학술발표 논문 | [Code](https://github.com/SkyWith628/kospi-exchange-analysis) |
-| 📱 **iOS Practice** | 모바일 | Swift·UIKit 앱 실습 모음 (BMI·환율계산기 등) | [Code](https://github.com/SkyWith628/ios-practice) |
-| 🎮 **Unity Game Basics** | 게임 | Unity·C# 입문 — 충돌·태그·GameManager 패턴 | [Code](https://github.com/SkyWith628/unity-game-basics) |
-| ✅ **Todo List** | 프론트엔드 | React + TS 할 일 관리 앱 — 필터링·통계 대시보드·Custom Hook | [Code](https://github.com/SkyWith628/todo-list) · [Live](https://skywith628.github.io/todo-list/) |
-| 🐍 **Data Analysis** | 데이터 | pandas·numpy·시각화 chapter별 실습 노트북 | [Code](https://github.com/SkyWith628/Data_Analysis_Python) |
+| 프로젝트 | 분야 | 시기 | 한 줄 | 코드 / 데모 |
+| --- | --- | --- | --- | --- |
+| 🤖 **JABIS** | AI · 데스크탑 | 2026.03 | 음성 대화 AI 학습 비서 (Electron) — STT/TTS·학습플랜 자동생성·JARVIS 홀로그램 UI | [Code](https://github.com/SkyWith628/jabis) |
+| ✅ **Todo List** | 프론트엔드 | 2026.01 | React + TS 할 일 관리 앱 — 필터링·통계 대시보드·Custom Hook | [Code](https://github.com/SkyWith628/todo-list) · [Live](https://skywith628.github.io/todo-list/) |
+| 📊 **환율-코스피 분석** | 데이터 · 논문 | 2025.09~12 | 환율이 코스피에 미치는 영향 — 상관·회귀·PCA·ARIMA + KIPS 학술발표 논문 | [Code](https://github.com/SkyWith628/kospi-exchange-analysis) |
+| 📱 **iOS Practice** | 모바일 | 2025.09~12 | Swift·UIKit 앱 실습 모음 (BMI·환율계산기 등) | [Code](https://github.com/SkyWith628/ios-practice) |
+| 🐍 **Data Analysis** | 데이터 | 2025.09~12 | pandas·numpy·시각화 chapter별 실습 노트북 | [Code](https://github.com/SkyWith628/Data_Analysis_Python) |
+| 🎮 **Unity Game Basics** | 게임 | 2024.09~12 | Unity·C# 입문 — 충돌·태그·GameManager 패턴 | [Code](https://github.com/SkyWith628/unity-game-basics) |
 
 ---
 
