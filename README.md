@@ -103,6 +103,8 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 | 프로젝트 | 분야 | 한 줄 | 코드 / 데모 |
 | --- | --- | --- | --- |
 | 🤖 **JABIS** | AI · 데스크탑 | 음성 대화 AI 학습 비서 (Electron) — STT/TTS·학습플랜 자동생성·JARVIS 홀로그램 UI | [Code](https://github.com/SkyWith628/jabis) |
+| 📊 **환율-코스피 분석** | 데이터 · 논문 | 환율이 코스피에 미치는 영향 — 상관·회귀·PCA·ARIMA + KIPS 학술발표 논문 | [Code](https://github.com/SkyWith628/kospi-exchange-analysis) |
+| 📱 **iOS Practice** | 모바일 | Swift·UIKit 앱 실습 모음 (BMI·환율계산기 등) | [Code](https://github.com/SkyWith628/ios-practice) |
 | ✅ **Todo List** | 프론트엔드 | React + TS 할 일 관리 앱 — 필터링·통계 대시보드·Custom Hook | [Code](https://github.com/SkyWith628/todo-list) · [Live](https://skywith628.github.io/todo-list/) |
 | 🐍 **Data Analysis** | 데이터 | pandas·numpy·시각화 chapter별 실습 노트북 | [Code](https://github.com/SkyWith628/Data_Analysis_Python) |
 
@@ -137,6 +139,8 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 ![Google Gemini](https://img.shields.io/badge/-Google%20Gemini-4285F4?style=flat&logo=google&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat&logo=openai&logoColor=white)
 ![pandas](https://img.shields.io/badge/-pandas-150458?style=flat&logo=pandas&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
+![statsmodels](https://img.shields.io/badge/-statsmodels-8CAAE6?style=flat)
 
 ### 🚀 DevOps & Deployment
 ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
@@ -150,7 +154,11 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 ![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
 ![Figma](https://img.shields.io/badge/-Figma-F24E1E?style=flat&logo=figma&logoColor=white)
 
-> *학습·수업 경험: Swift / Unity / C++ / C# / Apache Spark*
+### 📱 Mobile
+![Swift](https://img.shields.io/badge/-Swift-FA7343?style=flat&logo=swift&logoColor=white)
+![UIKit](https://img.shields.io/badge/-UIKit-2396F3?style=flat&logo=apple&logoColor=white)
+
+> *학습·수업 경험: Unity / C++ / C# / Apache Spark*
 
 ---
 
