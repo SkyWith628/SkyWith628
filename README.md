@@ -6,12 +6,6 @@
 
 <div align="center">
 
-## 📖 My History
-
-| Date                  | Organization                 | Position      |
-|-----------------------|------------------------------|---------------|
-| 2025-03-03~ 2025-06-30| 해외 의류 쇼핑몰                 | Front End     |
-
 
 ![GitHub Stats](https://github-stats-alpha.vercel.app/api?username=SkyWith628&cc=000&tc=61dafb&ic=fff&bc=000)
 ![GitHub Streak](https://streak-stats.demolab.com?user=SkyWith628&theme=synthwave&hide_border=true)
@@ -140,10 +134,6 @@ Webhook → Redis Queue → Worker 6단계 리뷰 엔진으로 **수신과 처�
 - 공병 반납 → 포인트 적립 → 등급 상승 (🌱 Seed → 🍃 Leaf → 🌳 Tree → 🌲 Forest) 의 순환 구조
 - **관리자 대시보드:** 상품·주문·공병반납·회원 통합 관리
 - **Tech:** Vanilla JS · Supabase (PostgreSQL + Auth + Storage) · GitHub Pages
-
-#### 🛒 해외 의류 쇼핑몰
-- PHP, MySQL, Bootstrap으로 개발한 쇼핑몰 프론트엔드
-- **Tech:** PHP · MySQL · Bootstrap · AWS
 
 ---
 
