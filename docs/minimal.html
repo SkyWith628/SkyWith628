@@ -262,40 +262,17 @@ h2{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
           <p class="stack">Python · FastAPI · Gemini · Redis · PostgreSQL · Docker</p>
         </div>
 
-        <div class="job">
-          <div class="job-top"><h3><a href="https://github.com/SkyWith628/checkmate">CHECKMATE</a></h3><span class="date">2026.03 — 05</span></div>
-          <p class="role">개인 · <a href="https://checkmate-virid-kappa.vercel.app">배포 중</a></p>
-          <p class="sum">Firebase 정적 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트</p>
-          <ul>
-            <li>주문 확정은 <code>place_order</code> DB 함수 하나에서만 일어나고, 가격·재고·쿠폰을 한 트랜잭션에서 확인해 주문이 몰려도 재고가 음수가 되지 않습니다.</li>
-            <li>RLS 정책과 트리거로 남의 주문 조회, 사지 않은 상품의 리뷰 작성을 막았습니다.</li>
-            <li class="k"><b>결정</b>브라우저에서 계산하고 서버에서 다시 검사하는 대신 금액을 정하는 일 자체를 DB 함수로 모았습니다. 계산하는 곳이 하나면 값을 바꿀 틈도 하나뿐입니다.</li>
-            <li class="k"><b>배운 점</b>계산을 옮기는 문제가 아니라, 값을 누가 정하는지를 정하는 문제였습니다.</li>
-          </ul>
-          <p class="nums"><span><strong>53</strong>RLS 정책</span><span><strong>1곳</strong>주문 확정 지점</span></p>
-          <p class="stack">Next.js · TypeScript · Supabase · PostgreSQL · Vercel</p>
-        </div>
-
-        <div class="job">
-          <div class="job-top"><h3><a href="https://github.com/SkyWith628/competitor-monitoring-agent">경쟁사 모니터링 Agent</a></h3><span class="date">2026.11</span></div>
-          <p class="role">4인 팀 · 플랫폼 · PM</p>
-          <p class="sum">SPA 브랜드 네 곳의 상품·가격·뉴스·SNS 변화를 매주 정리해 슬랙과 메일로 보내는 에이전트</p>
-          <ul>
-            <li>저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드를 만들고, CODEOWNERS·브랜치 보호·CI(ruff + pytest)로 main을 지켰습니다.</li>
-            <li class="k"><b>결정</b>기능보다 단계 사이의 데이터 형식을 먼저 정했습니다. 형식만 맞으면 넷이 서로를 기다리지 않고 따로 개발할 수 있기 때문입니다.</li>
-            <li class="k"><b>배운 점</b>협업 규칙은 말보다 브랜치 보호와 CI로 강제해야 지켜집니다.</li>
-          </ul>
-          <p class="stack">Python · GitHub Actions · PostgreSQL · Next.js</p>
-        </div>
       </section>
 
       <section class="block">
         <h2>Other Works</h2>
         <ul class="etc">
           <li><span class="d">2026.11</span><span><b><a href="https://github.com/SkyWith628/url-shortener">Snip</a></b> · URL 단축 서비스. FastAPI·MySQL·Nginx를 AWS ECS Fargate에 배포</span></li>
+          <li><span class="d">2026.11</span><span><b><a href="https://github.com/SkyWith628/competitor-monitoring-agent">경쟁사 모니터링 Agent</a></b> · 4인 팀 플랫폼·PM. 데이터 형식 선합의, 브랜치 보호·CI로 협업</span></li>
           <li><span class="d">2026.10</span><span><b><a href="https://github.com/SkyWith628/carenote-ai">케어노트AI</a></b> · 음성 기록을 방문요양 기록지 초안으로 (아이디어 경진대회)</span></li>
           <li><span class="d">2026.08</span><span><b><a href="https://github.com/SkyWith628/toss-llm-trader">toss-llm-trader</a></b> · LLM 매매 vs 단순 보유 모의투자 실험</span></li>
           <li><span class="d">2026.05</span><span><b><a href="https://github.com/SkyWith628/oblige">OBLIGE</a></b> · YOLOv8 공병 인식 ESG 쇼핑몰, tool-use LLM 어시스턴트</span></li>
+          <li><span class="d">2026.03</span><span><b><a href="https://github.com/SkyWith628/checkmate">CHECKMATE</a></b> · 쇼핑몰 재구축. 주문 금액을 DB 함수 하나에서 트랜잭션으로 확정, RLS 53개</span></li>
           <li><span class="d">2025.09</span><span><b><a href="https://github.com/SkyWith628/kospi-exchange-analysis">환율과 코스피</a></b> · 회귀·PCA·ARIMA 분석, KIPS 학술대회 발표</span></li>
         </ul>
       </section>

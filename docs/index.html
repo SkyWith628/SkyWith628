@@ -279,7 +279,6 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
         <button type="button" data-f="be" aria-pressed="false">백엔드</button>
         <button type="button" data-f="db" aria-pressed="false">데이터베이스</button>
         <button type="button" data-f="ops" aria-pressed="false">배포·협업</button>
-        <button type="button" data-f="fe" aria-pressed="false">프론트엔드</button>
         <span class="count" aria-live="polite"></span>
       </div>
 
@@ -306,27 +305,6 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
             <div class="metric"><strong>227</strong><span>화면 테스트</span></div>
           </div>
           <div class="tags"><span class="chip">FastAPI</span><span class="chip">LangGraph</span><span class="chip">Claude</span><span class="chip">PostgreSQL + pgvector</span><span class="chip">Neo4j</span><span class="chip">Docker</span><span class="chip">SwiftUI</span></div>
-        </div>
-      </article>
-
-      <article class="proj" id="p-monitor" data-tags="be ops">
-        <div class="meta">
-          <span class="date">2026.11</span>
-          4인 팀, 플랫폼·PM
-          <br><span class="badge team">팀</span>
-        </div>
-        <div>
-          <h3><a href="https://github.com/SkyWith628/competitor-monitoring-agent">경쟁사 모니터링 Agent</a><span class="ext">GitHub ↗</span></h3>
-          <p class="summary">SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트</p>
-          <p class="why">넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.</p>
-          <ul class="points">
-            <li><b>분업</b><span>수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정하고, 각자 자기 폴더만 고치도록 나눴습니다.</span></li>
-            <li><b>플랫폼</b><span>저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.</span></li>
-            <li><b>규칙</b><span>CODEOWNERS로 리뷰어를 자동 지정하고, main은 PR·담당자 승인·CI(ruff + pytest) 통과 없이 합칠 수 없게 막았습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.</span></li>
-            <li class="decide"><b>결정</b><span>기능부터 나눠 만드는 대신 단계 사이의 데이터 형식을 먼저 정했습니다. 형식만 맞으면 넷이 서로를 기다리지 않고 각자 개발하고 테스트할 수 있기 때문입니다.</span></li>
-            <li class="lesson"><b>배운 점</b><span>협업 규칙은 말로 정해 두는 것보다 브랜치 보호와 CI로 강제해야 지켜집니다.</span></li>
-          </ul>
-          <div class="tags"><span class="chip">Python</span><span class="chip">GitHub Actions</span><span class="chip">PostgreSQL</span><span class="chip">Next.js</span></div>
         </div>
       </article>
 
@@ -376,30 +354,6 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
         </div>
       </article>
 
-      <article class="proj" id="p-checkmate" data-tags="db fe">
-        <div class="meta">
-          <span class="date">2026.03 ~ 05</span>
-          개인
-          <br><span class="badge solo">개인</span> <span class="badge live">배포 중</span>
-        </div>
-        <div>
-          <h3><a href="https://github.com/SkyWith628/checkmate">CHECKMATE</a><span class="ext">GitHub ↗</span> <a class="ext" href="https://checkmate-virid-kappa.vercel.app">사이트 ↗</a></h3>
-          <p class="summary">주얼리 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트</p>
-          <p class="why">원래는 Firebase로 만든 정적 사이트였는데, 가격과 쿠폰 계산을 브라우저에서 하고 있어서 결제 금액을 바꿀 여지가 있었습니다. 그래서 주문 금액을 정하는 일을 전부 DB로 옮겼습니다.</p>
-          <ul class="points">
-            <li><b>정합성</b><span>주문 확정은 <code>place_order</code>라는 DB 함수 하나에서만 일어납니다. 가격, 재고, 쿠폰을 한 트랜잭션 안에서 확인해서 주문이 몰려도 재고가 음수로 내려가지 않습니다.</span></li>
-            <li><b>권한</b><span>Postgres RLS 정책과 트리거로 남의 주문을 보거나, 사지 않은 상품에 리뷰를 다는 걸 막았습니다.</span></li>
-            <li><b>범위</b><span>장바구니, 주문, 결제, 마이페이지, 관리자 페이지까지 쇼핑몰에 필요한 화면을 모두 만들었습니다.</span></li>
-            <li class="decide"><b>결정</b><span>브라우저에서 계산하고 서버에서 한 번 더 검사하는 대신, 금액을 정하는 일 자체를 DB 함수 하나로 모았습니다. 계산하는 곳이 하나면 값을 바꿀 틈도 그곳 하나뿐이기 때문입니다.</span></li>
-            <li class="lesson"><b>배운 점</b><span>계산을 서버로 옮기는 문제가 아니라, 값을 누가 정하는지를 정하는 문제였습니다.</span></li>
-          </ul>
-          <div class="metrics">
-            <div class="metric"><strong>53</strong><span>RLS 정책</span></div>
-            <div class="metric"><strong>1곳</strong><span>주문 확정 지점</span></div>
-          </div>
-          <div class="tags"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Tailwind</span><span class="chip">Vercel</span></div>
-        </div>
-      </article>
     </section>
 
     <!-- 그 밖에 -->
@@ -411,6 +365,11 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
           <span class="date">2026.11</span>
           <div><h4>Snip</h4><p>URL 단축 서비스. FastAPI·MySQL·Nginx 컨테이너를 AWS ECS Fargate에 배포하고, 동시 생성 시 코드 충돌과 대소문자 중복을 막았습니다. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다.</p></div>
           <span class="go"><a href="https://github.com/SkyWith628/url-shortener">코드</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.11</span>
+          <div><h4>경쟁사 모니터링 Agent</h4><p>4인 팀에서 플랫폼·PM. SPA 브랜드 네 곳의 상품·가격·뉴스·SNS 변화를 매주 슬랙과 메일로 보냅니다. 단계 사이의 데이터 형식을 먼저 정하고, CODEOWNERS·브랜치 보호·CI로 넷이 동시에 작업해도 충돌하지 않게 했습니다.</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/competitor-monitoring-agent">코드</a></span>
         </div>
         <div class="side-row">
           <span class="date">2026.10</span>
@@ -426,6 +385,11 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
           <span class="date">2026.05 ~ 06</span>
           <div><h4>OBLIGE</h4><p>공병 사진을 YOLOv8로 인식해 포인트로 돌려주는 ESG 화장품 쇼핑몰. 반납 안내는 tool-use LLM 어시스턴트가 맡습니다.</p></div>
           <span class="go"><a href="https://github.com/SkyWith628/oblige">코드</a><a href="https://skywith628.github.io/oblige/">사이트</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.03 ~ 05</span>
+          <div><h4>CHECKMATE</h4><p>주얼리 쇼핑몰을 Next.js·Supabase로 다시 만들었습니다. 브라우저에서 하던 가격·쿠폰 계산을 <code>place_order</code> DB 함수 하나로 모아 한 트랜잭션에서 확정하고, RLS 정책 53개로 권한을 막았습니다.</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/checkmate">코드</a><a href="https://checkmate-virid-kappa.vercel.app">사이트</a></span>
         </div>
         <div class="side-row">
           <span class="date">2026.03</span>
