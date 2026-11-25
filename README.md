@@ -1,186 +1,141 @@
-<div align="center">
+## 안녕하세요, SkyWith입니다
 
-![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=SkyWith&fontSize=50&animation=fadeIn&fontAlignY=38&desc=AI%20%C2%B7%20Backend%20Engineer&descAlignY=51&descAlign=62)
+인덕대학교 컴퓨터소프트웨어학과에 다니고 있고, 올해는 학과 학회장을 맡고 있습니다.
+요즘은 주로 **LLM을 실제 서비스에 붙이는 백엔드**를 만듭니다.
 
-**LLM 에이전트와 백엔드를 만드는 신입 개발자**
-*돈·인증처럼 틀리면 안 되는 결정은 결정론 코드로, 판단이 필요한 영역만 LLM으로 — 그리고 **평가로 증명**합니다.*
+프로젝트를 몇 번 하면서 생긴 기준이 하나 있습니다. 돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정하고, LLM에는 사람이 판단하던 부분만 맡긴다는 것입니다. 그렇게 만든 게 정말 나아졌는지는 감이 아니라 측정해서 확인하려고 합니다.
 
-`Python · FastAPI` · `LangGraph · Claude / Gemini` · `PostgreSQL (pgvector) · Redis` · `Docker · GitHub Actions · AWS ECS`
+주로 쓰는 것: Python, FastAPI, PostgreSQL, Redis, Docker, LangGraph, Claude / Gemini
 
-인덕대학교 컴퓨터소프트웨어 전공 · 26학년도 학과 학회장
-
-[![Blog](https://img.shields.io/badge/Blog-hskywith.tistory.com-orange?style=flat&logo=tistory)](https://hskywith.tistory.com)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Notion-black?style=flat&logo=notion)](https://www.notion.so/f089caa5141d414196d7170b2d8c1ed6?pvs=12)
-
-</div>
-
----
-
-## 🔥 대표 프로젝트
-
-| 프로젝트 | 분야 | 시기 | 역할 | 한 줄 | 코드 / 데모 |
-| --- | --- | --- | --- | --- | --- |
-| 🗣️ **Persona_ize** | AI · 백엔드 | 2026.11 ~ 진행 중 | 팀장 (4인) | 상대별 말투로 메시지를 첨삭하되 원문의 사실·의도는 보존 | 🔒 공모전 진행 중 (비공개) |
-| 🐻 **직구곰** | AI · 백엔드 | 2026.04 ~ 06 | 개인 | 구매대행 자동화 — 결정론 파이프라인 + 멀티에이전트 | [Code](https://github.com/SkyWith628/jikgugom) |
-| 🧙 **CodeSage** | AI · 백엔드 | 2026.02 ~ 04 | 개인 | GitHub PR 자동 코드리뷰 에이전트 (비동기 큐) | [Code](https://github.com/SkyWith628/codesage) |
-| 💎 **CHECKMATE** | 풀스택 웹 | 2026.03 ~ 05 | 개인 | 주얼리 이커머스 (Next.js + Supabase RLS) | [Code](https://github.com/SkyWith628/checkmate) · [Live](https://checkmate-virid-kappa.vercel.app) |
+[블로그](https://hskywith.tistory.com) · [포트폴리오 (Notion)](https://www.notion.so/f089caa5141d414196d7170b2d8c1ed6?pvs=12)
 
 <br>
 
-### 🗣️ Persona_ize — 내 말투를 지키는 메시지 첨삭 `🔒 2026.12 공모전 출품작`
-> 상대·상황에 맞게 **사용자 본인의 말투**로 메시지를 고쳐 주되, 원문의 사실과 의도는 바꾸지 않는 서비스. 4인 팀(개발 1 · 기획·평가 3)의 **팀장이자 유일한 개발자**로 백엔드·워크플로·실험 하니스·배포를 맡았다.
+## 대표 프로젝트
 
-```
-초안 → 의도·보존 항목 추출 → 검색(페르소나 / 본인 과거 표현 / 그래프 맥락) → Claude 첨삭(구조화 출력)
-     → 규칙 검증 → 실패 시 1회 재생성 → 재실패 시 원문 유지 → 사용자가 적용·수정·취소 (자동 전송 없음)
-```
+### Persona_ize · 2026.11 ~ 진행 중 · 4인 팀, 팀장
+*상대에 맞게 메시지를 다듬어 주되, 내 말투와 원래 내용은 그대로 두는 서비스* (공모전 진행 중이라 아직 비공개입니다)
 
-- 🧪 **"어떤 맥락이 첨삭을 낫게 하는가"를 실험으로 비교** — A 일반 / B +상대별 페르소나 / C +벡터 검색한 본인 표현(pgvector) / D +지식그래프 맥락(Neo4j·Graphiti)
-- 📏 **실측:** 평가 16사례 × 4조건 × 3회 = 192회 중 190회 추천, 원문 유지 2건 → 실패 원인이 된 검증 규칙 2개를 고친 뒤 해당 사례 36회 전부 통과
-- 🛡️ LLM 출력은 **규칙 검증기를 거쳐야만** 사용자에게 노출 — 통과 못 하면 원문을 그대로 돌려준다
-- ✅ 백엔드 테스트 1,564개 · 화면 테스트 227개 · CI(백엔드 + iOS 빌드) · Caddy HTTPS + 백업·스모크 테스트를 포함한 Docker Compose 배포
-- 🤝 비전공 팀원과의 접점을 **"파일 + PR"** 로 설계 — 팀원이 사례·루브릭 CSV를 PR로 올리면 팀장이 리뷰 후 코드에 연결
+상사에게 보내는 말과 친구에게 보내는 말은 다르지만, 그렇다고 내가 하려던 말이 바뀌면 안 됩니다. 그래서 이 프로젝트에서는 "고쳐 쓰되 사실과 의도는 건드리지 않는다"를 가장 먼저 정했습니다.
 
-**Tech:** Python · FastAPI · LangGraph · Claude (Anthropic) · PostgreSQL + pgvector · Neo4j (Graphiti) · Docker · Caddy · SwiftUI
+팀원 셋이 비전공자라 개발은 제가 전부 맡았습니다. 백엔드, LangGraph 워크플로, 실험 하니스, 배포까지입니다. 팀원들은 평가 사례와 루브릭을 CSV로 만들어 PR로 올리고, 제가 리뷰해서 코드에 연결하는 식으로 일했습니다.
 
-<br>
+- 첨삭 결과는 규칙 검증을 통과해야만 사용자에게 보입니다. 실패하면 한 번 다시 만들고, 그래도 안 되면 원문을 그대로 돌려줍니다.
+- 어떤 정보를 넣어야 첨삭이 나아지는지 네 가지 조건으로 비교했습니다. 아무것도 없이, 상대별 페르소나 추가, 내 과거 표현 벡터 검색(pgvector) 추가, 대화 맥락 그래프(Neo4j) 추가입니다.
+- 16개 사례를 조건마다 3번씩, 총 192번 돌렸고 190번이 추천까지 갔습니다. 결과를 보고 검증 규칙 두 개를 고친 뒤, 문제가 있던 세 사례를 다시 36번 돌려 전부 통과했습니다.
+- 백엔드 테스트 1,564개, 화면 테스트 227개가 있습니다. 배포는 Docker Compose에 Caddy(HTTPS)를 붙였고, 백업과 배포 후 점검 스크립트도 만들었습니다. 아이폰 앱(SwiftUI)은 CI에서 빌드합니다.
 
-### 🐻 [직구곰 (jikgugom)](https://github.com/SkyWith628/jikgugom)
-> Amazon US → 네이버 스마트스토어 무재고 구매대행 자동화. 소싱 → 통관·인증 필터 → 마진 → 등록 → 발주를 잇는 **결정론 파이프라인**에, 정성 판단만 맡는 **LLM 에이전트 3개**를 얹은 하이브리드 설계.
-
-- 🛡️ **돈 판단은 LLM에 맡기지 않음** — 통관·KC인증 필터, 전 비용 마진엔진, 매입 시 적자면 사람이 승인하는 발주 가드(HITL)
-- 🧠 에이전트는 정성 영역만 — ① 소싱 시장성 평가 ② 한글 상세페이지 생성(DeepL + LLM) ③ CS 자동응대(민감 건은 결정론 에스컬레이션)
-- 🔌 소스·채널·저장소를 **Adapter / Repository(ABC)로 추상화** — Rainforest→PA-API, 네이버→쿠팡, SQLite→PostgreSQL 교체 가능
-- 🖥️ 어드민 대시보드(Next.js 16 + FastAPI) — 승인 큐·재고/가격 점검, APScheduler 주기 모니터링
-- ✅ pytest 115개 · API 키 없이도 mock 모드로 전체 동작
-
-> **💡 핵심 결정** — LLM이 환각으로 마진을 잘못 계산하면 그대로 손실이고, 통관 불가 상품을 등록하면 법적 사고다. 그래서 **신뢰 경계를 "돈·규제"에 그었다.** 결정은 코드가, 판단은 LLM이.
-
-**Tech:** Python · FastAPI · Claude (Anthropic) · Next.js 16 / React 19 · SQLAlchemy · APScheduler · 네이버 커머스 API
+`FastAPI` `LangGraph` `Claude` `PostgreSQL + pgvector` `Neo4j` `Docker` `SwiftUI`
 
 <br>
 
-### 🧙 [CodeSage — AI 코드리뷰 에이전트](https://github.com/SkyWith628/codesage)
-> GitHub PR을 자동 분석해 인라인 리뷰를 다는 LLM 에이전트. Webhook → Redis Queue → Worker로 **수신과 처리를 분리**한 비동기 구조.
+### [직구곰](https://github.com/SkyWith628/jikgugom) · 2026.04 ~ 06 · 개인
+*아마존 상품을 네이버 스마트스토어에 올려 파는 구매대행을 자동화한 프로젝트*
 
-- 🔍 PR 요약 + 버그·보안·성능 **인라인 리뷰**, ruff 정적분석 통합, 새 커밋만 보는 **증분 리뷰**
-- 🔐 GitHub App 설치 토큰 자동 발급(JWT → 1시간 토큰, 캐싱) · Webhook HMAC 서명 검증 · 프롬프트 인젝션 방어
-- 💬 코멘트에서 `@codesage` 멘션 시 diff 컨텍스트로 답하는 대화형 후속
-- ✅ pytest 55개 · Docker Compose(api·worker·redis·postgres) · 실제 PR 자동 리뷰 검증
+구매대행은 상품 하나를 잘못 올리면 바로 손해가 나는 일입니다. 마진 계산을 틀리거나, 통관이 안 되는 상품을 올리거나, KC 인증 대상인 걸 놓치면 돈이나 법 문제로 이어집니다. LLM이 한 번만 잘못 계산해도 적자 매입이 되기 때문에, 이런 판단은 LLM에 맡기지 않기로 했습니다.
 
-> **💡 핵심 결정** — Webhook은 응답이 늦으면 타임아웃된다. 큰 PR을 동기로 리뷰하면 LLM 호출 시간 때문에 실패하므로, **즉시 200을 반환하고 리뷰는 Worker가 비동기 처리**하도록 분리했다. 증분 리뷰로 중복 코멘트와 토큰 비용도 함께 줄였다.
+- 소싱부터 통관·인증 필터, 마진 계산, 등록, 발주까지는 전부 일반 코드로 짰습니다. 사는 순간 적자가 되는 주문은 사람이 승인해야 넘어갑니다.
+- LLM은 세 군데만 씁니다. 팔릴 만한 상품인지 평가, 한글 상세페이지 작성(DeepL 번역 후 다듬기), 고객 문의 응대입니다. 민감한 문의는 LLM이 답하지 않고 사람에게 넘깁니다.
+- 상품 데이터 출처, 판매 채널, 저장소를 인터페이스로 분리해 뒀습니다. 나중에 쿠팡을 붙이거나 SQLite를 PostgreSQL로 바꿔도 나머지 코드는 손대지 않아도 됩니다.
+- pytest 115개가 있고, API 키가 없어도 mock 모드로 전체 흐름이 돌아갑니다.
 
-**Tech:** Python · FastAPI · Google Gemini (google-genai) · Redis · PostgreSQL · Docker · pytest
+`Python` `FastAPI` `Claude` `Next.js` `SQLAlchemy` `APScheduler`
 
 <br>
 
-### 💎 [CHECKMATE — 주얼리 이커머스](https://github.com/SkyWith628/checkmate)
-> 정적 Firebase 사이트를 Next.js 16 + Supabase로 전면 재설계한 풀스택 쇼핑몰 — 카탈로그·장바구니·주문·결제·마이페이지·관리자 백오피스 · [Live](https://checkmate-virid-kappa.vercel.app)
+### [CodeSage](https://github.com/SkyWith628/codesage) · 2026.02 ~ 04 · 개인
+*GitHub PR이 올라오면 자동으로 코드 리뷰를 달아 주는 봇*
 
-- 🔒 가격·재고·쿠폰을 `place_order` RPC(security definer) 한 곳에서 **원자적으로 확정**
-- 🛡️ Postgres **RLS 53개 정책 + 트리거**로 접근 제어 · 리뷰 구매 인증 위조 방지
-- 🎨 3D 럭셔리 UI — 스크롤 reveal·포인터 틸트·glass (순수 CSS + IntersectionObserver)
+GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만 커도 LLM 호출만으로 그 시간을 넘깁니다. 그래서 요청을 받는 부분과 리뷰하는 부분을 Redis 큐로 나눴습니다. Webhook은 서명만 확인하고 바로 응답하고, 실제 리뷰는 Worker가 따로 처리합니다.
 
-> **💡 핵심 결정** — 기존 구조는 클라이언트가 가격·재고·쿠폰을 다뤄 주문 금액 조작과 동시 주문 시 재고 음수·쿠폰 중복 사용 여지가 있었다. **신뢰 경계를 DB 서버로 내려** 클라이언트가 우회할 수 없게 막았다.
+- 새 커밋이 올라오면 바뀐 부분만 다시 봅니다. 같은 지적이 반복해서 달리지 않고 토큰도 덜 씁니다.
+- GitHub App 방식이라 설치 토큰을 JWT로 발급받아 캐싱해서 씁니다. Webhook은 HMAC 서명으로 검증하고, PR 본문에 숨긴 지시문에 끌려가지 않도록 프롬프트도 막아 뒀습니다.
+- 코멘트에서 `@codesage`를 부르면 해당 diff를 보고 답합니다.
+- pytest 55개가 있고, Docker Compose로 api, worker, redis, postgres를 한 번에 띄웁니다.
 
-**Tech:** Next.js 16 · React 19 · TypeScript · Supabase (Postgres·Auth·RLS·RPC) · Tailwind v4 · Vercel
+`Python` `FastAPI` `Gemini` `Redis` `PostgreSQL` `Docker`
 
----
+<br>
 
-## 🤝 팀 프로젝트
+### [CHECKMATE](https://github.com/SkyWith628/checkmate) · 2026.03 ~ 05 · 개인
+*주얼리 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트* · [사이트](https://checkmate-virid-kappa.vercel.app)
 
-### 📡 [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent) · 2026.11 · 4인 팀
-> SPA 브랜드 4곳의 상품·가격·뉴스·SNS를 수집해 변화를 감지하고, LLM으로 주간 인사이트를 만들어 슬랙·메일로 보내는 에이전트.
+원래는 Firebase로 만든 정적 사이트였는데, 가격과 쿠폰 계산을 브라우저에서 하고 있었습니다. 마음만 먹으면 결제 금액을 바꿀 여지가 있는 구조였습니다. 그래서 주문 금액을 정하는 일을 전부 DB로 옮겼습니다.
 
-**내가 맡은 부분 — D (PM · 플랫폼·통합)**
-- 🧱 `수집 → RawItem → ChangeEvent → 분류·요약 → WeeklyReport → 발송` 데이터 계약을 `app/core/`로 정의하고, 4명이 **자기 폴더만 고치는** 구조로 역할 분리
-- ⚙️ 저장소(repo 함수 경유만 허용)·슬랙/메일 렌더링·CLI(`doctor`·`status`·`seed`) · GitHub Actions(CI, 일간 수집, 주간 리포트)
-- 🔐 협업 체계 — CODEOWNERS 자동 리뷰어 지정, `main` 보호 규칙(PR 필수 · 코드 오너 승인 · 새 커밋 재승인 · ruff + pytest 통과)
-- 🖥️ 팀원 전용 대시보드·리포트 열람 웹 (Next.js → Vercel)
+- 주문 확정은 `place_order`라는 DB 함수 하나에서만 일어납니다. 가격, 재고, 쿠폰을 한 트랜잭션 안에서 확인하기 때문에 주문이 동시에 몰려도 재고가 음수로 내려가지 않습니다.
+- Postgres RLS 정책 53개와 트리거로 남의 주문을 보거나, 사지 않은 상품에 리뷰를 다는 걸 막았습니다.
+- 장바구니, 주문, 결제, 마이페이지, 관리자 페이지까지 쇼핑몰에 필요한 화면을 모두 만들었습니다.
 
-**Tech:** Python · Naver/Google 검색 API · LLM 분류(골든셋 평가) · SQLite → PostgreSQL · GitHub Actions · Next.js
+`Next.js` `TypeScript` `Supabase` `PostgreSQL` `Tailwind` `Vercel`
 
----
+<br>
 
-## 🧪 그 외 프로젝트
+## 팀 프로젝트
 
-| 프로젝트 | 분야 | 시기 | 한 줄 | 코드 / 데모 |
-| --- | --- | --- | --- | --- |
-| 🔗 **Snip (URL 단축)** | 백엔드 · 인프라 | 2026.11 | FastAPI + MySQL + Nginx 3컨테이너를 **AWS ECS Fargate**에 배포 — 동시 생성 20건 충돌 0, 대소문자 콜레이션·리다이렉트 캐시 트러블슈팅 | 🔒 비공개 |
-| 📈 **toss-llm-trader** | AI · 실험 | 2026.08 | LLM에 매매 전권을 주고 **모멘텀 규칙·Buy&Hold와 같은 백테스트 환경에서 비교** — point-in-time 누수 방지, tool-calling, 프롬프트 캐싱 | 🔒 비공개 |
-| 🩺 **케어노트AI** | AI · 기획 | 2026.10 | 요양보호사 음성 → 방문요양 기록지 초안 (2026 지능정보 SW 아이디어 경진대회) — "말하지 않은 것은 기록하지 않는다" | 🔒 비공개 |
-| ♻️ **OBLIGE** | 풀스택 웹 | 2026.05 ~ 06 | 공병 반납 → 포인트 → 등급의 ESG 코스메틱 플랫폼 + 관리자 대시보드 | [Code](https://github.com/SkyWith628/oblige) · [Live](https://skywith628.github.io/oblige/) |
-| 🤖 **JABIS** | AI · 데스크탑 | 2026.03 | 음성 대화 AI 학습 비서 (Electron) — STT/TTS·학습플랜 자동생성 | [Code](https://github.com/SkyWith628/jabis) |
-| ✅ **Todo List** | 프론트엔드 | 2026.01 | React + TS 할 일 관리 — 필터링·통계 대시보드·Custom Hook | [Code](https://github.com/SkyWith628/todo-list) · [Live](https://skywith628.github.io/todo-list/) |
-| 📊 **환율-코스피 분석** | 데이터 · 논문 | 2025.09 ~ 12 | 상관·회귀·PCA·ARIMA 분석 + **KIPS 학술발표 논문** | [Code](https://github.com/SkyWith628/kospi-exchange-analysis) |
-| 🛒 **shop69** | 백엔드 | 학부 과정 | 프레임워크 없이 PHP + MySQL로 만든 쇼핑몰 + 관리자 백오피스 (→ CHECKMATE로 재설계) | 🔒 비공개 |
-| 📱 **iOS Practice** | 모바일 | 2025.09 ~ 12 | Swift·UIKit 앱 실습 (BMI·환율계산기 등) | [Code](https://github.com/SkyWith628/ios-practice) |
-| 🐍 **Data Analysis** | 데이터 | 2025.09 ~ 12 | pandas·numpy·시각화 실습 노트북 | [Code](https://github.com/SkyWith628/Data_Analysis_Python) |
-| 🎮 **Unity Game Basics** | 게임 | 2024.09 ~ 12 | Unity·C# 입문 — 충돌·태그·GameManager 패턴 | [Code](https://github.com/SkyWith628/unity-game-basics) |
+### [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent) · 2026.11 · 4인 팀
+*SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아서 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트*
 
----
+넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.
 
-## 📌 기술 스택 — 직접 해 본 것과 근거
+- 수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정해 두고, 각자 자기 폴더만 고치도록 나눴습니다.
+- 저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.
+- CODEOWNERS로 리뷰어를 자동 지정하고, main에는 PR, 담당자 승인, CI(ruff + pytest) 통과 없이는 합칠 수 없게 규칙을 걸었습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.
 
-> 기술 이름 대신 **무엇을 해 봤는지**와 **어디서 확인할 수 있는지**를 적었습니다.
+`Python` `GitHub Actions` `PostgreSQL` `Next.js`
 
-**🗄️ Backend · API** — Python · FastAPI
-- Webhook을 받으면 즉시 200을 반환하고, 처리는 Redis 큐 Worker가 비동기로 → **CodeSage**
-- Webhook HMAC 서명 검증, GitHub App JWT로 1시간짜리 설치 토큰을 발급하고 캐싱 → **CodeSage**
-- `Idempotency-Key` 헤더로 중복 요청 방지, `expected_version`으로 낙관적 잠금 → **Persona_ize**
-- 외부 API·채널·저장소를 Adapter / Repository(ABC)로 추상화해 교체 가능하게 설계 → **직구곰**
+<br>
 
-**🧮 Database** — PostgreSQL · MySQL · Redis · SQLite · Neo4j
-- Postgres RLS 정책 53개와 security definer RPC로 가격·재고·쿠폰을 한 번에 원자적으로 확정 → **CHECKMATE**
-- UNIQUE 제약과 `ascii_bin` 콜레이션으로 단축 코드 중복·대소문자 충돌 방지, 동시 생성 20건으로 검증 → **Snip**
-- pgvector 벡터 검색과 Neo4j(Graphiti) 그래프 검색을 같은 첨삭 파이프라인에 연결 → **Persona_ize**
+## 그 밖에 만든 것들
 
-**🧠 LLM · Agent** — Claude · Gemini · LangGraph
-- LangGraph 워크플로: 추출 → 검색 → 구조화 출력 → 규칙 검증 → 1회 재생성 → 실패 시 원문 유지 → **Persona_ize**
-- 돈·규제 판단은 결정론 코드로, 정성 판단만 LLM으로. 적자 매입은 사람이 승인(HITL) → **직구곰**
-- 강제 tool-calling으로 결정을 구조화하고, 프롬프트 캐싱으로 호출 비용 절감 → **toss-llm-trader**
-- PR 본문에 섞인 지시를 막는 프롬프트 인젝션 방어 → **CodeSage**
+| 프로젝트 | 시기 | 내용 | 링크 |
+| --- | --- | --- | --- |
+| Snip (URL 단축) | 2026.11 | FastAPI, MySQL, Nginx 컨테이너 3개를 AWS ECS Fargate에 올렸습니다. 동시에 20개를 만들어도 코드가 겹치지 않는지, 대소문자만 다른 코드가 같은 걸로 잡히지 않는지 확인했습니다. | 비공개 |
+| toss-llm-trader | 2026.08 | LLM에게 주식 매매를 맡기면 그냥 사 두는 것보다 나은지 모의투자로 재 보는 실험입니다. 백테스트가 미래 가격을 미리 보지 못하게 막는 데 신경을 많이 썼습니다. | 비공개 |
+| 케어노트AI | 2026.10 | 요양보호사가 말로 남긴 내용을 방문요양 기록지 초안으로 바꿔 주는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | 비공개 |
+| OBLIGE | 2026.05 ~ 06 | 화장품 공병을 반납하면 포인트와 등급이 쌓이는 쇼핑몰 | [코드](https://github.com/SkyWith628/oblige) · [사이트](https://skywith628.github.io/oblige/) |
+| JABIS | 2026.03 | 음성으로 대화하는 학습 도우미 데스크톱 앱 (Electron) | [코드](https://github.com/SkyWith628/jabis) |
+| Todo List | 2026.01 | React와 TypeScript로 만든 할 일 관리 앱 | [코드](https://github.com/SkyWith628/todo-list) · [사이트](https://skywith628.github.io/todo-list/) |
+| 환율과 코스피 | 2025.09 ~ 12 | 환율이 코스피에 주는 영향을 회귀, PCA, ARIMA로 분석했고 KIPS 학술대회에서 발표했습니다. | [코드](https://github.com/SkyWith628/kospi-exchange-analysis) |
+| shop69 | 학부 수업 | 프레임워크 없이 PHP와 MySQL로 만든 첫 쇼핑몰입니다. 나중에 같은 주제를 CHECKMATE로 다시 만들었습니다. | 비공개 |
+| iOS Practice | 2025.09 ~ 12 | Swift, UIKit 실습 앱 모음 | [코드](https://github.com/SkyWith628/ios-practice) |
+| Data Analysis | 2025.09 ~ 12 | pandas, numpy 실습 노트북 | [코드](https://github.com/SkyWith628/Data_Analysis_Python) |
+| Unity Game Basics | 2024.09 ~ 12 | Unity, C# 입문 실습 | [코드](https://github.com/SkyWith628/unity-game-basics) |
 
-**📏 LLM 평가 · 실험**
-- 4개 조건 × 16사례 × 3회 반복 실험 하니스 → 실패 원인이 된 규칙 수정 → 재측정 → **Persona_ize**
-- point-in-time 시계로 백테스트의 미래 정보 누수를 막고, 규칙 전략·Buy&Hold와 같은 환경에서 비교 → **toss-llm-trader**
+<br>
 
-**✅ 테스트 · 협업**
-- pytest — Persona_ize 1,564개 · 직구곰 115개 · CodeSage 55개. API 키 없이 mock·fake 모델로 전체 실행 → **직구곰 · Persona_ize**
-- ruff + pytest CI, `main` 보호 규칙(PR 필수 · 코드 오너 승인 · 새 커밋 재승인), CODEOWNERS 자동 리뷰어 지정 → **경쟁사 모니터링**
+## 해 본 것들
 
-**🚀 Infra · 배포** — Docker · GitHub Actions · AWS ECS · Nginx · Caddy · Vercel
-- 컨테이너 3개를 AWS ECS Fargate에 배포하고 외부에는 80번 포트만 노출, 멀티스테이지 빌드(frontend 73.7MB) → **Snip**
-- ECS 태스크가 뜨기 전에 멈추는 `ResourceInitializationError`의 원인을 실행 역할의 로그 권한 누락으로 찾아 해결 → **Snip**
-- Caddy 자동 HTTPS · 주기 백업 · 배포 후 스모크 테스트를 묶은 배포 스크립트 → **Persona_ize**
-- GitHub Actions로 일간 수집과 주간 리포트 자동 실행 → **경쟁사 모니터링**
+기술 이름만 적으면 잘 와닿지 않을 것 같아서, 실제로 해 본 일 위주로 적었습니다.
 
-**🖥️ Frontend · App** — TypeScript · React · Next.js · SwiftUI
-- Next.js 16 + Supabase Auth 풀스택 쇼핑몰, 관리자 백오피스 → **CHECKMATE**
-- SwiftUI 아이폰 앱과 보조 키보드 확장, CI에서 시뮬레이터 빌드 → **Persona_ize**
+**백엔드**
+- 오래 걸리는 작업을 큐로 빼고 요청에는 바로 응답하기 (CodeSage)
+- 같은 요청이 두 번 들어와도 한 번만 처리하기, 동시에 수정할 때 버전을 확인해서 덮어쓰지 않기 (Persona_ize)
+- 외부 API나 DB를 바꿔 끼울 수 있게 인터페이스로 분리하기 (직구곰)
 
-<sub>그 외 사용 경험: PHP(shop69) · Electron(JABIS) · pandas·statsmodels(환율-코스피 분석) · UIKit(iOS Practice) · Unity/C#(Unity Game Basics)</sub>
+**데이터베이스**
+- 주문 금액 계산을 DB 함수로 옮기고 RLS로 접근 막기 (CHECKMATE)
+- UNIQUE 제약과 콜레이션 설정으로 중복 코드 막기 (Snip)
+- pgvector와 Neo4j 검색 결과를 같은 파이프라인에서 쓰기 (Persona_ize)
 
----
+**LLM**
+- LLM 출력을 규칙으로 검사하고, 실패하면 다시 만들거나 원문으로 돌아가기 (Persona_ize)
+- LLM이 할 일과 코드가 할 일을 나누고, 위험한 건 사람 승인 받기 (직구곰)
+- 조건을 바꿔 가며 반복 실험하고 결과를 숫자로 남기기 (Persona_ize, toss-llm-trader)
 
-## 🎓 경험 · 자격
+**배포와 협업**
+- AWS ECS에 컨테이너 올리기. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다. (Snip)
+- Docker Compose와 Caddy로 HTTPS 배포하고 백업·점검 스크립트 만들기 (Persona_ize)
+- GitHub Actions로 CI와 정기 작업 돌리기, 브랜치 보호 규칙 걸기 (경쟁사 모니터링)
 
-**리더십**
-- 26학년도 컴퓨터소프트웨어학과 학회장
+이 밖에 PHP, Electron, Swift, Unity도 수업과 개인 작업에서 써 봤습니다.
+
+<br>
+
+## 학교 활동
+
+- 2026 컴퓨터소프트웨어학과 학회장
 - 38대 총학생회 기획부장
 - iOS 전공 멘토
 - 2024 글로벌인덕리더스쿨 팀장
 
-**자격 · 기타**
-- 🧾 정보처리기능사
-- 📄 KIPS 학술발표대회 논문 발표 (환율-코스피 분석)
-- 🗣️ 한국어(모국어) · 영어
-- 🏃 취미: 러닝
-
-<br>
-
-<div align="center">
-
-방문해 주셔서 감사합니다! 🚀
-
-</div>
+정보처리기능사가 있고, 한국어와 영어를 씁니다. 쉬는 날엔 주로 달립니다.
