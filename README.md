@@ -4,7 +4,7 @@
 
 # 안녕하세요, SkyWith입니다
 
-<img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&size=18&duration=3500&pause=1200&color=5B6B7F&center=true&vCenter=true&width=520&height=40&lines=LLM%EC%9D%84%20%EC%8B%A4%EC%A0%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EC%97%90%20%EB%B6%99%EC%9D%B4%EB%8A%94%20%EB%B0%B1%EC%97%94%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%AD%EB%8B%88%EB%8B%A4;%ED%8B%80%EB%A6%AC%EB%A9%B4%20%EC%95%88%20%EB%90%98%EB%8A%94%20%EA%B2%B0%EC%A0%95%EC%9D%80%20%EC%BD%94%EB%93%9C%EB%A1%9C%20%EC%A0%95%ED%95%A9%EB%8B%88%EB%8B%A4;%EB%82%98%EC%95%84%EC%A1%8C%EB%8A%94%EC%A7%80%EB%8A%94%20%EC%B8%A1%EC%A0%95%ED%95%B4%EC%84%9C%20%ED%99%95%EC%9D%B8%ED%95%A9%EB%8B%88%EB%8B%A4" alt="LLM을 실제 서비스에 붙이는 백엔드를 만듭니다" />
+<img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&size=18&duration=3500&pause=1200&color=5B6B7F&center=true&vCenter=true&width=520&height=40&lines=LLM%EC%9D%84%20%EC%8B%A4%EC%A0%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EC%97%90%20%EB%B6%99%EC%9D%B4%EB%8A%94%20%EB%B0%B1%EC%97%94%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%AD%EB%8B%88%EB%8B%A4;LLM%EC%9D%98%20%EC%B6%9C%EB%A0%A5%EC%9D%80%20%EA%B2%80%EC%A6%9D%EC%9D%84%20%ED%86%B5%EA%B3%BC%ED%95%B4%EC%95%BC%20%EB%82%B4%EB%B3%B4%EB%83%85%EB%8B%88%EB%8B%A4;%ED%8B%80%EB%A6%AC%EB%A9%B4%20%EC%95%88%20%EB%90%98%EB%8A%94%20%EA%B2%B0%EC%A0%95%EC%9D%80%20%EC%BD%94%EB%93%9C%EC%99%80%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EC%A0%95%ED%95%A9%EB%8B%88%EB%8B%A4;%EB%82%98%EC%95%84%EC%A1%8C%EB%8A%94%EC%A7%80%EB%8A%94%20%EC%B8%A1%EC%A0%95%ED%95%B4%EC%84%9C%20%ED%99%95%EC%9D%B8%ED%95%A9%EB%8B%88%EB%8B%A4" alt="LLM을 실제 서비스에 붙이는 백엔드를 만듭니다" />
 
 <br>
 
@@ -21,7 +21,11 @@
 
 인덕대학교 컴퓨터소프트웨어학과에 다니고 있고, 올해는 학과 학회장을 맡고 있습니다.
 
-프로젝트를 몇 번 하면서 생긴 기준이 하나 있습니다. 돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정하고, LLM에는 사람이 판단하던 부분만 맡긴다는 것입니다. 그렇게 만든 게 정말 나아졌는지는 감이 아니라 측정해서 확인하려고 합니다.
+프로젝트를 몇 번 하면서 생긴 기준이 하나 있습니다. LLM을 썼다는 사실보다, 그 LLM을 어떻게 검증하고 통제했는지가 더 중요하다는 것입니다.
+
+- **통제** — 돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정하고, LLM에는 사람이 판단하던 부분만 맡깁니다. 위험한 건 사람 승인을 거칩니다.
+- **검증** — LLM이 낸 결과는 규칙 검사를 통과해야만 사용자에게 나갑니다. 실패하면 다시 만들고, 그래도 안 되면 원문으로 돌아갑니다.
+- **측정** — 그렇게 만든 게 정말 나아졌는지는 감이 아니라 조건을 바꿔 가며 돌려 보고 숫자로 확인합니다.
 
 주로 쓰는 것은 Python, FastAPI, PostgreSQL, Redis, Docker이고, LLM 쪽은 LangGraph와 Claude, Gemini를 씁니다.
 
@@ -155,7 +159,7 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 <tr>
 <td width="50%" valign="top">
 
-**LLM**
+**LLM 검증과 통제**
 - LLM 출력을 규칙으로 검사하고, 실패하면 다시 만들거나 원문으로 돌아가기 (Persona_ize)
 - LLM이 할 일과 코드가 할 일을 나누고, 위험한 건 사람 승인 받기 (직구곰)
 - 조건을 바꿔 가며 반복 실험하고 결과를 숫자로 남기기 (Persona_ize, toss-llm-trader)
