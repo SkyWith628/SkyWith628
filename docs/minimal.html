@@ -38,10 +38,14 @@ ul{padding:0;list-style:none}
 }
 
 /* 머리 */
-.head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;padding-bottom:22px;border-bottom:2px solid var(--rule)}
+.head{display:grid;grid-template-columns:auto 1fr;align-items:end;gap:28px;padding-bottom:22px;border-bottom:2px solid var(--rule)}
 .name{font-size:46px;font-weight:800;letter-spacing:.14em;line-height:1;text-transform:uppercase}
 .title{margin-top:12px;font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-2)}
-.head .motto{max-width:250px;text-align:right;font-size:12.5px;color:var(--muted);line-height:1.6}
+.head .motto{margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.6}
+.title{white-space:nowrap}
+.photo{position:relative;margin:0;width:112px;aspect-ratio:3/4;border:1px solid var(--ink);background:#f4f4f4;display:grid;place-items:center;overflow:hidden}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.photo .ph{font-size:10px;font-weight:700;letter-spacing:.24em;text-align:center;line-height:1.8;color:var(--muted)}
 
 /* 본문 2단 */
 .cols{display:grid;grid-template-columns:200px 1fr;gap:0 44px;margin-top:30px}
@@ -98,8 +102,12 @@ h2{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
 /* 반응형 */
 @media (max-width:760px){
   .paper{margin:0;padding:32px 16px 28px;box-shadow:none}
-  .head{grid-template-columns:1fr}
-  .head .motto{text-align:left;max-width:none}
+  .head{grid-template-columns:auto 1fr;gap:18px}
+  .head .motto{margin-top:10px}
+  .photo{width:84px}
+  .title{white-space:normal;letter-spacing:.24em}
+  .title span{display:block}
+  .title .sep{display:none}
   .name{font-size:34px}
   .cols{grid-template-columns:1fr;gap:28px}
   .side{border-right:0;padding-right:0;display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -118,6 +126,8 @@ h2{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
   .paper{max-width:none;margin:0;padding:0;box-shadow:none}
   .tools{display:none}
   .name{font-size:30pt}
+  .photo{width:25mm}
+  .photo.empty{display:none}
   .cols{grid-template-columns:150px 1fr;gap:0 26px;margin-top:18px}
   .side{padding-right:18px}
   .block+.block{margin-top:18px}
@@ -134,11 +144,16 @@ h2{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
 <article class="paper">
 
   <header class="head">
+    <!-- 사진: docs/photo.jpg 로 저장하면 자동으로 들어갑니다 (3:4 비율 권장, 흑백으로 표시) -->
+    <figure class="photo">
+      <img src="photo.jpg" alt="SkyWith 프로필 사진" onerror="this.parentNode.classList.add('empty');this.remove()">
+      <span class="ph" aria-hidden="true">PHOTO<br>3 : 4</span>
+    </figure>
     <div>
       <h1 class="name">SkyWith</h1>
-      <p class="title">Backend Developer · LLM Systems</p>
+      <p class="title"><span>Backend Developer</span><span class="sep"> · </span><span>LLM Systems</span></p>
+      <p class="motto">틀리면 안 되는 결정은 코드로, LLM의 출력은 검증을 통과해야 내보냅니다.</p>
     </div>
-    <p class="motto">틀리면 안 되는 결정은 코드로,<br>LLM의 출력은 검증을 통과해야 내보냅니다.</p>
   </header>
 
   <div class="cols">
