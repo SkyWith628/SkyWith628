@@ -111,17 +111,16 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 | 프로젝트 | 시기 | 내용 | 링크 |
 | --- | --- | --- | --- |
-| Snip (URL 단축) | 2026.11 | FastAPI, MySQL, Nginx 컨테이너 3개를 AWS ECS Fargate에 올렸습니다. 동시에 20개를 만들어도 코드가 겹치지 않는지, 대소문자만 다른 코드가 같은 걸로 잡히지 않는지 확인했습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
-| toss-llm-trader | 2026.08 | LLM에게 주식 매매를 맡기면 그냥 사 두는 것보다 나은지 모의투자로 재 보는 실험입니다. 백테스트가 미래 가격을 미리 보지 못하게 막는 데 신경을 많이 썼습니다. | [코드](https://github.com/SkyWith628/toss-llm-trader) |
-| 케어노트AI | 2026.10 | 요양보호사가 말로 남긴 내용을 방문요양 기록지 초안으로 바꿔 주는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | [코드](https://github.com/SkyWith628/carenote-ai) |
+| Snip | 2026.11 | URL 단축 서비스. FastAPI·MySQL·Nginx 컨테이너를 AWS ECS Fargate에 배포하고, 동시 생성 시 코드 충돌과 대소문자 중복을 막았습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
+| toss-llm-trader | 2026.08 | LLM 매매가 단순 보유보다 나은지 모의투자로 재 본 실험. 백테스트가 미래 가격을 미리 보지 못하게 막았습니다. | [코드](https://github.com/SkyWith628/toss-llm-trader) |
+| 케어노트AI | 2026.10 | 요양보호사의 음성 기록을 방문요양 기록지 초안으로 바꾸는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | [코드](https://github.com/SkyWith628/carenote-ai) |
 | OBLIGE | 2026.05 ~ 06 | 공병 사진을 YOLOv8로 인식해 포인트로 돌려주는 ESG 화장품 쇼핑몰. 반납 안내는 tool-use LLM 어시스턴트가 맡습니다. | [코드](https://github.com/SkyWith628/oblige) · [사이트](https://skywith628.github.io/oblige/) |
 | JABIS | 2026.03 | 음성으로 대화하는 학습 도우미 데스크톱 앱 (Electron) | [코드](https://github.com/SkyWith628/jabis) |
-| Todo List | 2026.01 | React와 TypeScript로 만든 할 일 관리 앱 | [코드](https://github.com/SkyWith628/todo-list) · [사이트](https://skywith628.github.io/todo-list/) |
-| 환율과 코스피 | 2025.09 ~ 12 | 환율이 코스피에 주는 영향을 회귀, PCA, ARIMA로 분석했고 KIPS 학술대회에서 발표했습니다. | [코드](https://github.com/SkyWith628/kospi-exchange-analysis) |
-| shop69 | 학부 수업 | 프레임워크 없이 PHP와 MySQL로 만든 첫 쇼핑몰입니다. 나중에 같은 주제를 CHECKMATE로 다시 만들었습니다. | [코드](https://github.com/SkyWith628/php_shop_project) |
-| iOS Practice | 2025.09 ~ 12 | Swift, UIKit 실습 앱 모음 | [코드](https://github.com/SkyWith628/ios-practice) |
-| Data Analysis | 2025.09 ~ 12 | pandas, numpy 실습 노트북 | [코드](https://github.com/SkyWith628/Data_Analysis_Python) |
-| Unity Game Basics | 2024.09 ~ 12 | Unity, C# 입문 실습 | [코드](https://github.com/SkyWith628/unity-game-basics) |
+| Todo List | 2026.01 | React·TypeScript 할 일 관리 앱 | [코드](https://github.com/SkyWith628/todo-list) · [사이트](https://skywith628.github.io/todo-list/) |
+| 환율과 코스피 | 2025.09 ~ 12 | 환율이 코스피에 주는 영향을 회귀·PCA·ARIMA로 분석, KIPS 학술대회 발표 | [코드](https://github.com/SkyWith628/kospi-exchange-analysis) |
+| shop69 | 학부 수업 | 프레임워크 없이 PHP·MySQL로 만든 첫 쇼핑몰. 같은 주제를 CHECKMATE로 다시 만들었습니다. | [코드](https://github.com/SkyWith628/php_shop_project) |
+
+<sub>수업 실습: [iOS Practice](https://github.com/SkyWith628/ios-practice) (Swift·UIKit) · [Data Analysis](https://github.com/SkyWith628/Data_Analysis_Python) (pandas·numpy) · [Unity Game Basics](https://github.com/SkyWith628/unity-game-basics) (Unity·C#)</sub>
 
 ---
 
