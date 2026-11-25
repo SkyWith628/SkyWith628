@@ -1,20 +1,36 @@
-## 안녕하세요, SkyWith입니다
+<div align="center">
 
-인덕대학교 컴퓨터소프트웨어학과에 다니고 있고, 올해는 학과 학회장을 맡고 있습니다.
-요즘은 주로 **LLM을 실제 서비스에 붙이는 백엔드**를 만듭니다.
+# 안녕하세요, SkyWith입니다
 
-프로젝트를 몇 번 하면서 생긴 기준이 하나 있습니다. 돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정하고, LLM에는 사람이 판단하던 부분만 맡긴다는 것입니다. 그렇게 만든 게 정말 나아졌는지는 감이 아니라 측정해서 확인하려고 합니다.
-
-주로 쓰는 것: Python, FastAPI, PostgreSQL, Redis, Docker, LangGraph, Claude / Gemini
-
-[블로그](https://hskywith.tistory.com) · [포트폴리오 (Notion)](https://www.notion.so/f089caa5141d414196d7170b2d8c1ed6?pvs=12)
+LLM을 실제 서비스에 붙이는 백엔드를 만듭니다
 
 <br>
 
+<img src="https://skillicons.dev/icons?i=py,fastapi,postgres,redis,docker,githubactions,aws,nextjs,ts&theme=light" alt="Python, FastAPI, PostgreSQL, Redis, Docker, GitHub Actions, AWS, Next.js, TypeScript" />
+
+<br><br>
+
+<a href="https://hskywith.tistory.com"><img src="https://img.shields.io/badge/Blog-tistory-555555?style=flat-square" alt="Blog" /></a>
+<a href="https://www.notion.so/f089caa5141d414196d7170b2d8c1ed6?pvs=12"><img src="https://img.shields.io/badge/Portfolio-Notion-555555?style=flat-square&logo=notion&logoColor=white" alt="Portfolio" /></a>
+
+</div>
+
+<br>
+
+인덕대학교 컴퓨터소프트웨어학과에 다니고 있고, 올해는 학과 학회장을 맡고 있습니다.
+
+프로젝트를 몇 번 하면서 생긴 기준이 하나 있습니다. 돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정하고, LLM에는 사람이 판단하던 부분만 맡긴다는 것입니다. 그렇게 만든 게 정말 나아졌는지는 감이 아니라 측정해서 확인하려고 합니다.
+
+주로 쓰는 것은 Python, FastAPI, PostgreSQL, Redis, Docker이고, LLM 쪽은 LangGraph와 Claude, Gemini를 씁니다.
+
+---
+
 ## 대표 프로젝트
 
-### [Persona_ize](https://github.com/SkyWith628/persona-ize) · 2026.11 ~ 진행 중 · 4인 팀, 팀장
-*상대에 맞게 메시지를 다듬어 주되, 내 말투와 원래 내용은 그대로 두는 서비스* (2026.12 공모전 출품작)
+### [Persona_ize](https://github.com/SkyWith628/persona-ize)
+<sub>2026.11 ~ 진행 중 · 4인 팀, 팀장 · 2026.12 공모전 출품작</sub>
+
+> 상대에 맞게 메시지를 다듬어 주되, 내 말투와 원래 내용은 그대로 두는 서비스
 
 상사에게 보내는 말과 친구에게 보내는 말은 다르지만, 그렇다고 내가 하려던 말이 바뀌면 안 됩니다. 그래서 이 프로젝트에서는 "고쳐 쓰되 사실과 의도는 건드리지 않는다"를 가장 먼저 정했습니다.
 
@@ -29,8 +45,10 @@
 
 <br>
 
-### [직구곰](https://github.com/SkyWith628/jikgugom) · 2026.04 ~ 06 · 개인
-*아마존 상품을 네이버 스마트스토어에 올려 파는 구매대행을 자동화한 프로젝트*
+### [직구곰](https://github.com/SkyWith628/jikgugom)
+<sub>2026.04 ~ 06 · 개인</sub>
+
+> 아마존 상품을 네이버 스마트스토어에 올려 파는 구매대행을 자동화한 프로젝트
 
 구매대행은 상품 하나를 잘못 올리면 바로 손해가 나는 일입니다. 마진 계산을 틀리거나, 통관이 안 되는 상품을 올리거나, KC 인증 대상인 걸 놓치면 돈이나 법 문제로 이어집니다. LLM이 한 번만 잘못 계산해도 적자 매입이 되기 때문에, 이런 판단은 LLM에 맡기지 않기로 했습니다.
 
@@ -43,8 +61,10 @@
 
 <br>
 
-### [CodeSage](https://github.com/SkyWith628/codesage) · 2026.02 ~ 04 · 개인
-*GitHub PR이 올라오면 자동으로 코드 리뷰를 달아 주는 봇*
+### [CodeSage](https://github.com/SkyWith628/codesage)
+<sub>2026.02 ~ 04 · 개인</sub>
+
+> GitHub PR이 올라오면 자동으로 코드 리뷰를 달아 주는 봇
 
 GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만 커도 LLM 호출만으로 그 시간을 넘깁니다. 그래서 요청을 받는 부분과 리뷰하는 부분을 Redis 큐로 나눴습니다. Webhook은 서명만 확인하고 바로 응답하고, 실제 리뷰는 Worker가 따로 처리합니다.
 
@@ -57,8 +77,10 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 <br>
 
-### [CHECKMATE](https://github.com/SkyWith628/checkmate) · 2026.03 ~ 05 · 개인
-*주얼리 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트* · [사이트](https://checkmate-virid-kappa.vercel.app)
+### [CHECKMATE](https://github.com/SkyWith628/checkmate)
+<sub>2026.03 ~ 05 · 개인 · [사이트](https://checkmate-virid-kappa.vercel.app)</sub>
+
+> 주얼리 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트
 
 원래는 Firebase로 만든 정적 사이트였는데, 가격과 쿠폰 계산을 브라우저에서 하고 있었습니다. 마음만 먹으면 결제 금액을 바꿀 여지가 있는 구조였습니다. 그래서 주문 금액을 정하는 일을 전부 DB로 옮겼습니다.
 
@@ -68,12 +90,14 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 `Next.js` `TypeScript` `Supabase` `PostgreSQL` `Tailwind` `Vercel`
 
-<br>
+---
 
 ## 팀 프로젝트
 
-### [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent) · 2026.11 · 4인 팀
-*SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아서 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트*
+### [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent)
+<sub>2026.11 · 4인 팀</sub>
+
+> SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아서 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트
 
 넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.
 
@@ -83,7 +107,7 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 `Python` `GitHub Actions` `PostgreSQL` `Next.js`
 
-<br>
+---
 
 ## 그 밖에 만든 것들
 
@@ -101,35 +125,54 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 | Data Analysis | 2025.09 ~ 12 | pandas, numpy 실습 노트북 | [코드](https://github.com/SkyWith628/Data_Analysis_Python) |
 | Unity Game Basics | 2024.09 ~ 12 | Unity, C# 입문 실습 | [코드](https://github.com/SkyWith628/unity-game-basics) |
 
-<br>
+---
 
 ## 해 본 것들
 
 기술 이름만 적으면 잘 와닿지 않을 것 같아서, 실제로 해 본 일 위주로 적었습니다.
+
+<table>
+<tr>
+<td width="50%" valign="top">
 
 **백엔드**
 - 오래 걸리는 작업을 큐로 빼고 요청에는 바로 응답하기 (CodeSage)
 - 같은 요청이 두 번 들어와도 한 번만 처리하기, 동시에 수정할 때 버전을 확인해서 덮어쓰지 않기 (Persona_ize)
 - 외부 API나 DB를 바꿔 끼울 수 있게 인터페이스로 분리하기 (직구곰)
 
+</td>
+<td width="50%" valign="top">
+
 **데이터베이스**
 - 주문 금액 계산을 DB 함수로 옮기고 RLS로 접근 막기 (CHECKMATE)
 - UNIQUE 제약과 콜레이션 설정으로 중복 코드 막기 (Snip)
 - pgvector와 Neo4j 검색 결과를 같은 파이프라인에서 쓰기 (Persona_ize)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
 
 **LLM**
 - LLM 출력을 규칙으로 검사하고, 실패하면 다시 만들거나 원문으로 돌아가기 (Persona_ize)
 - LLM이 할 일과 코드가 할 일을 나누고, 위험한 건 사람 승인 받기 (직구곰)
 - 조건을 바꿔 가며 반복 실험하고 결과를 숫자로 남기기 (Persona_ize, toss-llm-trader)
 
+</td>
+<td width="50%" valign="top">
+
 **배포와 협업**
 - AWS ECS에 컨테이너 올리기. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다. (Snip)
 - Docker Compose와 Caddy로 HTTPS 배포하고 백업·점검 스크립트 만들기 (Persona_ize)
 - GitHub Actions로 CI와 정기 작업 돌리기, 브랜치 보호 규칙 걸기 (경쟁사 모니터링)
 
+</td>
+</tr>
+</table>
+
 이 밖에 PHP, Electron, Swift, Unity도 수업과 개인 작업에서 써 봤습니다.
 
-<br>
+---
 
 ## 학교 활동
 
@@ -139,3 +182,7 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 - 2024 글로벌인덕리더스쿨 팀장
 
 정보처리기능사가 있고, 한국어와 영어를 씁니다. 쉬는 날엔 주로 달립니다.
+
+<br>
+
+<div align="center"><sub>읽어 주셔서 감사합니다.</sub></div>
