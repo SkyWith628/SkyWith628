@@ -21,7 +21,7 @@
 | 프로젝트 | 분야 | 시기 | 역할 | 한 줄 | 코드 / 데모 |
 | --- | --- | --- | --- | --- | --- |
 | 🗣️ **Persona_ize** | AI · 백엔드 | 2026.11 ~ 진행 중 | 팀장 (4인) | 상대별 말투로 메시지를 첨삭하되 원문의 사실·의도는 보존 | 🔒 공모전 진행 중 (비공개) |
-| 🐻 **직구곰** | AI · 백엔드 | 2026.04 ~ 08 | 개인 | 구매대행 자동화 — 결정론 파이프라인 + 멀티에이전트 | [Code](https://github.com/SkyWith628/jikgugom) |
+| 🐻 **직구곰** | AI · 백엔드 | 2026.04 ~ 06 | 개인 | 구매대행 자동화 — 결정론 파이프라인 + 멀티에이전트 | [Code](https://github.com/SkyWith628/jikgugom) |
 | 🧙 **CodeSage** | AI · 백엔드 | 2026.02 ~ 04 | 개인 | GitHub PR 자동 코드리뷰 에이전트 (비동기 큐) | [Code](https://github.com/SkyWith628/codesage) |
 | 💎 **CHECKMATE** | 풀스택 웹 | 2026.03 ~ 05 | 개인 | 주얼리 이커머스 (Next.js + Supabase RLS) | [Code](https://github.com/SkyWith628/checkmate) · [Live](https://checkmate-virid-kappa.vercel.app) |
 
