@@ -47,6 +47,21 @@ LLM 쪽은 LangGraph와 Claude, Gemini를 씁니다. 인덕대학교 컴퓨터�
 
 <br>
 
+### [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent)
+<sub>2026.11 · 4인 팀, 플랫폼·PM</sub>
+
+> SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트
+
+넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.
+
+- **분업**: 수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정하고, 각자 자기 폴더만 고치도록 나눴습니다.
+- **플랫폼**: 저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.
+- **규칙**: CODEOWNERS로 리뷰어를 자동 지정하고, main은 PR·담당자 승인·CI(ruff + pytest) 통과 없이 합칠 수 없게 막았습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.
+
+`Python` `GitHub Actions` `PostgreSQL` `Next.js`
+
+<br>
+
 ### [직구곰](https://github.com/SkyWith628/jikgugom)
 <sub>2026.04 ~ 06 · 개인</sub>
 
@@ -89,23 +104,6 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 - **범위**: 장바구니, 주문, 결제, 마이페이지, 관리자 페이지까지 쇼핑몰에 필요한 화면을 모두 만들었습니다.
 
 `Next.js` `TypeScript` `Supabase` `PostgreSQL` `Tailwind` `Vercel`
-
----
-
-## 팀 프로젝트
-
-### [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent)
-<sub>2026.11 · 4인 팀</sub>
-
-> SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아서 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트
-
-넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.
-
-- 수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정해 두고, 각자 자기 폴더만 고치도록 나눴습니다.
-- 저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.
-- CODEOWNERS로 리뷰어를 자동 지정하고, main에는 PR, 담당자 승인, CI(ruff + pytest) 통과 없이는 합칠 수 없게 규칙을 걸었습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.
-
-`Python` `GitHub Actions` `PostgreSQL` `Next.js`
 
 ---
 
