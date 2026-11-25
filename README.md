@@ -2,9 +2,10 @@
 
 <div align="center">
 
-# 안녕하세요, SkyWith입니다
+# SkyWith
 
-<img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&size=18&duration=3500&pause=1200&color=5B6B7F&center=true&vCenter=true&width=520&height=40&lines=LLM%EC%9D%84%20%EC%8B%A4%EC%A0%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EC%97%90%20%EB%B6%99%EC%9D%B4%EB%8A%94%20%EB%B0%B1%EC%97%94%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%AD%EB%8B%88%EB%8B%A4;LLM%EC%9D%98%20%EC%B6%9C%EB%A0%A5%EC%9D%80%20%EA%B2%80%EC%A6%9D%EC%9D%84%20%ED%86%B5%EA%B3%BC%ED%95%B4%EC%95%BC%20%EB%82%B4%EB%B3%B4%EB%83%85%EB%8B%88%EB%8B%A4;%ED%8B%80%EB%A6%AC%EB%A9%B4%20%EC%95%88%20%EB%90%98%EB%8A%94%20%EA%B2%B0%EC%A0%95%EC%9D%80%20%EC%BD%94%EB%93%9C%EC%99%80%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EC%A0%95%ED%95%A9%EB%8B%88%EB%8B%A4;%EB%82%98%EC%95%84%EC%A1%8C%EB%8A%94%EC%A7%80%EB%8A%94%20%EC%B8%A1%EC%A0%95%ED%95%B4%EC%84%9C%20%ED%99%95%EC%9D%B8%ED%95%A9%EB%8B%88%EB%8B%A4" alt="LLM을 실제 서비스에 붙이는 백엔드를 만듭니다" />
+**LLM을 실제 서비스에 붙이는 백엔드 개발자**<br>
+<sub>틀리면 안 되는 결정은 코드로, LLM의 출력은 검증을 통과해야 내보냅니다</sub>
 
 <br>
 
@@ -19,15 +20,13 @@
 
 <br>
 
-인덕대학교 컴퓨터소프트웨어학과에 다니고 있고, 올해는 학과 학회장을 맡고 있습니다.
-
 프로젝트를 몇 번 하면서 생긴 기준이 하나 있습니다. LLM을 썼다는 사실보다, 그 LLM을 어떻게 검증하고 통제했는지가 더 중요하다는 것입니다.
 
-- **통제** — 돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정하고, LLM에는 사람이 판단하던 부분만 맡깁니다. 위험한 건 사람 승인을 거칩니다.
-- **검증** — LLM이 낸 결과는 규칙 검사를 통과해야만 사용자에게 나갑니다. 실패하면 다시 만들고, 그래도 안 되면 원문으로 돌아갑니다.
-- **측정** — 그렇게 만든 게 정말 나아졌는지는 감이 아니라 조건을 바꿔 가며 돌려 보고 숫자로 확인합니다.
+- **통제**: 돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정하고, LLM에는 사람이 판단하던 부분만 맡깁니다. 위험한 건 사람 승인을 거칩니다. → [직구곰](#직구곰)
+- **검증**: LLM이 낸 결과는 규칙 검사를 통과해야만 사용자에게 나갑니다. 실패하면 다시 만들고, 그래도 안 되면 원문으로 돌아갑니다. → [Persona_ize](#persona_ize)
+- **측정**: 정말 나아졌는지는 감이 아니라 조건을 바꿔 가며 돌려 보고 숫자로 확인합니다. → [Persona_ize](#persona_ize) (4조건 × 192회 실험)
 
-주로 쓰는 것은 Python, FastAPI, PostgreSQL, Redis, Docker이고, LLM 쪽은 LangGraph와 Claude, Gemini를 씁니다.
+LLM 쪽은 LangGraph와 Claude, Gemini를 씁니다. 인덕대학교 컴퓨터소프트웨어학과에 다니고 있습니다.
 
 ---
 
@@ -38,16 +37,28 @@
 
 > 상대에 맞게 메시지를 다듬어 주되, 내 말투와 원래 내용은 그대로 두는 서비스
 
-상사에게 보내는 말과 친구에게 보내는 말은 다르지만, 그렇다고 내가 하려던 말이 바뀌면 안 됩니다. 그래서 이 프로젝트에서는 "고쳐 쓰되 사실과 의도는 건드리지 않는다"를 가장 먼저 정했습니다.
+상사에게 보내는 말과 친구에게 보내는 말은 다르지만, 내가 하려던 말까지 바뀌면 안 됩니다. 그래서 "고쳐 쓰되 사실과 의도는 건드리지 않는다"를 가장 먼저 정했습니다. 팀원 셋이 비전공자라 개발은 제가 전부 맡았고, 팀원들은 평가 사례와 루브릭을 CSV로 만들어 PR로 올렸습니다.
 
-팀원 셋이 비전공자라 개발은 제가 전부 맡았습니다. 백엔드, LangGraph 워크플로, 실험 하니스, 배포까지입니다. 팀원들은 평가 사례와 루브릭을 CSV로 만들어 PR로 올리고, 제가 리뷰해서 코드에 연결하는 식으로 일했습니다.
-
-- 첨삭 결과는 규칙 검증을 통과해야만 사용자에게 보입니다. 실패하면 한 번 다시 만들고, 그래도 안 되면 원문을 그대로 돌려줍니다.
-- 어떤 정보를 넣어야 첨삭이 나아지는지 네 가지 조건으로 비교했습니다. 아무것도 없이, 상대별 페르소나 추가, 내 과거 표현 벡터 검색(pgvector) 추가, 대화 맥락 그래프(Neo4j) 추가입니다.
-- 16개 사례를 조건마다 3번씩, 총 192번 돌렸고 190번이 추천까지 갔습니다. 결과를 보고 검증 규칙 두 개를 고친 뒤, 문제가 있던 세 사례를 다시 36번 돌려 전부 통과했습니다.
-- 백엔드 테스트 1,564개, 화면 테스트 227개가 있습니다. 배포는 Docker Compose에 Caddy(HTTPS)를 붙였고, 백업과 배포 후 점검 스크립트도 만들었습니다. 아이폰 앱(SwiftUI)은 CI에서 빌드합니다.
+- **검증**: 첨삭 결과는 규칙 검증을 통과해야만 보입니다. 실패하면 한 번 다시 만들고, 그래도 안 되면 원문을 돌려줍니다.
+- **실험**: 어떤 정보를 넣어야 첨삭이 나아지는지 네 조건(없음 / 상대별 페르소나 / 내 과거 표현 검색 pgvector / 대화 맥락 그래프 Neo4j)으로 비교했습니다. 16개 사례 × 4조건 × 3회 = 192회 중 190회 통과. 실패를 보고 검증 규칙 두 개를 고친 뒤 문제 사례 3개를 36회 다시 돌려 모두 통과했습니다.
+- **운영**: 백엔드 테스트 1,564개, 화면 테스트 227개. Docker Compose + Caddy(HTTPS)로 배포하고 백업·배포 후 점검 스크립트를 만들었습니다. 아이폰 앱(SwiftUI)은 CI에서 빌드합니다.
 
 `FastAPI` `LangGraph` `Claude` `PostgreSQL + pgvector` `Neo4j` `Docker` `SwiftUI`
+
+<br>
+
+### [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent)
+<sub>2026.11 · 4인 팀, 플랫폼·PM</sub>
+
+> SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트
+
+넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.
+
+- **분업**: 수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정하고, 각자 자기 폴더만 고치도록 나눴습니다.
+- **플랫폼**: 저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.
+- **규칙**: CODEOWNERS로 리뷰어를 자동 지정하고, main은 PR·담당자 승인·CI(ruff + pytest) 통과 없이 합칠 수 없게 막았습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.
+
+`Python` `GitHub Actions` `PostgreSQL` `Next.js`
 
 <br>
 
@@ -56,12 +67,11 @@
 
 > AliExpress·Amazon 상품을 네이버·쿠팡에 올려 파는 구매대행을 자동화한 프로젝트
 
-구매대행은 상품 하나를 잘못 올리면 바로 손해가 나는 일입니다. 마진 계산을 틀리거나, 통관이 안 되는 상품을 올리거나, KC 인증 대상인 걸 놓치면 돈이나 법 문제로 이어집니다. LLM이 한 번만 잘못 계산해도 적자 매입이 되기 때문에, 이런 판단은 LLM에 맡기지 않기로 했습니다.
+구매대행은 상품 하나를 잘못 올리면 바로 손해가 납니다. 마진 계산을 틀리거나 통관이 안 되는 상품, KC 인증 대상 상품을 놓치면 돈이나 법 문제로 이어지기 때문에, 이런 판단은 LLM에 맡기지 않기로 했습니다.
 
-- 소싱부터 통관·인증 필터, 마진 계산, 등록, 발주까지는 전부 일반 코드로 짰습니다. 사는 순간 적자가 되는 주문은 사람이 승인해야 넘어갑니다.
-- LLM은 세 군데만 씁니다. 팔릴 만한 상품인지 평가, 한글 상세페이지 작성(DeepL 번역 후 다듬기), 고객 문의 응대입니다. 민감한 문의는 LLM이 답하지 않고 사람에게 넘깁니다.
-- 상품 출처(AliExpress, Amazon), 판매 채널(네이버, 쿠팡), 저장소를 인터페이스로 분리해 뒀습니다. 채널을 하나 더 붙이거나 SQLite를 PostgreSQL로 바꿔도 나머지 코드는 손대지 않아도 됩니다.
-- pytest 194개가 있고, API 키가 없어도 mock 모드로 전체 흐름이 돌아갑니다. 관리자 대시보드(Next.js)에서 승인과 발주를 처리합니다.
+- **통제**: 소싱부터 통관·인증 필터, 마진 계산, 등록, 발주까지는 일반 코드로 짰고, 사는 순간 적자가 되는 주문은 사람이 승인해야 넘어갑니다. LLM은 상품성 평가, 한글 상세페이지 작성(DeepL 번역 후 다듬기), 고객 문의 응대 세 곳에만 쓰고, 민감한 문의는 사람에게 넘깁니다.
+- **구조**: 상품 출처(AliExpress, Amazon), 판매 채널(네이버, 쿠팡), 저장소를 인터페이스로 분리했습니다. 채널을 추가하거나 SQLite를 PostgreSQL로 바꿔도 나머지 코드는 그대로입니다.
+- **운영**: pytest 194개. API 키가 없어도 mock 모드로 전체 흐름이 돌아가고, 관리자 대시보드(Next.js)에서 승인과 발주를 처리합니다.
 
 `Python` `FastAPI` `Gemini` `Next.js` `SQLAlchemy` `APScheduler`
 
@@ -72,12 +82,11 @@
 
 > GitHub PR이 올라오면 자동으로 코드 리뷰를 달아 주는 봇
 
-GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만 커도 LLM 호출만으로 그 시간을 넘깁니다. 그래서 요청을 받는 부분과 리뷰하는 부분을 Redis 큐로 나눴습니다. Webhook은 서명만 확인하고 바로 응답하고, 실제 리뷰는 Worker가 따로 처리합니다.
+GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만 커도 LLM 호출이 그 시간을 넘깁니다. 그래서 Webhook은 서명만 확인하고 바로 응답하고, 실제 리뷰는 Redis 큐 뒤의 Worker가 따로 처리하도록 나눴습니다.
 
-- 새 커밋이 올라오면 바뀐 부분만 다시 봅니다. 같은 지적이 반복해서 달리지 않고 토큰도 덜 씁니다.
-- GitHub App 방식이라 설치 토큰을 JWT로 발급받아 캐싱해서 씁니다. Webhook은 HMAC 서명으로 검증하고, PR 본문에 숨긴 지시문에 끌려가지 않도록 프롬프트도 막아 뒀습니다.
-- 코멘트에서 `@codesage`를 부르면 해당 diff를 보고 답합니다.
-- pytest 55개가 있고, Docker Compose로 api, worker, redis, postgres를 한 번에 띄웁니다.
+- **리뷰**: 새 커밋이 올라오면 바뀐 부분만 다시 봐서, 같은 지적이 반복되지 않고 토큰도 덜 씁니다. 코멘트에서 `@codesage`를 부르면 해당 diff를 보고 답합니다.
+- **보안**: GitHub App 설치 토큰을 JWT로 발급받아 캐싱하고, Webhook은 HMAC 서명으로 검증합니다. PR 본문에 숨긴 지시문에 끌려가지 않도록 프롬프트도 막아 뒀습니다.
+- **운영**: pytest 55개. Docker Compose로 api, worker, redis, postgres를 한 번에 띄웁니다.
 
 `Python` `FastAPI` `Gemini` `Redis` `PostgreSQL` `Docker`
 
@@ -88,30 +97,13 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 > 주얼리 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트
 
-원래는 Firebase로 만든 정적 사이트였는데, 가격과 쿠폰 계산을 브라우저에서 하고 있었습니다. 마음만 먹으면 결제 금액을 바꿀 여지가 있는 구조였습니다. 그래서 주문 금액을 정하는 일을 전부 DB로 옮겼습니다.
+원래는 Firebase로 만든 정적 사이트였는데, 가격과 쿠폰 계산을 브라우저에서 하고 있어서 결제 금액을 바꿀 여지가 있었습니다. 그래서 주문 금액을 정하는 일을 전부 DB로 옮겼습니다.
 
-- 주문 확정은 `place_order`라는 DB 함수 하나에서만 일어납니다. 가격, 재고, 쿠폰을 한 트랜잭션 안에서 확인하기 때문에 주문이 동시에 몰려도 재고가 음수로 내려가지 않습니다.
-- Postgres RLS 정책 53개와 트리거로 남의 주문을 보거나, 사지 않은 상품에 리뷰를 다는 걸 막았습니다.
-- 장바구니, 주문, 결제, 마이페이지, 관리자 페이지까지 쇼핑몰에 필요한 화면을 모두 만들었습니다.
+- **정합성**: 주문 확정은 `place_order`라는 DB 함수 하나에서만 일어납니다. 가격, 재고, 쿠폰을 한 트랜잭션 안에서 확인해서 주문이 몰려도 재고가 음수로 내려가지 않습니다.
+- **권한**: Postgres RLS 정책 53개와 트리거로 남의 주문을 보거나, 사지 않은 상품에 리뷰를 다는 걸 막았습니다.
+- **범위**: 장바구니, 주문, 결제, 마이페이지, 관리자 페이지까지 쇼핑몰에 필요한 화면을 모두 만들었습니다.
 
 `Next.js` `TypeScript` `Supabase` `PostgreSQL` `Tailwind` `Vercel`
-
----
-
-## 팀 프로젝트
-
-### [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent)
-<sub>2026.11 · 4인 팀</sub>
-
-> SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아서 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트
-
-넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.
-
-- 수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정해 두고, 각자 자기 폴더만 고치도록 나눴습니다.
-- 저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.
-- CODEOWNERS로 리뷰어를 자동 지정하고, main에는 PR, 담당자 승인, CI(ruff + pytest) 통과 없이는 합칠 수 없게 규칙을 걸었습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.
-
-`Python` `GitHub Actions` `PostgreSQL` `Next.js`
 
 ---
 
@@ -119,68 +111,33 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 | 프로젝트 | 시기 | 내용 | 링크 |
 | --- | --- | --- | --- |
-| Snip (URL 단축) | 2026.11 | FastAPI, MySQL, Nginx 컨테이너 3개를 AWS ECS Fargate에 올렸습니다. 동시에 20개를 만들어도 코드가 겹치지 않는지, 대소문자만 다른 코드가 같은 걸로 잡히지 않는지 확인했습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
-| toss-llm-trader | 2026.08 | LLM에게 주식 매매를 맡기면 그냥 사 두는 것보다 나은지 모의투자로 재 보는 실험입니다. 백테스트가 미래 가격을 미리 보지 못하게 막는 데 신경을 많이 썼습니다. | [코드](https://github.com/SkyWith628/toss-llm-trader) |
-| 케어노트AI | 2026.10 | 요양보호사가 말로 남긴 내용을 방문요양 기록지 초안으로 바꿔 주는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | [코드](https://github.com/SkyWith628/carenote-ai) |
+| Snip | 2026.11 | URL 단축 서비스. FastAPI·MySQL·Nginx 컨테이너를 AWS ECS Fargate에 배포하고, 동시 생성 시 코드 충돌과 대소문자 중복을 막았습니다. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
+| toss-llm-trader | 2026.08 | LLM 매매가 단순 보유보다 나은지 모의투자로 재 본 실험. 백테스트가 미래 가격을 미리 보지 못하게 막았습니다. | [코드](https://github.com/SkyWith628/toss-llm-trader) |
+| 케어노트AI | 2026.10 | 요양보호사의 음성 기록을 방문요양 기록지 초안으로 바꾸는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | [코드](https://github.com/SkyWith628/carenote-ai) |
 | OBLIGE | 2026.05 ~ 06 | 공병 사진을 YOLOv8로 인식해 포인트로 돌려주는 ESG 화장품 쇼핑몰. 반납 안내는 tool-use LLM 어시스턴트가 맡습니다. | [코드](https://github.com/SkyWith628/oblige) · [사이트](https://skywith628.github.io/oblige/) |
 | JABIS | 2026.03 | 음성으로 대화하는 학습 도우미 데스크톱 앱 (Electron) | [코드](https://github.com/SkyWith628/jabis) |
-| Todo List | 2026.01 | React와 TypeScript로 만든 할 일 관리 앱 | [코드](https://github.com/SkyWith628/todo-list) · [사이트](https://skywith628.github.io/todo-list/) |
-| 환율과 코스피 | 2025.09 ~ 12 | 환율이 코스피에 주는 영향을 회귀, PCA, ARIMA로 분석했고 KIPS 학술대회에서 발표했습니다. | [코드](https://github.com/SkyWith628/kospi-exchange-analysis) |
-| shop69 | 학부 수업 | 프레임워크 없이 PHP와 MySQL로 만든 첫 쇼핑몰입니다. 나중에 같은 주제를 CHECKMATE로 다시 만들었습니다. | [코드](https://github.com/SkyWith628/php_shop_project) |
-| iOS Practice | 2025.09 ~ 12 | Swift, UIKit 실습 앱 모음 | [코드](https://github.com/SkyWith628/ios-practice) |
-| Data Analysis | 2025.09 ~ 12 | pandas, numpy 실습 노트북 | [코드](https://github.com/SkyWith628/Data_Analysis_Python) |
-| Unity Game Basics | 2024.09 ~ 12 | Unity, C# 입문 실습 | [코드](https://github.com/SkyWith628/unity-game-basics) |
+| Todo List | 2026.01 | React·TypeScript 할 일 관리 앱 | [코드](https://github.com/SkyWith628/todo-list) · [사이트](https://skywith628.github.io/todo-list/) |
+| 환율과 코스피 | 2025.09 ~ 12 | 환율이 코스피에 주는 영향을 회귀·PCA·ARIMA로 분석, KIPS 학술대회 발표 | [코드](https://github.com/SkyWith628/kospi-exchange-analysis) |
+| shop69 | 학부 수업 | 프레임워크 없이 PHP·MySQL로 만든 첫 쇼핑몰. 같은 주제를 CHECKMATE로 다시 만들었습니다. | [코드](https://github.com/SkyWith628/php_shop_project) |
+
+<sub>수업 실습: [iOS Practice](https://github.com/SkyWith628/ios-practice) (Swift·UIKit) · [Data Analysis](https://github.com/SkyWith628/Data_Analysis_Python) (pandas·numpy) · [Unity Game Basics](https://github.com/SkyWith628/unity-game-basics) (Unity·C#)</sub>
 
 ---
 
-## 해 본 것들
+## 기술
 
-기술 이름만 적으면 잘 와닿지 않을 것 같아서, 실제로 해 본 일 위주로 적었습니다.
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-**백엔드**
-- 오래 걸리는 작업을 큐로 빼고 요청에는 바로 응답하기 (CodeSage)
-- 같은 요청이 두 번 들어와도 한 번만 처리하기, 동시에 수정할 때 버전을 확인해서 덮어쓰지 않기 (Persona_ize)
-- 외부 API나 DB를 바꿔 끼울 수 있게 인터페이스로 분리하기 (직구곰)
-
-</td>
-<td width="50%" valign="top">
-
-**데이터베이스**
-- 주문 금액 계산을 DB 함수로 옮기고 RLS로 접근 막기 (CHECKMATE)
-- UNIQUE 제약과 콜레이션 설정으로 중복 코드 막기 (Snip)
-- pgvector와 Neo4j 검색 결과를 같은 파이프라인에서 쓰기 (Persona_ize)
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-**LLM 검증과 통제**
-- LLM 출력을 규칙으로 검사하고, 실패하면 다시 만들거나 원문으로 돌아가기 (Persona_ize)
-- LLM이 할 일과 코드가 할 일을 나누고, 위험한 건 사람 승인 받기 (직구곰)
-- 조건을 바꿔 가며 반복 실험하고 결과를 숫자로 남기기 (Persona_ize, toss-llm-trader)
-
-</td>
-<td width="50%" valign="top">
-
-**배포와 협업**
-- AWS ECS에 컨테이너 올리기. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다. (Snip)
-- Docker Compose와 Caddy로 HTTPS 배포하고 백업·점검 스크립트 만들기 (Persona_ize)
-- GitHub Actions로 CI와 정기 작업 돌리기, 브랜치 보호 규칙 걸기 (경쟁사 모니터링)
-
-</td>
-</tr>
-</table>
+| 영역 | 써 본 것 | 어디서 |
+| --- | --- | --- |
+| 백엔드 | FastAPI, Redis 큐, 중복 요청 한 번만 처리, 버전 확인으로 덮어쓰기 방지 | CodeSage, Persona_ize |
+| 데이터베이스 | PostgreSQL 함수·RLS, pgvector, Neo4j, UNIQUE·콜레이션 | CHECKMATE, Persona_ize, Snip |
+| LLM | LangGraph, Claude, Gemini, 출력 검증·재생성, 조건별 반복 실험 | Persona_ize, 직구곰, toss-llm-trader |
+| 배포·협업 | Docker Compose, Caddy, AWS ECS Fargate, GitHub Actions, 브랜치 보호 | Persona_ize, Snip, 경쟁사 모니터링 |
 
 이 밖에 PHP, Electron, Swift, Unity도 수업과 개인 작업에서 써 봤습니다.
 
 ---
 
-## 학교 활동
+## 활동
 
 - 2026 컴퓨터소프트웨어학과 학회장
 - 38대 총학생회 기획부장
@@ -192,8 +149,6 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 ---
 
 <div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=SkyWith628&show_icons=true&hide_border=true&hide_title=true&count_private=true&title_color=5B6B7F&icon_color=5B6B7F&text_color=8B949E&bg_color=00000000" height="150" alt="GitHub stats" />
 
 <sub>읽어 주셔서 감사합니다.</sub>
 

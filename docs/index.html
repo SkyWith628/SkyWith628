@@ -3,475 +3,527 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SkyWith · LLM을 검증하고 통제하는 백엔드 개발자</title>
-<meta name="description" content="LLM을 실제 서비스에 붙이는 백엔드를 만듭니다. 틀리면 안 되는 결정은 코드로 정하고, LLM의 출력은 검증을 통과해야 내보냅니다.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SkyWith · LLM을 검증하고 통제하는 백엔드 개발자">
-<meta property="og:description" content="틀리면 안 되는 결정은 코드로 정하고, LLM의 출력은 검증을 통과해야 내보냅니다. 나아졌는지는 측정해서 확인합니다.">
+<title>SkyWith · 이력서</title>
+<meta name="description" content="LLM을 실제 서비스에 붙이는 백엔드 개발자. 틀리면 안 되는 결정은 코드로, LLM의 출력은 검증을 통과해야 내보냅니다.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="SkyWith · LLM을 실제 서비스에 붙이는 백엔드 개발자">
+<meta property="og:description" content="틀리면 안 되는 결정은 코드로, LLM의 출력은 검증을 통과해야 내보냅니다. 나아졌는지는 측정해서 확인합니다.">
+<meta name="color-scheme" content="light">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
-  --bg:#f7f9fb; --surface:#ffffff; --text:#1c2530; --muted:#5f6b7a;
-  --line:#dfe5ec; --accent:#4a5d75; --accent-2:#a8c0d8; --accent-soft:#e9eff6;
-  --ok:#2f6f5e; --ok-soft:#e6f2ee; --llm:#7a5a2e; --llm-soft:#f6eedf;
-}
-@media (prefers-color-scheme:dark){
-  :root{
-    --bg:#10141a; --surface:#181d25; --text:#e7ebf0; --muted:#9aa5b3;
-    --line:#2a323d; --accent:#a8c0d8; --accent-2:#4a5d75; --accent-soft:#202a36;
-    --ok:#7fc8b0; --ok-soft:#18302a; --llm:#e0b877; --llm-soft:#30281a;
-  }
+  --bg:#f4f6f9;
+  --paper:#ffffff;
+  --ink:#1b2430;
+  --ink-2:#3a4656;
+  --muted:#6b7686;
+  --line:#e4e9ef;
+  --line-2:#d3dbe5;
+  --accent:#4a5d75;
+  --accent-2:#a8c0d8;
+  --accent-soft:#eef3f8;
+  --ok:#2f6f5e;
+  --ok-soft:#e8f3ef;
+  --warm:#8a6a3a;
+  --warm-soft:#f7f0e4;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(27,36,48,.04),0 8px 28px rgba(27,36,48,.06);
 }
 *{box-sizing:border-box}
-html{scroll-snap-type:y proximity; scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 body{
-  margin:0; background:var(--bg); color:var(--text);
+  margin:0;background:var(--bg);color:var(--ink);
   font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
-  font-size:17px; line-height:1.65; word-break:keep-all; -webkit-font-smoothing:antialiased;
+  font-size:15.5px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;
 }
-a{color:var(--accent); text-underline-offset:3px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--accent-soft);padding:.1em .4em;border-radius:5px;color:var(--ink-2)}
 
-/* ── 슬라이드 ── */
-.slide{
-  min-height:100vh; min-height:100svh; scroll-snap-align:start;
-  display:flex; align-items:center; position:relative; overflow:hidden;
-  padding:72px 24px; border-bottom:1px solid var(--line);
+/* ── 레이아웃 ── */
+.page{max-width:1120px;margin:0 auto;padding:40px 24px 64px;display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:start}
+.side{position:sticky;top:24px}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+/* ── 사이드바 ── */
+.profile{padding:28px 24px 22px;position:relative;overflow:hidden}
+.profile::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--accent-2),var(--accent))}
+.avatar{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-weight:800;font-size:24px;color:#fff;background:linear-gradient(135deg,var(--accent-2),var(--accent));margin-bottom:16px;letter-spacing:-.02em}
+.name{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.2}
+.role{margin:6px 0 0;color:var(--ink-2);font-weight:600;font-size:15px}
+.tagline{margin:12px 0 0;color:var(--muted);font-size:13.5px;line-height:1.6}
+.links{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:6px}
+.links a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;color:var(--ink-2);font-size:14px;font-weight:500}
+.links a:hover{background:var(--accent-soft);text-decoration:none}
+.links svg{width:16px;height:16px;flex:none;color:var(--accent)}
+
+.nav{margin-top:16px;padding:10px}
+.nav ol{list-style:none;margin:0;padding:0}
+.nav a{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;color:var(--muted);font-size:14px;font-weight:500;transition:background .15s,color .15s}
+.nav a::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--line-2);transition:background .15s,transform .15s}
+.nav a:hover{text-decoration:none;color:var(--ink)}
+.nav a.on{background:var(--accent-soft);color:var(--ink)}
+.nav a.on::before{background:var(--accent);transform:scale(1.25)}
+
+.print-btn{margin-top:16px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 14px;border-radius:12px;border:1px solid var(--line-2);background:var(--paper);color:var(--ink-2);font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s}
+.print-btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+.print-btn svg{width:16px;height:16px}
+
+/* ── 본문 섹션 ── */
+main{display:grid;gap:24px;min-width:0}
+section.sheet{padding:32px 36px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+h2{font-size:22px;letter-spacing:-.02em;margin:0 0 20px;line-height:1.35}
+h3{margin:0;font-size:18px;letter-spacing:-.01em;line-height:1.4}
+p{margin:0}
+
+/* 소개 */
+.lead{font-size:17px;color:var(--ink-2);line-height:1.75;margin-bottom:22px}
+.lead strong{color:var(--ink);background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pr{display:block;padding:18px 18px 16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,#fff,#fafcfe);color:inherit;transition:border-color .15s,transform .15s,box-shadow .15s}
+.pr:hover{text-decoration:none;border-color:var(--accent-2);transform:translateY(-2px);box-shadow:var(--shadow)}
+.pr .k{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:15px}
+.pr .k i{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-style:normal;font-size:13px;background:var(--accent-soft);color:var(--accent)}
+.pr p{margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.6}
+.pr .to{display:block;margin-top:10px;font-size:12.5px;font-weight:600;color:var(--accent)}
+.stackline{margin-top:20px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+
+/* 칩 */
+.chip{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--ink-2);font-size:12.5px;font-weight:500;line-height:1.6;white-space:nowrap}
+
+/* 필터 */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:-4px 0 24px;align-items:center}
+.filters button{font:inherit;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;border:1px solid var(--line-2);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s}
+.filters button:hover{color:var(--ink);border-color:var(--accent-2)}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.filters .count{margin-left:auto;font-size:12.5px;color:var(--muted)}
+.dim{opacity:.32;filter:grayscale(.6)}
+.proj{transition:opacity .2s,filter .2s}
+
+/* 대표 프로젝트 */
+.proj{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line)}
+.proj:first-of-type{border-top:0;padding-top:4px}
+.meta{font-size:13px;color:var(--muted);line-height:1.6}
+.meta .date{display:block;font-weight:700;color:var(--ink-2);font-size:13.5px;font-variant-numeric:tabular-nums}
+.meta .badge{display:inline-block;margin-top:8px;padding:2px 8px;border-radius:6px;font-size:11.5px;font-weight:700}
+.badge.team{background:var(--warm-soft);color:var(--warm)}
+.badge.solo{background:var(--accent-soft);color:var(--accent)}
+.badge.live{background:var(--ok-soft);color:var(--ok)}
+.proj h3 a{color:var(--ink)}
+.proj h3 .ext{font-size:12px;font-weight:600;color:var(--accent);margin-left:6px;vertical-align:2px}
+.summary{margin-top:4px;color:var(--ink-2);font-weight:500}
+.why{margin-top:12px;color:var(--muted);font-size:14.5px}
+.points{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
+.points li{display:grid;grid-template-columns:64px 1fr;gap:12px;font-size:14.5px;color:var(--ink-2)}
+.points b{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 0;text-align:center;height:fit-content;margin-top:2px}
+.metrics{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.metric{padding:10px 14px;border:1px solid var(--line);border-radius:10px;min-width:110px}
+.metric strong{display:block;font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
+.metric span{font-size:12px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+
+/* 그 밖에 */
+.side-list{display:grid;gap:0}
+.side-row{display:grid;grid-template-columns:150px 1fr auto;gap:20px;padding:14px 0;border-top:1px solid var(--line);align-items:baseline}
+.side-row:first-child{border-top:0}
+.side-row .date{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.side-row h4{margin:0;font-size:15px}
+.side-row p{font-size:14px;color:var(--muted);margin-top:2px}
+.side-row .go{font-size:13px;font-weight:600;white-space:nowrap}
+.side-row .go a+a{margin-left:10px}
+.practice{margin-top:16px;padding:12px 14px;border-radius:10px;background:var(--bg);font-size:13.5px;color:var(--muted)}
+
+/* 기술 */
+.skills{display:grid;gap:0}
+.skill{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:16px 0;border-top:1px solid var(--line)}
+.skill:first-child{border-top:0;padding-top:0}
+.skill h4{margin:0;font-size:14.5px}
+.skill .chips{display:flex;flex-wrap:wrap;gap:6px}
+.skill .where{margin-top:8px;font-size:12.5px;color:var(--muted)}
+.etc{margin-top:16px;font-size:13.5px;color:var(--muted)}
+
+/* 활동 */
+.acts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.acts li{padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:14.5px;font-weight:500;display:flex;gap:10px;align-items:center}
+.acts li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent-2);flex:none}
+.misc{margin-top:16px;font-size:14px;color:var(--muted)}
+
+footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padding-top:8px}
+
+/* ── 반응형 ── */
+@media (max-width:960px){
+  .page{grid-template-columns:1fr;padding:16px 16px 48px;gap:16px}
+  .side{position:static}
+  .nav{display:none}
+  .print-btn{display:none}
+  section.sheet{padding:24px 20px}
+  .principles{grid-template-columns:1fr}
+  .proj,.skill{grid-template-columns:1fr;gap:8px}
+  .meta .badge{margin:0 0 0 8px}
+  .meta .date{display:inline}
+  .side-row{grid-template-columns:1fr;gap:4px}
+  .acts{grid-template-columns:1fr}
+  .filters .count{width:100%;margin-left:0}
 }
-.inner{width:100%; max-width:1080px; margin:0 auto; position:relative}
-.kicker{font-size:13px; font-weight:700; letter-spacing:.14em; color:var(--muted); margin:0 0 14px; text-transform:uppercase}
-h1{font-size:clamp(34px,6.4vw,68px); line-height:1.18; letter-spacing:-.03em; margin:0 0 24px}
-h2{font-size:clamp(28px,4.2vw,44px); line-height:1.25; letter-spacing:-.02em; margin:0 0 10px}
-.sub{font-size:clamp(17px,2vw,21px); color:var(--muted); margin:0; max-width:680px}
-.meta{font-size:14px; color:var(--muted); margin:0 0 16px}
-.oneline{font-size:19px; font-weight:600; margin:0 0 12px}
-.cols{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center}
-ul.points{margin:14px 0 0; padding-left:20px; font-size:16px}
-ul.points li{margin-bottom:6px}
 
-/* ── 등장 애니메이션 ── */
-.reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay:calc(var(--d,0) * 90ms)}
-.slide.in .reveal{opacity:1; transform:none}
-
-/* ── 표지 ── */
-.cover .blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.55; pointer-events:none}
-.cover .b1{width:46vw; height:46vw; right:-12vw; top:-14vw; background:var(--accent-2); animation:drift 16s ease-in-out infinite alternate}
-.cover .b2{width:32vw; height:32vw; left:-10vw; bottom:-12vw; background:var(--accent-soft); animation:drift 20s ease-in-out infinite alternate-reverse}
-@keyframes drift{to{transform:translate(-6vw,5vw) scale(1.15)}}
-.rotator{height:1.7em; overflow:hidden; font-size:clamp(17px,2.2vw,22px); color:var(--accent); font-weight:600; margin:0 0 32px}
-.rotator span{display:block; height:1.7em; animation:rot 12s cubic-bezier(.7,0,.2,1) infinite}
-@keyframes rot{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-100%)}66%,94%{transform:translateY(-200%)}100%{transform:translateY(-300%)}}
-.links{display:flex; flex-wrap:wrap; gap:10px}
-.btn{display:inline-block; padding:10px 18px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--text); text-decoration:none; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer; transition:transform .2s, border-color .2s}
-.btn:hover{border-color:var(--accent); transform:translateY(-2px)}
-.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--bg)}
-.hint{position:absolute; left:50%; bottom:22px; transform:translateX(-50%); font-size:12px; letter-spacing:.1em; color:var(--muted); animation:bob 1.8s ease-in-out infinite}
-@keyframes bob{50%{transform:translate(-50%,6px)}}
-
-/* ── 기준 카드 ── */
-.principles{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:36px}
-.card{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:26px; transition:transform .25s, box-shadow .25s}
-.card:hover{transform:translateY(-4px); box-shadow:0 12px 30px -18px rgba(0,0,0,.35)}
-.card .num{font-size:13px; font-weight:700; color:var(--accent); letter-spacing:.1em}
-.card h3{font-size:24px; margin:6px 0 8px}
-.card p{margin:0; font-size:16px; color:var(--muted)}
-
-/* ── 숫자 ── */
-.stats{display:flex; flex-wrap:wrap; gap:28px; margin:22px 0 0; padding:0; list-style:none}
-.stats li{font-size:13px; color:var(--muted); line-height:1.4}
-.stats b{display:block; font-size:34px; letter-spacing:-.02em; color:var(--text); font-variant-numeric:tabular-nums}
-.tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:18px}
-.tags span{font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:3px 11px; background:var(--surface)}
-
-/* ── 설계도 ── */
-.dia{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:22px; box-shadow:0 20px 50px -34px rgba(0,0,0,.4)}
-.dia-title{font-size:12px; font-weight:700; letter-spacing:.12em; color:var(--muted); margin:0 0 14px}
-.node{border:1px solid var(--line); border-radius:12px; padding:10px 14px; background:var(--bg); position:relative}
-.node b{display:block; font-size:15px}
-.node small{display:block; font-size:13px; color:var(--muted); line-height:1.45}
-.node .tag{position:absolute; right:10px; top:10px; font-size:10px; font-weight:700; letter-spacing:.08em; padding:1px 7px; border-radius:999px}
-.node.llm{background:var(--llm-soft); border-color:var(--llm)}
-.node.llm .tag{background:var(--llm); color:var(--bg)}
-.node.gate{background:var(--ok-soft); border-color:var(--ok); border-width:2px}
-.node.gate .tag{background:var(--ok); color:var(--bg)}
-.node.store{border-style:dashed}
-.arr{height:22px; width:2px; margin:0 auto; position:relative; background:var(--line)}
-.arr::before{content:""; position:absolute; left:-2px; top:0; width:6px; height:6px; border-radius:50%; background:var(--accent); animation:flow 1.6s linear infinite}
-.arr::after{content:""; position:absolute; left:-4px; bottom:-1px; border:5px solid transparent; border-top-color:var(--muted); border-bottom:0}
-@keyframes flow{from{top:-3px; opacity:0}20%{opacity:1}80%{opacity:1}to{top:16px; opacity:0}}
-.branch{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:10px}
-.branch div{font-size:12.5px; line-height:1.4; border-radius:10px; padding:8px 10px; border:1px solid var(--line); background:var(--bg)}
-.branch div b{display:block; font-size:12px; color:var(--muted); font-weight:700}
-.branch .good{border-color:var(--ok)}
-.side{display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; padding-top:14px; border-top:1px dashed var(--line); align-items:center}
-.side em{font-style:normal; font-size:12px; font-weight:700; color:var(--muted); margin-right:4px}
-.chip{font-size:12.5px; padding:4px 10px; border-radius:999px; border:1px solid var(--line)}
-.chip.llm{background:var(--llm-soft); border-color:var(--llm)}
-.chip.store{border-style:dashed}
-.legend{display:flex; gap:14px; margin-top:14px; font-size:12px; color:var(--muted)}
-.legend i{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px; border:1px solid var(--line); background:var(--bg)}
-.legend .l-gate{background:var(--ok-soft); border-color:var(--ok)}
-.legend .l-llm{background:var(--llm-soft); border-color:var(--llm)}
-
-/* ── 사진 자리 (파일이 없으면 숨김) ── */
-.shot{margin:22px 0 0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:0 16px 40px -28px rgba(0,0,0,.45)}
-.shot .bar{height:26px; background:var(--accent-soft); display:flex; align-items:center; gap:5px; padding:0 10px}
-.shot .bar i{width:8px; height:8px; border-radius:50%; background:var(--line)}
-.shot img{display:block; width:100%; height:auto}
-
-/* ── 그리드 ── */
-.grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px}
-.grid2{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:30px}
-.mini{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; transition:transform .25s}
-.mini:hover{transform:translateY(-3px)}
-.mini h3{margin:0; font-size:17px}
-.mini h3 a{color:var(--text); text-decoration:none}
-.mini .when{font-size:12.5px; color:var(--muted); margin:2px 0 8px}
-.mini p{margin:0; font-size:14.5px; color:var(--muted)}
-.mini ul{margin:8px 0 0; padding-left:18px; font-size:14.5px}
-.mini li{margin-bottom:4px}
-.mini li small{color:var(--muted)}
-.facts{margin:28px 0 0; padding:0; list-style:none; max-width:760px}
-.facts li{display:grid; grid-template-columns:120px 1fr; gap:16px; padding:13px 0; border-top:1px solid var(--line); font-size:16px}
-.facts li span:first-child{font-weight:700; color:var(--muted); font-size:14px}
-
-/* ── 내비게이션 ── */
-.progress{position:fixed; left:0; top:0; height:3px; width:0; background:var(--accent); z-index:10; transition:width .2s}
-.dots{position:fixed; right:16px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:10px; z-index:10}
-.dots a{width:9px; height:9px; border-radius:50%; background:var(--line); transition:transform .2s, background .2s}
-.dots a.on{background:var(--accent); transform:scale(1.5)}
-.counter{position:fixed; right:18px; bottom:16px; font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums; z-index:10; letter-spacing:.06em}
-
-@media (max-width:860px){
-  body{font-size:16px}
-  .slide{padding:56px 20px}
-  .cols{grid-template-columns:1fr; gap:28px}
-  .principles,.grid3,.grid2{grid-template-columns:1fr}
-  .branch{grid-template-columns:1fr}
-  .dots{display:none}
-  .facts li{grid-template-columns:1fr; gap:2px}
-  .stats b{font-size:28px}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .reveal{opacity:1; transform:none; transition:none}
-  .blob,.rotator span,.hint,.arr::before{animation:none}
-}
+/* ── 인쇄 (A4 이력서) ── */
+@page{size:A4;margin:14mm 12mm}
 @media print{
-  :root{--bg:#fff; --surface:#fff; --text:#111; --muted:#444; --line:#ccc; --accent:#333; --accent-soft:#f0f0f0; --ok:#222; --ok-soft:#f3f3f3; --llm:#555; --llm-soft:#f7f7f7}
-  @page{size:A4 landscape; margin:12mm}
-  html{scroll-snap-type:none}
-  body{font-size:11pt}
-  .slide{min-height:auto; height:auto; padding:0; border:0; break-after:page; break-inside:avoid; display:block}
-  .reveal{opacity:1 !important; transform:none !important}
-  .no-print,.dots,.counter,.progress,.blob,.hint{display:none !important}
-  .rotator{height:auto}.rotator span{animation:none; height:auto}
-  .arr::before{display:none}
-  a{color:inherit; text-decoration:none}
+  body{background:#fff;font-size:10.5pt;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{display:block;padding:0;max-width:none}
+  .side{position:static}
+  .sheet{border:0;box-shadow:none;border-radius:0}
+  .profile{padding:0 0 10pt;border-bottom:1px solid var(--line)}
+  .profile::before,.avatar,.nav,.print-btn,.filters,footer{display:none}
+  .links{display:flex;flex-wrap:wrap;gap:4pt 14pt;margin-top:8pt}
+  .links a{padding:0}
+  section.sheet{padding:12pt 0 0;break-inside:auto}
+  main{gap:6pt}
+  .proj{padding:10pt 0}
+  .points li,.metrics,.side-row,.skill{break-inside:avoid}
+  .pr{break-inside:avoid}
+  .dim{opacity:1;filter:none}
+  h2,.eyebrow{break-after:avoid}
+  .principles{grid-template-columns:repeat(3,1fr)}
+  .proj,.skill{grid-template-columns:120px 1fr;gap:16px}
+  .meta .date{display:block}
+  .meta .badge{margin:6px 0 0}
+  .side-row{grid-template-columns:110px 1fr auto;gap:14px}
+  .acts{grid-template-columns:repeat(2,1fr)}
+  .pr:hover{transform:none}
+  a{color:var(--ink)}
 }
 </style>
 </head>
 <body>
+<div class="page">
 
-<div class="progress" id="progress"></div>
-<nav class="dots no-print" id="dots" aria-label="슬라이드 이동"></nav>
-<div class="counter no-print" id="counter"></div>
-
-<!-- 1. 표지 -->
-<section class="slide cover" id="s1">
-  <div class="blob b1"></div><div class="blob b2"></div>
-  <div class="inner">
-    <p class="kicker reveal">SkyWith · Backend Developer</p>
-    <h1 class="reveal" style="--d:1">LLM을 실제 서비스에 붙이는<br>백엔드를 만듭니다</h1>
-    <p class="rotator reveal" style="--d:2" aria-label="LLM의 출력은 검증을 통과해야 내보냅니다. 틀리면 안 되는 결정은 코드와 사람이 정합니다. 나아졌는지는 측정해서 확인합니다.">
-      <span>LLM의 출력은 검증을 통과해야 내보냅니다</span>
-      <span>틀리면 안 되는 결정은 코드와 사람이 정합니다</span>
-      <span>나아졌는지는 측정해서 확인합니다</span>
-      <span>LLM의 출력은 검증을 통과해야 내보냅니다</span>
-    </p>
-    <div class="links reveal no-print" style="--d:3">
-      <a class="btn primary" href="https://github.com/SkyWith628">GitHub</a>
-      <a class="btn" href="https://hskywith.tistory.com">블로그</a>
-      <a class="btn" href="https://www.notion.so/f089caa5141d414196d7170b2d8c1ed6?pvs=12">포트폴리오 (Notion)</a>
-      <button class="btn" type="button" onclick="window.print()">PDF로 저장</button>
-    </div>
-  </div>
-  <div class="hint no-print">SCROLL · ↓</div>
-</section>
-
-<!-- 2. 일하는 기준 -->
-<section class="slide" id="s2">
-  <div class="inner">
-    <p class="kicker reveal">일하는 기준</p>
-    <h2 class="reveal" style="--d:1">LLM을 썼다는 사실보다,<br>어떻게 검증하고 통제했는지</h2>
-    <p class="sub reveal" style="--d:2">인덕대학교 컴퓨터소프트웨어학과에 다니고 있고, 올해는 학과 학회장을 맡고 있습니다. 프로젝트를 몇 번 하면서 아래 세 가지가 기준이 됐습니다.</p>
-    <div class="principles">
-      <div class="card reveal" style="--d:3"><span class="num">01</span><h3>통제</h3><p>돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정합니다. LLM에는 사람이 판단하던 부분만 맡기고, 위험한 건 사람 승인을 거칩니다.</p></div>
-      <div class="card reveal" style="--d:4"><span class="num">02</span><h3>검증</h3><p>LLM이 낸 결과는 규칙 검사를 통과해야만 사용자에게 나갑니다. 실패하면 다시 만들고, 그래도 안 되면 원문으로 돌아갑니다.</p></div>
-      <div class="card reveal" style="--d:5"><span class="num">03</span><h3>측정</h3><p>나아졌는지는 감으로 판단하지 않습니다. 조건을 바꿔 가며 반복해서 돌리고 숫자로 확인합니다.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. Persona_ize -->
-<section class="slide" id="s3">
-  <div class="inner cols">
-    <div>
-      <p class="kicker reveal">Project 01 · 검증</p>
-      <h2 class="reveal" style="--d:1"><a href="https://github.com/SkyWith628/persona-ize" style="color:inherit;text-decoration:none">Persona_ize</a></h2>
-      <p class="meta reveal" style="--d:1">2026.11 ~ 진행 중 · 4인 팀, 팀장 · 2026.12 공모전 출품작</p>
-      <p class="oneline reveal" style="--d:2">상대에 맞게 메시지를 다듬되, 내 말투와 원래 내용은 그대로 두는 서비스</p>
-      <ul class="points reveal" style="--d:3">
-        <li>"고쳐 쓰되 사실과 의도는 건드리지 않는다"를 가장 먼저 정했습니다.</li>
-        <li>네 가지 조건(없음, 페르소나, 벡터 검색, 맥락 그래프)을 16개 사례에 3번씩 돌려 비교했습니다.</li>
-        <li>팀원 셋이 비전공자라 백엔드, 워크플로, 실험, 배포를 전부 맡았습니다.</li>
+  <!-- 사이드바 -->
+  <aside class="side">
+    <div class="sheet profile">
+      <div class="avatar" aria-hidden="true">S</div>
+      <h1 class="name">SkyWith</h1>
+      <p class="role">LLM을 실제 서비스에 붙이는 백엔드 개발자</p>
+      <p class="tagline">틀리면 안 되는 결정은 코드로, LLM의 출력은 검증을 통과해야 내보냅니다.</p>
+      <ul class="links">
+        <li><a href="https://github.com/SkyWith628"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>github.com/SkyWith628</a></li>
+        <li><a href="https://hskywith.tistory.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>블로그 (tistory)</a></li>
+        <li><a href="https://www.notion.so/f089caa5141d414196d7170b2d8c1ed6?pvs=12"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>포트폴리오 (Notion)</a></li>
       </ul>
-      <ul class="stats reveal" style="--d:4">
-        <li><b><span data-count="190">190</span> / 192</b>실험 중 추천까지 도달</li>
-        <li><b><span data-count="1564">1,564</span></b>백엔드 테스트</li>
-        <li><b><span data-count="227">227</span></b>화면 테스트</li>
-      </ul>
-      <div class="tags reveal" style="--d:5"><span>FastAPI</span><span>LangGraph</span><span>Claude</span><span>pgvector</span><span>Neo4j</span><span>Docker</span><span>SwiftUI</span></div>
-      <figure class="shot reveal" style="--d:6"><div class="bar"><i></i><i></i><i></i></div><img src="img/persona-ize.png" alt="Persona_ize 화면" loading="lazy" onerror="this.closest('figure').remove()"></figure>
     </div>
-    <div class="dia reveal" style="--d:3">
-      <p class="dia-title">설계도 · 첨삭 한 건이 지나가는 길</p>
-      <div class="node"><b>원문 메시지</b><small>상대와 하려던 말</small></div>
-      <div class="arr"></div>
-      <div class="node store"><b>컨텍스트 붙이기</b><small>상대별 페르소나 · 내 과거 표현(pgvector) · 대화 맥락(Neo4j)</small></div>
-      <div class="arr"></div>
-      <div class="node llm"><span class="tag">LLM</span><b>첨삭 생성</b><small>Claude · LangGraph 워크플로</small></div>
-      <div class="arr"></div>
-      <div class="node gate"><span class="tag">검증</span><b>규칙 검증</b><small>통과해야만 사용자에게 보입니다</small></div>
-      <div class="branch">
-        <div class="good"><b>통과</b>사용자에게 추천</div>
-        <div><b>실패</b>한 번 다시 생성</div>
-        <div><b>또 실패</b>원문 그대로 반환</div>
+
+    <nav class="sheet nav" aria-label="목차">
+      <ol>
+        <li><a href="#about">소개</a></li>
+        <li><a href="#projects">대표 프로젝트</a></li>
+        <li><a href="#more">그 밖에 만든 것들</a></li>
+        <li><a href="#skills">기술</a></li>
+        <li><a href="#activities">활동</a></li>
+      </ol>
+    </nav>
+
+    <button class="print-btn" type="button" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
+      PDF로 저장
+    </button>
+  </aside>
+
+  <main>
+
+    <!-- 소개 -->
+    <section class="sheet" id="about">
+      <p class="eyebrow">About</p>
+      <h2>LLM을 썼다는 사실보다, 어떻게 검증하고 통제했는지가 더 중요합니다</h2>
+      <p class="lead">프로젝트를 몇 번 하면서 생긴 기준입니다. <strong>돈이나 인증처럼 틀리면 곤란한 결정은 코드로</strong> 정하고, LLM에는 사람이 판단하던 부분만 맡깁니다. 그렇게 만든 게 정말 나아졌는지는 <strong>숫자로 확인</strong>합니다.</p>
+
+      <div class="principles">
+        <a class="pr" href="#p-jikgugom">
+          <span class="k"><i>01</i>통제</span>
+          <p>틀리면 곤란한 결정은 코드로 정하고, 위험한 건 사람 승인을 거칩니다.</p>
+          <span class="to">→ 직구곰</span>
+        </a>
+        <a class="pr" href="#p-persona">
+          <span class="k"><i>02</i>검증</span>
+          <p>LLM 결과는 규칙 검사를 통과해야만 나갑니다. 실패하면 다시 만들고, 그래도 안 되면 원문으로.</p>
+          <span class="to">→ Persona_ize</span>
+        </a>
+        <a class="pr" href="#p-persona">
+          <span class="k"><i>03</i>측정</span>
+          <p>감이 아니라 조건을 바꿔 가며 돌려 보고 숫자로 확인합니다.</p>
+          <span class="to">→ Persona_ize · 4조건 × 192회</span>
+        </a>
       </div>
-      <div class="legend"><span><i></i>코드</span><span><i class="l-llm"></i>LLM</span><span><i class="l-gate"></i>검증·승인</span></div>
-    </div>
-  </div>
-</section>
 
-<!-- 4. 직구곰 -->
-<section class="slide" id="s4">
-  <div class="inner cols">
-    <div>
-      <p class="kicker reveal">Project 02 · 통제</p>
-      <h2 class="reveal" style="--d:1"><a href="https://github.com/SkyWith628/jikgugom" style="color:inherit;text-decoration:none">직구곰</a></h2>
-      <p class="meta reveal" style="--d:1">2026.04 ~ 06 · 개인</p>
-      <p class="oneline reveal" style="--d:2">AliExpress·Amazon 상품을 네이버·쿠팡에 올려 파는 구매대행 자동화</p>
-      <ul class="points reveal" style="--d:3">
-        <li>마진, 통관, KC 인증은 한 번만 틀려도 돈이나 법 문제가 됩니다. 이 판단은 LLM에 맡기지 않았습니다.</li>
-        <li>민감한 고객 문의는 LLM이 답하지 않고 사람에게 넘깁니다.</li>
-        <li>출처, 판매 채널, 저장소를 인터페이스로 분리해 바꿔 끼울 수 있습니다.</li>
-      </ul>
-      <ul class="stats reveal" style="--d:4">
-        <li><b><span data-count="3">3</span>곳</b>LLM을 쓰는 지점</li>
-        <li><b><span data-count="194">194</span></b>pytest</li>
-      </ul>
-      <div class="tags reveal" style="--d:5"><span>Python</span><span>FastAPI</span><span>Gemini</span><span>Next.js</span><span>SQLAlchemy</span><span>APScheduler</span></div>
-      <figure class="shot reveal" style="--d:6"><div class="bar"><i></i><i></i><i></i></div><img src="img/jikgugom.png" alt="직구곰 관리자 대시보드" loading="lazy" onerror="this.closest('figure').remove()"></figure>
-    </div>
-    <div class="dia reveal" style="--d:3">
-      <p class="dia-title">설계도 · 상품 하나가 등록되기까지</p>
-      <div class="node"><b>소싱</b><small>AliExpress · Amazon</small></div>
-      <div class="arr"></div>
-      <div class="node"><b>통관·KC 인증 필터</b><small>올리면 안 되는 상품을 걸러 냅니다</small></div>
-      <div class="arr"></div>
-      <div class="node"><b>마진 계산</b><small>일반 코드로 계산합니다</small></div>
-      <div class="arr"></div>
-      <div class="node gate"><span class="tag">승인</span><b>사람 승인</b><small>사는 순간 적자가 되는 주문</small></div>
-      <div class="arr"></div>
-      <div class="node"><b>등록 · 발주</b><small>네이버 · 쿠팡</small></div>
-      <div class="side"><em>LLM은 여기만</em><span class="chip llm">상품 평가</span><span class="chip llm">상세페이지 작성</span><span class="chip llm">문의 응대</span></div>
-    </div>
-  </div>
-</section>
+      <div class="stackline">
+        <span>주로 쓰는 것</span>
+        <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Docker</span><span class="chip">LangGraph</span><span class="chip">Claude</span><span class="chip">Gemini</span>
+      </div>
+      <p class="misc">인덕대학교 컴퓨터소프트웨어학과에 다니고 있습니다.</p>
+    </section>
 
-<!-- 5. CodeSage -->
-<section class="slide" id="s5">
-  <div class="inner cols">
-    <div>
-      <p class="kicker reveal">Project 03 · 비동기 처리</p>
-      <h2 class="reveal" style="--d:1"><a href="https://github.com/SkyWith628/codesage" style="color:inherit;text-decoration:none">CodeSage</a></h2>
-      <p class="meta reveal" style="--d:1">2026.02 ~ 04 · 개인</p>
-      <p class="oneline reveal" style="--d:2">GitHub PR이 올라오면 자동으로 코드 리뷰를 달아 주는 봇</p>
-      <ul class="points reveal" style="--d:3">
-        <li>Webhook은 응답이 늦으면 실패 처리됩니다. 받는 부분과 리뷰하는 부분을 큐로 나눴습니다.</li>
-        <li>새 커밋이 올라오면 바뀐 부분만 다시 봅니다.</li>
-        <li>PR 본문에 숨긴 지시문에 끌려가지 않도록 프롬프트를 막아 뒀습니다.</li>
-      </ul>
-      <ul class="stats reveal" style="--d:4">
-        <li><b><span data-count="55">55</span></b>pytest</li>
-        <li><b><span data-count="4">4</span></b>컨테이너</li>
-      </ul>
-      <div class="tags reveal" style="--d:5"><span>Python</span><span>FastAPI</span><span>Gemini</span><span>Redis</span><span>PostgreSQL</span><span>Docker</span></div>
-      <figure class="shot reveal" style="--d:6"><div class="bar"><i></i><i></i><i></i></div><img src="img/codesage.png" alt="CodeSage가 단 리뷰 코멘트" loading="lazy" onerror="this.closest('figure').remove()"></figure>
-    </div>
-    <div class="dia reveal" style="--d:3">
-      <p class="dia-title">설계도 · PR 이벤트에서 코멘트까지</p>
-      <div class="node"><b>GitHub PR 이벤트</b><small>새 PR · 새 커밋 · @codesage 호출</small></div>
-      <div class="arr"></div>
-      <div class="node gate"><span class="tag">검증</span><b>Webhook API</b><small>HMAC 서명만 확인하고 바로 응답</small></div>
-      <div class="arr"></div>
-      <div class="node store"><b>Redis 큐</b><small>오래 걸리는 일은 여기로</small></div>
-      <div class="arr"></div>
-      <div class="node llm"><span class="tag">LLM</span><b>Worker</b><small>Gemini 리뷰 · 바뀐 diff만</small></div>
-      <div class="arr"></div>
-      <div class="node"><b>PR 코멘트</b><small>GitHub App 설치 토큰(JWT, 캐싱)</small></div>
-      <div class="side"><em>저장</em><span class="chip store">PostgreSQL</span><em style="margin-left:8px">실행</em><span class="chip">Docker Compose</span></div>
-    </div>
-  </div>
-</section>
+    <!-- 대표 프로젝트 -->
+    <section class="sheet" id="projects">
+      <p class="eyebrow">Projects</p>
+      <h2>대표 프로젝트</h2>
 
-<!-- 6. CHECKMATE -->
-<section class="slide" id="s6">
-  <div class="inner cols">
-    <div>
-      <p class="kicker reveal">Project 04 · 데이터베이스</p>
-      <h2 class="reveal" style="--d:1"><a href="https://github.com/SkyWith628/checkmate" style="color:inherit;text-decoration:none">CHECKMATE</a></h2>
-      <p class="meta reveal" style="--d:1">2026.03 ~ 05 · 개인 · <a href="https://checkmate-virid-kappa.vercel.app">사이트</a></p>
-      <p class="oneline reveal" style="--d:2">주얼리 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트</p>
-      <ul class="points reveal" style="--d:3">
-        <li>원래는 가격과 쿠폰 계산을 브라우저에서 해서 결제 금액을 바꿀 여지가 있었습니다.</li>
-        <li>주문 금액을 정하는 일을 전부 DB로 옮겼습니다.</li>
-        <li>주문이 동시에 몰려도 재고가 음수로 내려가지 않습니다.</li>
+      <div class="filters" role="group" aria-label="분야로 강조">
+        <button type="button" data-f="all" aria-pressed="true">전체</button>
+        <button type="button" data-f="llm" aria-pressed="false">LLM</button>
+        <button type="button" data-f="be" aria-pressed="false">백엔드</button>
+        <button type="button" data-f="db" aria-pressed="false">데이터베이스</button>
+        <button type="button" data-f="ops" aria-pressed="false">배포·협업</button>
+        <button type="button" data-f="fe" aria-pressed="false">프론트엔드</button>
+        <span class="count" aria-live="polite"></span>
+      </div>
+
+      <article class="proj" id="p-persona" data-tags="llm be db ops">
+        <div class="meta">
+          <span class="date">2026.11 ~ 진행 중</span>
+          4인 팀, 팀장<br>2026.12 공모전 출품작
+          <br><span class="badge team">팀</span>
+        </div>
+        <div>
+          <h3><a href="https://github.com/SkyWith628/persona-ize">Persona_ize</a><span class="ext">GitHub ↗</span></h3>
+          <p class="summary">상대에 맞게 메시지를 다듬어 주되, 내 말투와 원래 내용은 그대로 두는 서비스</p>
+          <p class="why">상사에게 보내는 말과 친구에게 보내는 말은 다르지만, 내가 하려던 말까지 바뀌면 안 됩니다. 그래서 "고쳐 쓰되 사실과 의도는 건드리지 않는다"를 가장 먼저 정했습니다. 팀원 셋이 비전공자라 개발은 제가 전부 맡았고, 팀원들은 평가 사례와 루브릭을 CSV로 만들어 PR로 올렸습니다.</p>
+          <ul class="points">
+            <li><b>검증</b><span>첨삭 결과는 규칙 검증을 통과해야만 보입니다. 실패하면 한 번 다시 만들고, 그래도 안 되면 원문을 돌려줍니다.</span></li>
+            <li><b>실험</b><span>어떤 정보를 넣어야 첨삭이 나아지는지 네 조건(없음 / 상대별 페르소나 / 내 과거 표현 검색 pgvector / 대화 맥락 그래프 Neo4j)으로 비교했습니다. 실패를 보고 검증 규칙 두 개를 고친 뒤 문제 사례 3개를 36회 다시 돌려 모두 통과했습니다.</span></li>
+            <li><b>운영</b><span>Docker Compose + Caddy(HTTPS)로 배포하고 백업·배포 후 점검 스크립트를 만들었습니다. 아이폰 앱(SwiftUI)은 CI에서 빌드합니다.</span></li>
+          </ul>
+          <div class="metrics">
+            <div class="metric"><strong>190 / 192</strong><span>16사례 × 4조건 × 3회 통과</span></div>
+            <div class="metric"><strong>1,564</strong><span>백엔드 테스트</span></div>
+            <div class="metric"><strong>227</strong><span>화면 테스트</span></div>
+          </div>
+          <div class="tags"><span class="chip">FastAPI</span><span class="chip">LangGraph</span><span class="chip">Claude</span><span class="chip">PostgreSQL + pgvector</span><span class="chip">Neo4j</span><span class="chip">Docker</span><span class="chip">SwiftUI</span></div>
+        </div>
+      </article>
+
+      <article class="proj" id="p-monitor" data-tags="be ops">
+        <div class="meta">
+          <span class="date">2026.11</span>
+          4인 팀, 플랫폼·PM
+          <br><span class="badge team">팀</span>
+        </div>
+        <div>
+          <h3><a href="https://github.com/SkyWith628/competitor-monitoring-agent">경쟁사 모니터링 Agent</a><span class="ext">GitHub ↗</span></h3>
+          <p class="summary">SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트</p>
+          <p class="why">넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.</p>
+          <ul class="points">
+            <li><b>분업</b><span>수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정하고, 각자 자기 폴더만 고치도록 나눴습니다.</span></li>
+            <li><b>플랫폼</b><span>저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.</span></li>
+            <li><b>규칙</b><span>CODEOWNERS로 리뷰어를 자동 지정하고, main은 PR·담당자 승인·CI(ruff + pytest) 통과 없이 합칠 수 없게 막았습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.</span></li>
+          </ul>
+          <div class="tags"><span class="chip">Python</span><span class="chip">GitHub Actions</span><span class="chip">PostgreSQL</span><span class="chip">Next.js</span></div>
+        </div>
+      </article>
+
+      <article class="proj" id="p-jikgugom" data-tags="llm be">
+        <div class="meta">
+          <span class="date">2026.04 ~ 06</span>
+          개인
+          <br><span class="badge solo">개인</span>
+        </div>
+        <div>
+          <h3><a href="https://github.com/SkyWith628/jikgugom">직구곰</a><span class="ext">GitHub ↗</span></h3>
+          <p class="summary">AliExpress·Amazon 상품을 네이버·쿠팡에 올려 파는 구매대행을 자동화한 프로젝트</p>
+          <p class="why">구매대행은 상품 하나를 잘못 올리면 바로 손해가 납니다. 마진 계산을 틀리거나 통관이 안 되는 상품, KC 인증 대상 상품을 놓치면 돈이나 법 문제로 이어지기 때문에, 이런 판단은 LLM에 맡기지 않기로 했습니다.</p>
+          <ul class="points">
+            <li><b>통제</b><span>소싱부터 통관·인증 필터, 마진 계산, 등록, 발주까지는 일반 코드로 짰고, 사는 순간 적자가 되는 주문은 사람이 승인해야 넘어갑니다. LLM은 상품성 평가, 한글 상세페이지 작성(DeepL 번역 후 다듬기), 고객 문의 응대 세 곳에만 쓰고, 민감한 문의는 사람에게 넘깁니다.</span></li>
+            <li><b>구조</b><span>상품 출처(AliExpress, Amazon), 판매 채널(네이버, 쿠팡), 저장소를 인터페이스로 분리했습니다. 채널을 추가하거나 SQLite를 PostgreSQL로 바꿔도 나머지 코드는 그대로입니다.</span></li>
+            <li><b>운영</b><span>API 키가 없어도 mock 모드로 전체 흐름이 돌아가고, 관리자 대시보드(Next.js)에서 승인과 발주를 처리합니다.</span></li>
+          </ul>
+          <div class="metrics">
+            <div class="metric"><strong>3곳</strong><span>LLM을 쓰는 지점</span></div>
+            <div class="metric"><strong>194</strong><span>pytest</span></div>
+          </div>
+          <div class="tags"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Gemini</span><span class="chip">Next.js</span><span class="chip">SQLAlchemy</span><span class="chip">APScheduler</span></div>
+        </div>
+      </article>
+
+      <article class="proj" id="p-codesage" data-tags="llm be ops">
+        <div class="meta">
+          <span class="date">2026.02 ~ 04</span>
+          개인
+          <br><span class="badge solo">개인</span>
+        </div>
+        <div>
+          <h3><a href="https://github.com/SkyWith628/codesage">CodeSage</a><span class="ext">GitHub ↗</span></h3>
+          <p class="summary">GitHub PR이 올라오면 자동으로 코드 리뷰를 달아 주는 봇</p>
+          <p class="why">GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만 커도 LLM 호출이 그 시간을 넘깁니다. 그래서 Webhook은 서명만 확인하고 바로 응답하고, 실제 리뷰는 Redis 큐 뒤의 Worker가 따로 처리하도록 나눴습니다.</p>
+          <ul class="points">
+            <li><b>리뷰</b><span>새 커밋이 올라오면 바뀐 부분만 다시 봐서, 같은 지적이 반복되지 않고 토큰도 덜 씁니다. 코멘트에서 <code>@codesage</code>를 부르면 해당 diff를 보고 답합니다.</span></li>
+            <li><b>보안</b><span>GitHub App 설치 토큰을 JWT로 발급받아 캐싱하고, Webhook은 HMAC 서명으로 검증합니다. PR 본문에 숨긴 지시문에 끌려가지 않도록 프롬프트도 막아 뒀습니다.</span></li>
+            <li><b>운영</b><span>pytest 55개. Docker Compose로 api, worker, redis, postgres를 한 번에 띄웁니다.</span></li>
+          </ul>
+          <div class="tags"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Gemini</span><span class="chip">Redis</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
+        </div>
+      </article>
+
+      <article class="proj" id="p-checkmate" data-tags="db fe">
+        <div class="meta">
+          <span class="date">2026.03 ~ 05</span>
+          개인
+          <br><span class="badge solo">개인</span> <span class="badge live">배포 중</span>
+        </div>
+        <div>
+          <h3><a href="https://github.com/SkyWith628/checkmate">CHECKMATE</a><span class="ext">GitHub ↗</span> <a class="ext" href="https://checkmate-virid-kappa.vercel.app">사이트 ↗</a></h3>
+          <p class="summary">주얼리 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트</p>
+          <p class="why">원래는 Firebase로 만든 정적 사이트였는데, 가격과 쿠폰 계산을 브라우저에서 하고 있어서 결제 금액을 바꿀 여지가 있었습니다. 그래서 주문 금액을 정하는 일을 전부 DB로 옮겼습니다.</p>
+          <ul class="points">
+            <li><b>정합성</b><span>주문 확정은 <code>place_order</code>라는 DB 함수 하나에서만 일어납니다. 가격, 재고, 쿠폰을 한 트랜잭션 안에서 확인해서 주문이 몰려도 재고가 음수로 내려가지 않습니다.</span></li>
+            <li><b>권한</b><span>Postgres RLS 정책과 트리거로 남의 주문을 보거나, 사지 않은 상품에 리뷰를 다는 걸 막았습니다.</span></li>
+            <li><b>범위</b><span>장바구니, 주문, 결제, 마이페이지, 관리자 페이지까지 쇼핑몰에 필요한 화면을 모두 만들었습니다.</span></li>
+          </ul>
+          <div class="metrics">
+            <div class="metric"><strong>53</strong><span>RLS 정책</span></div>
+            <div class="metric"><strong>1곳</strong><span>주문 확정 지점</span></div>
+          </div>
+          <div class="tags"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Tailwind</span><span class="chip">Vercel</span></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- 그 밖에 -->
+    <section class="sheet" id="more">
+      <p class="eyebrow">More</p>
+      <h2>그 밖에 만든 것들</h2>
+      <div class="side-list">
+        <div class="side-row">
+          <span class="date">2026.11</span>
+          <div><h4>Snip</h4><p>URL 단축 서비스. FastAPI·MySQL·Nginx 컨테이너를 AWS ECS Fargate에 배포하고, 동시 생성 시 코드 충돌과 대소문자 중복을 막았습니다. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다.</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/url-shortener">코드</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.10</span>
+          <div><h4>케어노트AI</h4><p>요양보호사의 음성 기록을 방문요양 기록지 초안으로 바꾸는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회)</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/carenote-ai">코드</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.08</span>
+          <div><h4>toss-llm-trader</h4><p>LLM 매매가 단순 보유보다 나은지 모의투자로 재 본 실험. 백테스트가 미래 가격을 미리 보지 못하게 막았습니다.</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/toss-llm-trader">코드</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.05 ~ 06</span>
+          <div><h4>OBLIGE</h4><p>공병 사진을 YOLOv8로 인식해 포인트로 돌려주는 ESG 화장품 쇼핑몰. 반납 안내는 tool-use LLM 어시스턴트가 맡습니다.</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/oblige">코드</a><a href="https://skywith628.github.io/oblige/">사이트</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.03</span>
+          <div><h4>JABIS</h4><p>음성으로 대화하는 학습 도우미 데스크톱 앱 (Electron)</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/jabis">코드</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.01</span>
+          <div><h4>Todo List</h4><p>React·TypeScript 할 일 관리 앱</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/todo-list">코드</a><a href="https://skywith628.github.io/todo-list/">사이트</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2025.09 ~ 12</span>
+          <div><h4>환율과 코스피</h4><p>환율이 코스피에 주는 영향을 회귀·PCA·ARIMA로 분석, KIPS 학술대회 발표</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/kospi-exchange-analysis">코드</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">학부 수업</span>
+          <div><h4>shop69</h4><p>프레임워크 없이 PHP·MySQL로 만든 첫 쇼핑몰. 같은 주제를 CHECKMATE로 다시 만들었습니다.</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/php_shop_project">코드</a></span>
+        </div>
+      </div>
+      <p class="practice">수업 실습 · <a href="https://github.com/SkyWith628/ios-practice">iOS Practice</a> (Swift·UIKit) · <a href="https://github.com/SkyWith628/Data_Analysis_Python">Data Analysis</a> (pandas·numpy) · <a href="https://github.com/SkyWith628/unity-game-basics">Unity Game Basics</a> (Unity·C#)</p>
+    </section>
+
+    <!-- 기술 -->
+    <section class="sheet" id="skills">
+      <p class="eyebrow">Skills</p>
+      <h2>기술</h2>
+      <div class="skills">
+        <div class="skill">
+          <h4>백엔드</h4>
+          <div>
+            <div class="chips"><span class="chip">FastAPI</span><span class="chip">Redis 큐</span><span class="chip">중복 요청 한 번만 처리</span><span class="chip">버전 확인으로 덮어쓰기 방지</span></div>
+            <p class="where">CodeSage, Persona_ize</p>
+          </div>
+        </div>
+        <div class="skill">
+          <h4>데이터베이스</h4>
+          <div>
+            <div class="chips"><span class="chip">PostgreSQL 함수·RLS</span><span class="chip">pgvector</span><span class="chip">Neo4j</span><span class="chip">UNIQUE·콜레이션</span></div>
+            <p class="where">CHECKMATE, Persona_ize, Snip</p>
+          </div>
+        </div>
+        <div class="skill">
+          <h4>LLM</h4>
+          <div>
+            <div class="chips"><span class="chip">LangGraph</span><span class="chip">Claude</span><span class="chip">Gemini</span><span class="chip">출력 검증·재생성</span><span class="chip">조건별 반복 실험</span></div>
+            <p class="where">Persona_ize, 직구곰, toss-llm-trader</p>
+          </div>
+        </div>
+        <div class="skill">
+          <h4>배포·협업</h4>
+          <div>
+            <div class="chips"><span class="chip">Docker Compose</span><span class="chip">Caddy</span><span class="chip">AWS ECS Fargate</span><span class="chip">GitHub Actions</span><span class="chip">브랜치 보호</span></div>
+            <p class="where">Persona_ize, Snip, 경쟁사 모니터링</p>
+          </div>
+        </div>
+      </div>
+      <p class="etc">이 밖에 PHP, Electron, Swift, Unity도 수업과 개인 작업에서 써 봤습니다.</p>
+    </section>
+
+    <!-- 활동 -->
+    <section class="sheet" id="activities">
+      <p class="eyebrow">Activities</p>
+      <h2>활동</h2>
+      <ul class="acts">
+        <li>2026 컴퓨터소프트웨어학과 학회장</li>
+        <li>38대 총학생회 기획부장</li>
+        <li>iOS 전공 멘토</li>
+        <li>2024 글로벌인덕리더스쿨 팀장</li>
       </ul>
-      <ul class="stats reveal" style="--d:4">
-        <li><b><span data-count="53">53</span></b>Postgres RLS 정책</li>
-        <li><b><span data-count="1">1</span>곳</b>주문이 확정되는 지점</li>
-      </ul>
-      <div class="tags reveal" style="--d:5"><span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>PostgreSQL</span><span>Tailwind</span><span>Vercel</span></div>
-      <figure class="shot reveal" style="--d:6"><div class="bar"><i></i><i></i><i></i></div><img src="img/checkmate.png" alt="CHECKMATE 쇼핑몰 화면" loading="lazy" onerror="this.closest('figure').remove()"></figure>
-    </div>
-    <div class="dia reveal" style="--d:3">
-      <p class="dia-title">설계도 · 주문 한 건이 확정되기까지</p>
-      <div class="node"><b>브라우저</b><small>Next.js · 금액은 계산하지 않습니다</small></div>
-      <div class="arr"></div>
-      <div class="node gate"><span class="tag">검증</span><b>place_order()</b><small>가격 · 재고 · 쿠폰을 한 트랜잭션에서 확인</small></div>
-      <div class="arr"></div>
-      <div class="node gate"><span class="tag">검증</span><b>RLS 정책 · 트리거</b><small>남의 주문 조회, 사지 않은 상품 리뷰를 차단</small></div>
-      <div class="arr"></div>
-      <div class="node"><b>주문 확정</b><small>결제 · 마이페이지 · 관리자 페이지로</small></div>
-      <div class="legend"><span><i></i>코드</span><span><i class="l-gate"></i>DB에서 검증</span></div>
-    </div>
-  </div>
-</section>
+      <p class="misc">정보처리기능사 · 한국어, 영어 · 쉬는 날엔 주로 달립니다.</p>
+    </section>
 
-<!-- 7. 그 밖의 프로젝트 -->
-<section class="slide" id="s7">
-  <div class="inner">
-    <p class="kicker reveal">More</p>
-    <h2 class="reveal" style="--d:1">그 밖에 만든 것들</h2>
-    <div class="grid3">
-      <div class="mini reveal" style="--d:2"><h3><a href="https://github.com/SkyWith628/competitor-monitoring-agent">경쟁사 모니터링 Agent</a></h3><p class="when">2026.11 · 4인 팀, 플랫폼·PM</p><p>SPA 브랜드 네 곳의 변화를 매주 슬랙과 메일로 보냅니다. 데이터 형식을 먼저 정하고 CODEOWNERS, 브랜치 보호, CI로 넷이 동시에 작업해도 덮어쓰지 않게 했습니다.</p></div>
-      <div class="mini reveal" style="--d:3"><h3><a href="https://github.com/SkyWith628/url-shortener">Snip</a></h3><p class="when">2026.11</p><p>FastAPI, MySQL, Nginx 컨테이너 3개를 AWS ECS Fargate에 올린 URL 단축 서비스. 동시에 20개를 만들어도 코드가 겹치지 않는지 확인했습니다.</p></div>
-      <div class="mini reveal" style="--d:4"><h3><a href="https://github.com/SkyWith628/toss-llm-trader">toss-llm-trader</a></h3><p class="when">2026.08</p><p>LLM에게 주식 매매를 맡기면 그냥 사 두는 것보다 나은지 모의투자로 재 보는 실험. 백테스트가 미래 가격을 보지 못하게 막았습니다.</p></div>
-      <div class="mini reveal" style="--d:5"><h3><a href="https://github.com/SkyWith628/oblige">OBLIGE</a></h3><p class="when">2026.05 ~ 06 · <a href="https://skywith628.github.io/oblige/">사이트</a></p><p>공병 사진을 YOLOv8로 인식해 포인트로 돌려주는 ESG 화장품 쇼핑몰. 반납 안내는 tool-use LLM 어시스턴트가 맡습니다.</p></div>
-      <div class="mini reveal" style="--d:6"><h3><a href="https://github.com/SkyWith628/carenote-ai">케어노트AI</a></h3><p class="when">2026.10</p><p>요양보호사가 말로 남긴 내용을 방문요양 기록지 초안으로 바꿔 주는 서비스 기획. 2026 지능정보 SW 아이디어 경진대회.</p></div>
-      <div class="mini reveal" style="--d:7"><h3><a href="https://github.com/SkyWith628/kospi-exchange-analysis">환율과 코스피</a></h3><p class="when">2025.09 ~ 12</p><p>환율이 코스피에 주는 영향을 회귀, PCA, ARIMA로 분석했고 KIPS 학술대회에서 발표했습니다.</p></div>
-    </div>
-  </div>
-</section>
+  </main>
 
-<!-- 8. 해 본 것들 -->
-<section class="slide" id="s8">
-  <div class="inner">
-    <p class="kicker reveal">Skills</p>
-    <h2 class="reveal" style="--d:1">기술 이름 대신, 해 본 일</h2>
-    <div class="grid2">
-      <div class="mini reveal" style="--d:2"><h3>LLM 검증과 통제</h3><ul>
-        <li>LLM 출력을 규칙으로 검사하고, 실패하면 다시 만들거나 원문으로 돌아가기 <small>(Persona_ize)</small></li>
-        <li>LLM이 할 일과 코드가 할 일을 나누고, 위험한 건 사람 승인 받기 <small>(직구곰)</small></li>
-        <li>조건을 바꿔 가며 반복 실험하고 결과를 숫자로 남기기 <small>(Persona_ize, toss-llm-trader)</small></li>
-      </ul></div>
-      <div class="mini reveal" style="--d:3"><h3>백엔드</h3><ul>
-        <li>오래 걸리는 작업을 큐로 빼고 요청에는 바로 응답하기 <small>(CodeSage)</small></li>
-        <li>같은 요청이 두 번 들어와도 한 번만 처리하기 <small>(Persona_ize)</small></li>
-        <li>외부 API나 DB를 바꿔 끼울 수 있게 인터페이스로 분리하기 <small>(직구곰)</small></li>
-      </ul></div>
-      <div class="mini reveal" style="--d:4"><h3>데이터베이스</h3><ul>
-        <li>주문 금액 계산을 DB 함수로 옮기고 RLS로 접근 막기 <small>(CHECKMATE)</small></li>
-        <li>UNIQUE 제약과 콜레이션 설정으로 중복 코드 막기 <small>(Snip)</small></li>
-        <li>pgvector와 Neo4j 검색 결과를 같은 파이프라인에서 쓰기 <small>(Persona_ize)</small></li>
-      </ul></div>
-      <div class="mini reveal" style="--d:5"><h3>배포와 협업</h3><ul>
-        <li>AWS ECS에 컨테이너 올리기 <small>(Snip)</small></li>
-        <li>Docker Compose와 Caddy로 HTTPS 배포, 백업·점검 스크립트 <small>(Persona_ize)</small></li>
-        <li>GitHub Actions로 CI와 정기 작업, 브랜치 보호 규칙 <small>(경쟁사 모니터링)</small></li>
-      </ul></div>
-    </div>
-  </div>
-</section>
-
-<!-- 9. 학력과 활동 -->
-<section class="slide" id="s9">
-  <div class="inner">
-    <p class="kicker reveal">Background</p>
-    <h2 class="reveal" style="--d:1">읽어 주셔서 감사합니다</h2>
-    <ul class="facts">
-      <li class="reveal" style="--d:2"><span>학력</span><span>인덕대학교 컴퓨터소프트웨어학과 재학</span></li>
-      <li class="reveal" style="--d:3"><span>활동</span><span>2026 컴퓨터소프트웨어학과 학회장 · 38대 총학생회 기획부장 · iOS 전공 멘토 · 2024 글로벌인덕리더스쿨 팀장</span></li>
-      <li class="reveal" style="--d:4"><span>발표</span><span>KIPS 학술대회 (환율과 코스피 분석)</span></li>
-      <li class="reveal" style="--d:5"><span>자격·언어</span><span>정보처리기능사 · 한국어, 영어</span></li>
-      <li class="reveal" style="--d:6"><span>링크</span><span><a href="https://github.com/SkyWith628">github.com/SkyWith628</a> · <a href="https://hskywith.tistory.com">hskywith.tistory.com</a></span></li>
-    </ul>
-  </div>
-</section>
+  <footer>읽어 주셔서 감사합니다.</footer>
+</div>
 
 <script>
-(function(){
-  var slides=[].slice.call(document.querySelectorAll('.slide'));
-  var dots=document.getElementById('dots'), counter=document.getElementById('counter'), bar=document.getElementById('progress');
-  var current=0, reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function pad(n){return (n<10?'0':'')+n}
+// 목차: 지금 보고 있는 섹션 강조
+(() => {
+  const links = [...document.querySelectorAll('.nav a')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(a => a.classList.remove('on'));
+      map.get(e.target.id)?.classList.add('on');
+    });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  map.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+})();
 
-  slides.forEach(function(s,i){
-    var a=document.createElement('a'); a.href='#'+s.id; a.setAttribute('aria-label',(i+1)+'번 슬라이드'); dots.appendChild(a);
-  });
-
-  function countUp(el){
-    if(el.dataset.done||reduce) return; el.dataset.done='1';
-    var to=+el.dataset.count, t0=null, dur=900;
-    function step(t){ if(!t0) t0=t; var p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3);
-      el.textContent=Math.round(to*e).toLocaleString('en-US'); if(p<1) requestAnimationFrame(step); }
-    requestAnimationFrame(step);
-  }
-
-  function setCurrent(i){
-    current=i;
-    [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===i)});
-    counter.textContent=pad(i+1)+' / '+pad(slides.length);
-    bar.style.width=((i+1)/slides.length*100)+'%';
-  }
-
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(!e.isIntersecting) return;
-        e.target.classList.add('in');
-        [].forEach.call(e.target.querySelectorAll('[data-count]'),countUp);
-      });
-    },{threshold:.15});
-    slides.forEach(function(s){io.observe(s)});
-  } else { slides.forEach(function(s){s.classList.add('in')}); }
-
-  function onScroll(){
-    var mid=window.scrollY+window.innerHeight/2, idx=0;
-    slides.forEach(function(s,i){ if(s.offsetTop<=mid) idx=i; });
-    if(idx!==current||!counter.textContent) setCurrent(idx);
-  }
-  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
-
-  function go(i){ i=Math.max(0,Math.min(slides.length-1,i)); slides[i].scrollIntoView({behavior:reduce?'auto':'smooth'}); }
-  window.addEventListener('keydown',function(e){
-    if(e.target.closest&&e.target.closest('a,button,input,textarea')&&e.key===' ') return;
-    if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(current+1)}
-    else if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(current-1)}
-    else if(e.key==='Home'){e.preventDefault();go(0)}
-    else if(e.key==='End'){e.preventDefault();go(slides.length-1)}
-  });
-  window.addEventListener('beforeprint',function(){slides.forEach(function(s){s.classList.add('in')})});
+// 분야 필터: 해당 프로젝트만 또렷하게
+(() => {
+  const btns = [...document.querySelectorAll('.filters button')];
+  const items = [...document.querySelectorAll('.proj')];
+  const count = document.querySelector('.filters .count');
+  const apply = f => {
+    let n = 0;
+    items.forEach(el => {
+      const hit = f === 'all' || (el.dataset.tags || '').split(' ').includes(f);
+      el.classList.toggle('dim', !hit);
+      if (hit) n++;
+    });
+    btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === f)));
+    count.textContent = f === 'all' ? `전체 ${items.length}개` : `${n}개 프로젝트 해당`;
+  };
+  btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.f)));
+  apply('all');
 })();
 </script>
 </body>
