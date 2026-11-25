@@ -2,14 +2,15 @@
 
 ![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=SkyWith&fontSize=50&animation=fadeIn&fontAlignY=38&desc=AI%20%C2%B7%20Backend%20Engineer&descAlignY=51&descAlign=62)
 
-**신뢰할 수 있는 자동화를 설계하는 AI · 백엔드 개발자**
-*돈·인증처럼 틀리면 안 되는 결정은 결정론 코드로, 판단이 필요한 영역만 LLM으로.*
+**LLM 에이전트와 백엔드를 만드는 신입 개발자**
+*돈·인증처럼 틀리면 안 되는 결정은 결정론 코드로, 판단이 필요한 영역만 LLM으로 — 그리고 **평가로 증명**합니다.*
+
+`Python · FastAPI` · `LangGraph · Claude / Gemini` · `PostgreSQL (pgvector) · Redis` · `Docker · GitHub Actions · AWS ECS`
 
 인덕대학교 컴퓨터소프트웨어 전공 · 26학년도 학과 학회장
 
 [![Blog](https://img.shields.io/badge/Blog-hskywith.tistory.com-orange?style=flat&logo=tistory)](https://hskywith.tistory.com)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Notion-black?style=flat&logo=notion)](https://www.notion.so/f089caa5141d414196d7170b2d8c1ed6?pvs=12)
-[![GitHub](https://img.shields.io/badge/GitHub-SkyWith628-181717?style=flat&logo=github)](https://github.com/SkyWith628)
 
 </div>
 
@@ -17,12 +18,30 @@
 
 ## 🔥 대표 프로젝트
 
-| 프로젝트 | 분야 | 시기 | 한 줄 | 코드 / 데모 |
-| --- | --- | --- | --- | --- |
-| 🐻 **직구곰** | AI · 백엔드 | 2026.04 ~ 진행 중 | 구매대행 자동화 — 결정론 파이프라인 + 멀티에이전트 | [Code](https://github.com/SkyWith628/jikgugom) |
-| 🧙 **CodeSage** | AI · 백엔드 | 2026.02 ~ 04 | GitHub PR 자동 코드리뷰 에이전트 (비동기 큐) | [Code](https://github.com/SkyWith628/codesage) |
-| 💎 **CHECKMATE** | 풀스택 웹 | 2026.03 ~ 05 | 주얼리 이커머스 (Next.js + Supabase RLS) | [Code](https://github.com/SkyWith628/checkmate) · [Live](https://checkmate-virid-kappa.vercel.app) |
-| ♻️ **OBLIGE** | 풀스택 웹 | 2026.05 ~ 진행 중 | 공병 반납 ESG 코스메틱 플랫폼 | [Code](https://github.com/SkyWith628/oblige) · [Live](https://skywith628.github.io/oblige/) |
+| 프로젝트 | 분야 | 시기 | 역할 | 한 줄 | 코드 / 데모 |
+| --- | --- | --- | --- | --- | --- |
+| 🗣️ **Persona_ize** | AI · 백엔드 | 2026.11 ~ 진행 중 | 팀장 (4인) | 상대별 말투로 메시지를 첨삭하되 원문의 사실·의도는 보존 | 🔒 공모전 진행 중 (비공개) |
+| 🐻 **직구곰** | AI · 백엔드 | 2026.04 ~ 08 | 개인 | 구매대행 자동화 — 결정론 파이프라인 + 멀티에이전트 | [Code](https://github.com/SkyWith628/jikgugom) |
+| 🧙 **CodeSage** | AI · 백엔드 | 2026.02 ~ 04 | 개인 | GitHub PR 자동 코드리뷰 에이전트 (비동기 큐) | [Code](https://github.com/SkyWith628/codesage) |
+| 💎 **CHECKMATE** | 풀스택 웹 | 2026.03 ~ 05 | 개인 | 주얼리 이커머스 (Next.js + Supabase RLS) | [Code](https://github.com/SkyWith628/checkmate) · [Live](https://checkmate-virid-kappa.vercel.app) |
+
+<br>
+
+### 🗣️ Persona_ize — 내 말투를 지키는 메시지 첨삭 `🔒 2026.12 공모전 출품작`
+> 상대·상황에 맞게 **사용자 본인의 말투**로 메시지를 고쳐 주되, 원문의 사실과 의도는 바꾸지 않는 서비스. 4인 팀(개발 1 · 기획·평가 3)의 **팀장이자 유일한 개발자**로 백엔드·워크플로·실험 하니스·배포를 맡았다.
+
+```
+초안 → 의도·보존 항목 추출 → 검색(페르소나 / 본인 과거 표현 / 그래프 맥락) → Claude 첨삭(구조화 출력)
+     → 규칙 검증 → 실패 시 1회 재생성 → 재실패 시 원문 유지 → 사용자가 적용·수정·취소 (자동 전송 없음)
+```
+
+- 🧪 **"어떤 맥락이 첨삭을 낫게 하는가"를 실험으로 비교** — A 일반 / B +상대별 페르소나 / C +벡터 검색한 본인 표현(pgvector) / D +지식그래프 맥락(Neo4j·Graphiti)
+- 📏 **실측:** 평가 16사례 × 4조건 × 3회 = 192회 중 190회 추천, 원문 유지 2건 → 실패 원인이 된 검증 규칙 2개를 고친 뒤 해당 사례 36회 전부 통과
+- 🛡️ LLM 출력은 **규칙 검증기를 거쳐야만** 사용자에게 노출 — 통과 못 하면 원문을 그대로 돌려준다
+- ✅ 백엔드 테스트 1,564개 · 화면 테스트 227개 · CI(백엔드 + iOS 빌드) · Caddy HTTPS + 백업·스모크 테스트를 포함한 Docker Compose 배포
+- 🤝 비전공 팀원과의 접점을 **"파일 + PR"** 로 설계 — 팀원이 사례·루브릭 CSV를 PR로 올리면 팀장이 리뷰 후 코드에 연결
+
+**Tech:** Python · FastAPI · LangGraph · Claude (Anthropic) · PostgreSQL + pgvector · Neo4j (Graphiti) · Docker · Caddy · SwiftUI
 
 <br>
 
@@ -56,7 +75,7 @@
 <br>
 
 ### 💎 [CHECKMATE — 주얼리 이커머스](https://github.com/SkyWith628/checkmate)
-> Firebase 정적 사이트를 Next.js 16 + Supabase로 전면 재설계한 풀스택 쇼핑몰 — 카탈로그·장바구니·주문·결제·마이페이지·관리자 백오피스 · [Live](https://checkmate-virid-kappa.vercel.app)
+> 정적 Firebase 사이트를 Next.js 16 + Supabase로 전면 재설계한 풀스택 쇼핑몰 — 카탈로그·장바구니·주문·결제·마이페이지·관리자 백오피스 · [Live](https://checkmate-virid-kappa.vercel.app)
 
 - 🔒 가격·재고·쿠폰을 `place_order` RPC(security definer) 한 곳에서 **원자적으로 확정**
 - 🛡️ Postgres **RLS 53개 정책 + 트리거**로 접근 제어 · 리뷰 구매 인증 위조 방지
@@ -66,91 +85,52 @@
 
 **Tech:** Next.js 16 · React 19 · TypeScript · Supabase (Postgres·Auth·RLS·RPC) · Tailwind v4 · Vercel
 
-<br>
+---
 
-### ♻️ [OBLIGE — Responsible Beauty](https://github.com/SkyWith628/oblige) `🚧 개발 중`
-> 비건 화장품 구매 → 공병 반납 → 포인트 적립 → 등급 상승(🌱 Seed → 🍃 Leaf → 🌳 Tree → 🌲 Forest)을 잇는 ESG 코스메틱 플랫폼 · [Live](https://skywith628.github.io/oblige/)
+## 🤝 팀 프로젝트
 
-- 🛠️ 관리자 대시보드 — 상품·주문·공병 반납·회원 통합 관리
-- 🎯 적립·등급 로직을 Supabase(PostgreSQL)에 두어 신뢰 경계를 서버에 유지하도록 설계 중
+### 📡 [경쟁사 모니터링 Agent](https://github.com/SkyWith628/competitor-monitoring-agent) · 2026.11 · 4인 팀
+> SPA 브랜드 4곳의 상품·가격·뉴스·SNS를 수집해 변화를 감지하고, LLM으로 주간 인사이트를 만들어 슬랙·메일로 보내는 에이전트.
 
-**Tech:** Vanilla JS · Supabase (PostgreSQL + Auth + Storage) · GitHub Pages
+**내가 맡은 부분 — D (PM · 플랫폼·통합)**
+- 🧱 `수집 → RawItem → ChangeEvent → 분류·요약 → WeeklyReport → 발송` 데이터 계약을 `app/core/`로 정의하고, 4명이 **자기 폴더만 고치는** 구조로 역할 분리
+- ⚙️ 저장소(repo 함수 경유만 허용)·슬랙/메일 렌더링·CLI(`doctor`·`status`·`seed`) · GitHub Actions(CI, 일간 수집, 주간 리포트)
+- 🔐 협업 체계 — CODEOWNERS 자동 리뷰어 지정, `main` 보호 규칙(PR 필수 · 코드 오너 승인 · 새 커밋 재승인 · ruff + pytest 통과)
+- 🖥️ 팀원 전용 대시보드·리포트 열람 웹 (Next.js → Vercel)
+
+**Tech:** Python · Naver/Google 검색 API · LLM 분류(골든셋 평가) · SQLite → PostgreSQL · GitHub Actions · Next.js
 
 ---
 
-## 🧪 서브 프로젝트
+## 🧪 그 외 프로젝트
 
 | 프로젝트 | 분야 | 시기 | 한 줄 | 코드 / 데모 |
 | --- | --- | --- | --- | --- |
+| 🔗 **Snip (URL 단축)** | 백엔드 · 인프라 | 2026.11 | FastAPI + MySQL + Nginx 3컨테이너를 **AWS ECS Fargate**에 배포 — 동시 생성 20건 충돌 0, 대소문자 콜레이션·리다이렉트 캐시 트러블슈팅 | 🔒 비공개 |
+| 📈 **toss-llm-trader** | AI · 실험 | 2026.08 | LLM에 매매 전권을 주고 **모멘텀 규칙·Buy&Hold와 같은 백테스트 환경에서 비교** — point-in-time 누수 방지, tool-calling, 프롬프트 캐싱 | 🔒 비공개 |
+| 🩺 **케어노트AI** | AI · 기획 | 2026.10 | 요양보호사 음성 → 방문요양 기록지 초안 (2026 지능정보 SW 아이디어 경진대회) — "말하지 않은 것은 기록하지 않는다" | 🔒 비공개 |
+| ♻️ **OBLIGE** | 풀스택 웹 | 2026.05 ~ 06 | 공병 반납 → 포인트 → 등급의 ESG 코스메틱 플랫폼 + 관리자 대시보드 | [Code](https://github.com/SkyWith628/oblige) · [Live](https://skywith628.github.io/oblige/) |
 | 🤖 **JABIS** | AI · 데스크탑 | 2026.03 | 음성 대화 AI 학습 비서 (Electron) — STT/TTS·학습플랜 자동생성 | [Code](https://github.com/SkyWith628/jabis) |
 | ✅ **Todo List** | 프론트엔드 | 2026.01 | React + TS 할 일 관리 — 필터링·통계 대시보드·Custom Hook | [Code](https://github.com/SkyWith628/todo-list) · [Live](https://skywith628.github.io/todo-list/) |
 | 📊 **환율-코스피 분석** | 데이터 · 논문 | 2025.09 ~ 12 | 상관·회귀·PCA·ARIMA 분석 + **KIPS 학술발표 논문** | [Code](https://github.com/SkyWith628/kospi-exchange-analysis) |
+| 🛒 **shop69** | 백엔드 | 학부 과정 | 프레임워크 없이 PHP + MySQL로 만든 쇼핑몰 + 관리자 백오피스 (→ CHECKMATE로 재설계) | 🔒 비공개 |
 | 📱 **iOS Practice** | 모바일 | 2025.09 ~ 12 | Swift·UIKit 앱 실습 (BMI·환율계산기 등) | [Code](https://github.com/SkyWith628/ios-practice) |
 | 🐍 **Data Analysis** | 데이터 | 2025.09 ~ 12 | pandas·numpy·시각화 실습 노트북 | [Code](https://github.com/SkyWith628/Data_Analysis_Python) |
 | 🎮 **Unity Game Basics** | 게임 | 2024.09 ~ 12 | Unity·C# 입문 — 충돌·태그·GameManager 패턴 | [Code](https://github.com/SkyWith628/unity-game-basics) |
 
 ---
 
-## 📌 Tech Stack
+## 📌 기술 스택 — 어디서 썼는지와 함께
 
-**주력 — 프로젝트에서 실제로 쓴 것**
-
-![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/-FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
-![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/-React-20232A?style=flat&logo=react&logoColor=61DAFB)
-![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
-![Supabase](https://img.shields.io/badge/-Supabase-3ECF8E?style=flat&logo=supabase&logoColor=white)
-![Redis](https://img.shields.io/badge/-Redis-DC382D?style=flat&logo=redis&logoColor=white)
-![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![Claude](https://img.shields.io/badge/-Claude%20(Anthropic)-D97757?style=flat&logo=anthropic&logoColor=white)
-![Gemini](https://img.shields.io/badge/-Google%20Gemini-4285F4?style=flat&logo=google&logoColor=white)
-
-<details>
-<summary><b>그 외 사용 경험</b></summary>
-<br>
-
-**Frontend** &nbsp;
-![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Tailwind CSS](https://img.shields.io/badge/-Tailwind%20CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
-![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat&logo=vite&logoColor=white)
-![Electron](https://img.shields.io/badge/-Electron-47848F?style=flat&logo=electron&logoColor=white)
-
-**Backend & DB** &nbsp;
-![PHP](https://img.shields.io/badge/-PHP-777BB4?style=flat&logo=php&logoColor=white)
-![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?style=flat&logo=laravel&logoColor=white)
-![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
-![SQLite](https://img.shields.io/badge/-SQLite-003B57?style=flat&logo=sqlite&logoColor=white)
-
-**AI / Data** &nbsp;
-![OpenAI](https://img.shields.io/badge/-OpenAI-412991?style=flat&logo=openai&logoColor=white)
-![pandas](https://img.shields.io/badge/-pandas-150458?style=flat&logo=pandas&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/-scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
-![statsmodels](https://img.shields.io/badge/-statsmodels-8CAAE6?style=flat)
-
-**DevOps** &nbsp;
-![GitHub Actions](https://img.shields.io/badge/-GitHub%20Actions-2088FF?style=flat&logo=github-actions&logoColor=white)
-![Vercel](https://img.shields.io/badge/-Vercel-000000?style=flat&logo=vercel&logoColor=white)
-![AWS](https://img.shields.io/badge/-AWS-FF9900?style=flat&logo=amazon-aws&logoColor=white)
-![Linux](https://img.shields.io/badge/-Linux-FCC624?style=flat&logo=linux&logoColor=black)
-![GitHub Pages](https://img.shields.io/badge/-GitHub%20Pages-222222?style=flat&logo=github&logoColor=white)
-
-**Mobile & Game** &nbsp;
-![Swift](https://img.shields.io/badge/-Swift-FA7343?style=flat&logo=swift&logoColor=white)
-![UIKit](https://img.shields.io/badge/-UIKit-2396F3?style=flat&logo=apple&logoColor=white)
-![Unity](https://img.shields.io/badge/-Unity-000000?style=flat&logo=unity&logoColor=white)
-![C#](https://img.shields.io/badge/-C%23-239120?style=flat&logo=csharp&logoColor=white)
-
-**Tools** &nbsp;
-![Git](https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white)
-![Figma](https://img.shields.io/badge/-Figma-F24E1E?style=flat&logo=figma&logoColor=white)
-
-*수업 경험: C++ · Apache Spark*
-
-</details>
+| 영역 | 기술 | 사용한 프로젝트 |
+| --- | --- | --- |
+| **Backend** | Python, FastAPI | Persona_ize · 직구곰 · CodeSage · Snip · 경쟁사 모니터링 |
+| **LLM / Agent** | Claude, Gemini, LangGraph · tool-calling · 구조화 출력 · 프롬프트 캐싱 | Persona_ize · 직구곰 · CodeSage · toss-llm-trader |
+| **LLM 평가** | 조건별 A/B 실험 하니스 · 골든셋 · 반복 측정 | Persona_ize · 경쟁사 모니터링 · toss-llm-trader |
+| **Database** | PostgreSQL (pgvector, RLS, RPC) · Redis · MySQL · SQLite · Neo4j | Persona_ize · CHECKMATE · CodeSage · Snip · 직구곰 |
+| **Infra / DevOps** | Docker Compose · GitHub Actions · AWS ECS Fargate · Nginx · Caddy · Vercel | Persona_ize · CodeSage · Snip · 경쟁사 모니터링 · CHECKMATE |
+| **Frontend** | TypeScript, React, Next.js, Tailwind | CHECKMATE · 직구곰 대시보드 · Todo List |
+| **기타** | Swift (UIKit·SwiftUI) · PHP · Electron · pandas · statsmodels · Unity/C# | iOS Practice · Persona_ize · shop69 · JABIS · 환율-코스피 분석 |
 
 ---
 
@@ -171,8 +151,6 @@
 <br>
 
 <div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=SkyWith628&show_icons=true&hide_border=true&count_private=true&theme=tokyonight)
 
 방문해 주셔서 감사합니다! 🚀
 
