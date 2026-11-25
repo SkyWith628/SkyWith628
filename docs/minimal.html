@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyWith · Resume</title>
+<meta name="description" content="LLM을 실제 서비스에 붙이는 백엔드 개발자. 흑백 미니멀 이력서.">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --ink:#111111;
+  --ink-2:#333333;
+  --muted:#6e6e6e;
+  --rule:#111111;
+  --hair:#d9d9d9;
+  --paper:#ffffff;
+  --desk:#ececec;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--desk);color:var(--ink);
+  font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:13.5px;line-height:1.65;word-break:keep-all;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--hair)}
+a:hover{border-bottom-color:var(--ink)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em}
+p,ul,h1,h2,h3{margin:0}
+ul{padding:0;list-style:none}
+
+/* 종이 */
+.paper{
+  max-width:880px;margin:40px auto;background:var(--paper);
+  padding:64px 64px 56px;box-shadow:0 1px 3px rgba(0,0,0,.06),0 12px 40px rgba(0,0,0,.08);
+}
+
+/* 머리 */
+.head{display:grid;grid-template-columns:auto 1fr;align-items:end;gap:28px;padding-bottom:22px;border-bottom:2px solid var(--rule)}
+.name{font-size:46px;font-weight:800;letter-spacing:.14em;line-height:1;text-transform:uppercase}
+.title{margin-top:12px;font-size:12px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-2)}
+.head .motto{margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.6}
+.title{white-space:nowrap}
+.photo{position:relative;margin:0;width:112px;aspect-ratio:3/4;border:1px solid var(--ink);background:#f4f4f4;display:grid;place-items:center;overflow:hidden}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;background:#f4f4f4;filter:grayscale(1) contrast(1.05)}
+.photo .ph{font:inherit;font-size:10px;font-weight:700;letter-spacing:.24em;text-align:center;line-height:1.8;color:var(--muted);background:none;border:0;width:100%;height:100%;cursor:pointer}
+.photo .ph:hover{color:var(--ink)}
+
+/* 본문 2단 */
+.cols{display:grid;grid-template-columns:200px 1fr;gap:0 44px;margin-top:30px}
+.side{border-right:1px solid var(--hair);padding-right:28px}
+.block+.block{margin-top:28px}
+h2{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.main h2::after{content:"";flex:1;height:1px;background:var(--hair)}
+
+/* 사이드 */
+.side li{font-size:12.5px;color:var(--ink-2)}
+.side li+li{margin-top:6px}
+.side .lbl{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.side .grp+.grp{margin-top:12px}
+.side .grp h3{font-size:12px;font-weight:700;margin-bottom:3px}
+.side .grp p{font-size:12px;color:var(--ink-2);line-height:1.6}
+
+/* 프로필 */
+.profile{font-size:14px;color:var(--ink-2);line-height:1.75}
+.profile strong{color:var(--ink);font-weight:700}
+.rules{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--hair)}
+.rules li{padding:10px 12px 10px 0;font-size:12px;color:var(--ink-2);line-height:1.55}
+.rules li+li{padding-left:12px;border-left:1px solid var(--hair)}
+.rules b{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);margin-bottom:2px}
+
+/* 프로젝트 */
+.job{padding:16px 0;border-top:1px solid var(--hair)}
+.job:first-of-type{border-top:0;padding-top:2px}
+.job-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.job h3{font-size:15.5px;font-weight:800;letter-spacing:.01em}
+.job .date{font-size:11.5px;font-weight:600;letter-spacing:.08em;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.job .role{margin-top:1px;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--muted)}
+.job .sum{margin-top:6px;color:var(--ink)}
+.job ul{margin-top:8px;display:grid;gap:4px}
+.job li{position:relative;padding-left:14px;color:var(--ink-2)}
+.job li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:1px;background:var(--ink)}
+.job li.k{padding-left:58px}
+.job li.k::before{display:none}
+.job li.k b{position:absolute;left:0;top:0;font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--ink)}
+.job .nums{margin-top:9px;display:flex;flex-wrap:wrap;gap:4px 18px;font-size:11.5px;color:var(--muted)}
+.job .nums strong{color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;margin-right:4px}
+.job .stack{margin-top:6px;font-size:11px;letter-spacing:.06em;color:var(--muted)}
+
+/* 그 밖에 */
+.etc li{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:5px 0;font-size:12.5px;color:var(--ink-2)}
+.etc li+li{border-top:1px dotted var(--hair)}
+.etc .d{font-size:11px;letter-spacing:.06em;color:var(--muted);font-variant-numeric:tabular-nums}
+.etc b{color:var(--ink)}
+
+/* 하단 */
+.foot{margin-top:30px;padding-top:12px;border-top:2px solid var(--rule);display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.tools{max-width:880px;margin:-24px auto 40px;display:flex;justify-content:flex-end;gap:16px;padding:0 4px;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.tools button{font:inherit;letter-spacing:inherit;text-transform:inherit;background:none;border:0;border-bottom:1px solid var(--ink);padding:0;cursor:pointer;color:var(--ink)}
+
+/* 반응형 */
+@media (max-width:760px){
+  .paper{margin:0;padding:32px 16px 28px;box-shadow:none}
+  .head{grid-template-columns:auto 1fr;gap:18px}
+  .head .motto{margin-top:10px}
+  .photo{width:84px}
+  .title{white-space:normal;letter-spacing:.24em}
+  .title span{display:block}
+  .title .sep{display:none}
+  .name{font-size:34px}
+  .cols{grid-template-columns:1fr;gap:28px}
+  .side{border-right:0;padding-right:0;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .main{order:-1}
+  .block+.block{margin-top:0}
+  .rules{grid-template-columns:1fr}
+  .rules li+li{padding-left:0;border-left:0;border-top:1px solid var(--hair)}
+  .tools{margin:16px;justify-content:flex-start}
+}
+@media (max-width:420px){.side{grid-template-columns:1fr}}
+
+/* 인쇄: A4 */
+@page{size:A4;margin:12mm 13mm}
+@media print{
+  body{background:#fff;font-size:9.3pt;line-height:1.5}
+  .paper{max-width:none;margin:0;padding:0;box-shadow:none}
+  .tools{display:none}
+  .name{font-size:30pt}
+  .photo{width:25mm}
+  .photo.empty{display:none}
+  .cols{grid-template-columns:150px 1fr;gap:0 26px;margin-top:18px}
+  .side{padding-right:18px}
+  .block+.block{margin-top:18px}
+  .job{padding:9px 0;break-inside:avoid}
+  .rules li{padding-top:7px;padding-bottom:7px}
+  .etc li{padding:3px 0}
+  a{border-bottom:0}
+  .foot{margin-top:16px}
+}
+</style>
+</head>
+<body>
+
+<article class="paper">
+
+  <header class="head">
+    <!-- 사진은 저장소에 올리지 않습니다. 'Add photo'로 내 컴퓨터의 사진을 골라 이 브라우저에서만 넣고 PDF로 저장하세요. -->
+    <figure class="photo empty">
+      <button type="button" class="ph" data-pick>PHOTO<br>3 : 4<br><u>Add</u></button>
+    </figure>
+    <div>
+      <h1 class="name">SkyWith</h1>
+      <p class="title"><span>Backend Developer</span><span class="sep"> · </span><span>LLM Systems</span></p>
+      <p class="motto">틀리면 안 되는 결정은 코드로, LLM의 출력은 검증을 통과해야 내보냅니다.</p>
+    </div>
+  </header>
+
+  <div class="cols">
+
+    <!-- 왼쪽 -->
+    <aside class="side">
+      <section class="block">
+        <h2>Contact</h2>
+        <ul>
+          <li><span class="lbl">GitHub</span><a href="https://github.com/SkyWith628">github.com/SkyWith628</a></li>
+          <li><span class="lbl">Blog</span><a href="https://hskywith.tistory.com">hskywith.tistory.com</a></li>
+          <li><span class="lbl">Portfolio</span><a href="https://www.notion.so/f089caa5141d414196d7170b2d8c1ed6?pvs=12">Notion</a></li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Education</h2>
+        <div class="grp">
+          <h3>인덕대학교</h3>
+          <p>컴퓨터소프트웨어학과 재학</p>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2>Skills</h2>
+        <div class="grp"><h3>Backend</h3><p>Python, FastAPI, Redis 큐, 중복 요청 처리, 낙관적 잠금</p></div>
+        <div class="grp"><h3>Database</h3><p>PostgreSQL 함수·RLS, pgvector, Neo4j</p></div>
+        <div class="grp"><h3>LLM</h3><p>LangGraph, Claude, Gemini, 출력 검증·재생성, 조건별 반복 실험</p></div>
+        <div class="grp"><h3>Ops</h3><p>Docker Compose, Caddy, AWS ECS Fargate, GitHub Actions</p></div>
+        <div class="grp"><h3>Also</h3><p>Next.js, TypeScript, SwiftUI, PHP</p></div>
+      </section>
+
+      <section class="block">
+        <h2>Activities</h2>
+        <ul>
+          <li>2026 컴퓨터소프트웨어학과 학회장</li>
+          <li>38대 총학생회 기획부장</li>
+          <li>iOS 전공 멘토</li>
+          <li>2024 글로벌인덕리더스쿨 팀장</li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Etc</h2>
+        <ul>
+          <li><span class="lbl">Certificate</span>정보처리기능사</li>
+          <li><span class="lbl">Language</span>한국어, 영어</li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- 오른쪽 -->
+    <main class="main">
+      <section class="block">
+        <h2>Profile</h2>
+        <p class="profile">LLM을 썼다는 사실보다 <strong>어떻게 검증하고 통제했는지</strong>가 더 중요하다고 생각합니다. 돈이나 인증처럼 틀리면 곤란한 결정은 코드로 정하고, LLM에는 사람이 판단하던 부분만 맡깁니다. 정말 나아졌는지는 <strong>숫자로 확인</strong>합니다.</p>
+        <ul class="rules">
+          <li><b>Control</b>틀리면 곤란한 결정은 코드로, 위험한 건 사람 승인</li>
+          <li><b>Verify</b>규칙 검사를 통과한 결과만 내보내고, 실패하면 원문으로</li>
+          <li><b>Measure</b>조건을 바꿔 가며 돌려 보고 숫자로 확인</li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <h2>Projects</h2>
+
+        <div class="job">
+          <div class="job-top"><h3><a href="https://github.com/SkyWith628/persona-ize">Persona_ize</a></h3><span class="date">2026.11 — 진행 중</span></div>
+          <p class="role">4인 팀 · 팀장 · 개발 전담 · 2026.12 공모전 출품</p>
+          <p class="sum">상대에 맞게 메시지를 다듬되, 내 말투와 원래 내용은 그대로 두는 서비스</p>
+          <ul>
+            <li>첨삭 결과는 규칙 검증을 통과해야만 보이고, 실패하면 한 번 다시 만든 뒤 그래도 안 되면 원문을 돌려줍니다.</li>
+            <li>네 조건(없음 / 페르소나 / 과거 표현 검색 pgvector / 대화 맥락 그래프 Neo4j)을 비교하고, 실패 사례로 검증 규칙 두 개를 고친 뒤 문제 사례 3개를 36회 다시 돌려 모두 통과했습니다.</li>
+            <li class="k"><b>결정</b>"내용은 바꾸지 마"를 프롬프트에만 맡기지 않고 코드 검증과 원문 반환을 택했습니다. 첨삭이 안 되는 것보다 내 말이 바뀌는 게 더 큰 실패이기 때문입니다.</li>
+            <li class="k"><b>배운 점</b>통과율보다 실패한 2회를 들여다본 게 더 도움이 됐습니다.</li>
+          </ul>
+          <p class="nums"><span><strong>190/192</strong>16사례 × 4조건 × 3회</span><span><strong>1,564</strong>백엔드 테스트</span><span><strong>227</strong>화면 테스트</span></p>
+          <p class="stack">FastAPI · LangGraph · Claude · PostgreSQL + pgvector · Neo4j · Docker · SwiftUI</p>
+        </div>
+
+        <div class="job">
+          <div class="job-top"><h3><a href="https://github.com/SkyWith628/jikgugom">직구곰</a></h3><span class="date">2026.04 — 06</span></div>
+          <p class="role">개인</p>
+          <p class="sum">AliExpress·Amazon 상품을 네이버·쿠팡에 올려 파는 구매대행 자동화</p>
+          <ul>
+            <li>소싱, 통관·인증 필터, 마진 계산, 등록, 발주는 일반 코드로 짜고, 적자 주문은 사람이 승인해야 넘어갑니다. LLM은 상품성 평가, 상세페이지 작성, 고객 문의 세 곳에만 씁니다.</li>
+            <li>상품 출처, 판매 채널, 저장소를 인터페이스로 분리해 채널이나 DB를 바꿔도 나머지 코드는 그대로입니다.</li>
+            <li class="k"><b>결정</b>전부 LLM 에이전트에 맡기지 않고 돈과 법이 걸린 판단은 코드로 뒀습니다. 같은 입력에 같은 결과가 나와야 테스트할 수 있기 때문입니다.</li>
+            <li class="k"><b>배운 점</b>LLM을 어디에 쓰지 않을지 먼저 정하니 테스트할 범위가 분명해졌습니다.</li>
+          </ul>
+          <p class="nums"><span><strong>3곳</strong>LLM을 쓰는 지점</span><span><strong>194</strong>pytest</span></p>
+          <p class="stack">Python · FastAPI · Gemini · Next.js · SQLAlchemy · APScheduler</p>
+        </div>
+
+        <div class="job">
+          <div class="job-top"><h3><a href="https://github.com/SkyWith628/codesage">CodeSage</a></h3><span class="date">2026.02 — 04</span></div>
+          <p class="role">개인</p>
+          <p class="sum">GitHub PR이 올라오면 자동으로 코드 리뷰를 달아 주는 봇</p>
+          <ul>
+            <li>새 커밋은 바뀐 부분만 다시 리뷰해 지적 반복과 토큰을 줄였고, <code>@codesage</code> 호출에 diff를 보고 답합니다.</li>
+            <li>설치 토큰은 JWT로 발급받아 캐싱하고, Webhook은 HMAC 서명으로 검증하며, PR 본문에 숨긴 지시문을 막았습니다.</li>
+            <li class="k"><b>결정</b>Webhook 요청 안에서 리뷰하지 않고 Redis 큐와 Worker로 나눴습니다. GitHub의 응답 시간 제한과 LLM 처리 시간을 묶지 않기 위해서입니다.</li>
+            <li class="k"><b>배운 점</b>외부 서비스와 연동할 때는 그쪽의 시간 제한과 재시도 방식을 먼저 확인해야 합니다.</li>
+          </ul>
+          <p class="nums"><span><strong>55</strong>pytest</span></p>
+          <p class="stack">Python · FastAPI · Gemini · Redis · PostgreSQL · Docker</p>
+        </div>
+
+      </section>
+
+      <section class="block">
+        <h2>Other Works</h2>
+        <ul class="etc">
+          <li><span class="d">2026.11</span><span><b><a href="https://github.com/SkyWith628/url-shortener">Snip</a></b> · URL 단축 서비스. FastAPI·MySQL·Nginx를 AWS ECS Fargate에 배포</span></li>
+          <li><span class="d">2026.11</span><span><b><a href="https://github.com/SkyWith628/competitor-monitoring-agent">경쟁사 모니터링 Agent</a></b> · 4인 팀 플랫폼·PM. 데이터 형식 선합의, 브랜치 보호·CI로 협업</span></li>
+          <li><span class="d">2026.10</span><span><b><a href="https://github.com/SkyWith628/carenote-ai">케어노트AI</a></b> · 음성 기록을 방문요양 기록지 초안으로 (아이디어 경진대회)</span></li>
+          <li><span class="d">2026.08</span><span><b><a href="https://github.com/SkyWith628/toss-llm-trader">toss-llm-trader</a></b> · LLM 매매 vs 단순 보유 모의투자 실험</span></li>
+          <li><span class="d">2026.05</span><span><b><a href="https://github.com/SkyWith628/oblige">OBLIGE</a></b> · YOLOv8 공병 인식 ESG 쇼핑몰, tool-use LLM 어시스턴트</span></li>
+          <li><span class="d">2026.03</span><span><b><a href="https://github.com/SkyWith628/checkmate">CHECKMATE</a></b> · 쇼핑몰 재구축. 주문 금액을 DB 함수 하나에서 트랜잭션으로 확정, RLS 53개</span></li>
+          <li><span class="d">2025.09</span><span><b><a href="https://github.com/SkyWith628/kospi-exchange-analysis">환율과 코스피</a></b> · 회귀·PCA·ARIMA 분석, KIPS 학술대회 발표</span></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer class="foot"><span>SkyWith</span><span>Resume · 2026</span></footer>
+</article>
+
+<nav class="tools" aria-label="도구">
+  <a href="./">자세한 버전 보기</a>
+  <a href="portfolio.html">포트폴리오</a>
+  <button type="button" data-pick>사진 넣기</button>
+  <input type="file" id="photo-input" accept="image/*" hidden>
+  <button type="button" onclick="window.print()">PDF로 저장</button>
+</nav>
+
+<script>
+// 사진은 업로드하지 않고, 고른 파일을 이 브라우저 안에서만 표시합니다.
+(() => {
+  const input = document.getElementById('photo-input');
+  const fig = document.querySelector('.photo');
+  document.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => input.click()));
+  input.addEventListener('change', () => {
+    const f = input.files && input.files[0];
+    if (!f) return;
+    let img = fig.querySelector('img');
+    if (!img) { img = new Image(); img.alt = '프로필 사진'; fig.appendChild(img); }
+    if (img.src.startsWith('blob:')) URL.revokeObjectURL(img.src);
+    img.src = URL.createObjectURL(f);
+    img.addEventListener('click', () => input.click());
+    fig.classList.remove('empty');
+  });
+})();
+</script>
+</body>
+</html>

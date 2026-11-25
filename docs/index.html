@@ -119,6 +119,9 @@ p{margin:0}
 .points{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
 .points li{display:grid;grid-template-columns:64px 1fr;gap:12px;font-size:14.5px;color:var(--ink-2)}
 .points b{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 0;text-align:center;height:fit-content;margin-top:2px}
+.points li.decide b{background:var(--warm-soft);color:var(--warm)}
+.points li.lesson b{background:var(--ok-soft);color:var(--ok)}
+.points li.lesson span{color:var(--muted)}
 .metrics{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .metric{padding:10px 14px;border:1px solid var(--line);border-radius:10px;min-width:110px}
 .metric strong{display:block;font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
@@ -229,6 +232,8 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
       PDF로 저장
     </button>
+    <a class="print-btn" href="minimal.html" style="text-decoration:none">흑백 2쪽 버전 보기</a>
+    <a class="print-btn" href="portfolio.html" style="text-decoration:none">포트폴리오 (슬라이드)</a>
   </aside>
 
   <main>
@@ -275,7 +280,6 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
         <button type="button" data-f="be" aria-pressed="false">백엔드</button>
         <button type="button" data-f="db" aria-pressed="false">데이터베이스</button>
         <button type="button" data-f="ops" aria-pressed="false">배포·협업</button>
-        <button type="button" data-f="fe" aria-pressed="false">프론트엔드</button>
         <span class="count" aria-live="polite"></span>
       </div>
 
@@ -293,6 +297,8 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
             <li><b>검증</b><span>첨삭 결과는 규칙 검증을 통과해야만 보입니다. 실패하면 한 번 다시 만들고, 그래도 안 되면 원문을 돌려줍니다.</span></li>
             <li><b>실험</b><span>어떤 정보를 넣어야 첨삭이 나아지는지 네 조건(없음 / 상대별 페르소나 / 내 과거 표현 검색 pgvector / 대화 맥락 그래프 Neo4j)으로 비교했습니다. 실패를 보고 검증 규칙 두 개를 고친 뒤 문제 사례 3개를 36회 다시 돌려 모두 통과했습니다.</span></li>
             <li><b>운영</b><span>Docker Compose + Caddy(HTTPS)로 배포하고 백업·배포 후 점검 스크립트를 만들었습니다. 아이폰 앱(SwiftUI)은 CI에서 빌드합니다.</span></li>
+            <li class="decide"><b>결정</b><span>"내용은 바꾸지 마"를 프롬프트에만 맡기지 않고, 규칙 검증을 코드로 두고 통과하지 못하면 원문을 돌려주는 쪽을 골랐습니다. 첨삭이 안 되는 것보다 내 말이 바뀌는 게 더 큰 실패이기 때문입니다.</span></li>
+            <li class="lesson"><b>배운 점</b><span>통과율보다 실패한 2회를 들여다본 게 더 도움이 됐습니다. 검증 규칙 두 개를 고친 것도 그 두 건에서 나왔습니다.</span></li>
           </ul>
           <div class="metrics">
             <div class="metric"><strong>190 / 192</strong><span>16사례 × 4조건 × 3회 통과</span></div>
@@ -300,25 +306,6 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
             <div class="metric"><strong>227</strong><span>화면 테스트</span></div>
           </div>
           <div class="tags"><span class="chip">FastAPI</span><span class="chip">LangGraph</span><span class="chip">Claude</span><span class="chip">PostgreSQL + pgvector</span><span class="chip">Neo4j</span><span class="chip">Docker</span><span class="chip">SwiftUI</span></div>
-        </div>
-      </article>
-
-      <article class="proj" id="p-monitor" data-tags="be ops">
-        <div class="meta">
-          <span class="date">2026.11</span>
-          4인 팀, 플랫폼·PM
-          <br><span class="badge team">팀</span>
-        </div>
-        <div>
-          <h3><a href="https://github.com/SkyWith628/competitor-monitoring-agent">경쟁사 모니터링 Agent</a><span class="ext">GitHub ↗</span></h3>
-          <p class="summary">SPA 브랜드 네 곳의 상품, 가격, 뉴스, SNS를 모아 매주 변화를 정리해 슬랙과 메일로 보내 주는 에이전트</p>
-          <p class="why">넷이서 사이트 수집, 뉴스·SNS 수집, 분석, 플랫폼을 하나씩 맡았고, 저는 플랫폼과 PM을 맡았습니다. 넷이 동시에 작업해도 서로 코드를 덮어쓰지 않게 만드는 게 제 일이었습니다.</p>
-          <ul class="points">
-            <li><b>분업</b><span>수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정하고, 각자 자기 폴더만 고치도록 나눴습니다.</span></li>
-            <li><b>플랫폼</b><span>저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.</span></li>
-            <li><b>규칙</b><span>CODEOWNERS로 리뷰어를 자동 지정하고, main은 PR·담당자 승인·CI(ruff + pytest) 통과 없이 합칠 수 없게 막았습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.</span></li>
-          </ul>
-          <div class="tags"><span class="chip">Python</span><span class="chip">GitHub Actions</span><span class="chip">PostgreSQL</span><span class="chip">Next.js</span></div>
         </div>
       </article>
 
@@ -334,8 +321,10 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
           <p class="why">구매대행은 상품 하나를 잘못 올리면 바로 손해가 납니다. 마진 계산을 틀리거나 통관이 안 되는 상품, KC 인증 대상 상품을 놓치면 돈이나 법 문제로 이어지기 때문에, 이런 판단은 LLM에 맡기지 않기로 했습니다.</p>
           <ul class="points">
             <li><b>통제</b><span>소싱부터 통관·인증 필터, 마진 계산, 등록, 발주까지는 일반 코드로 짰고, 사는 순간 적자가 되는 주문은 사람이 승인해야 넘어갑니다. LLM은 상품성 평가, 한글 상세페이지 작성(DeepL 번역 후 다듬기), 고객 문의 응대 세 곳에만 쓰고, 민감한 문의는 사람에게 넘깁니다.</span></li>
+            <li class="decide"><b>결정</b><span>전체를 LLM 에이전트에 맡기는 대신, 돈과 법이 걸린 판단은 코드로 두고 LLM은 세 곳에만 썼습니다. 틀리면 바로 손해가 나는 판단은 같은 입력에 같은 결과가 나와야 테스트할 수 있기 때문입니다.</span></li>
             <li><b>구조</b><span>상품 출처(AliExpress, Amazon), 판매 채널(네이버, 쿠팡), 저장소를 인터페이스로 분리했습니다. 채널을 추가하거나 SQLite를 PostgreSQL로 바꿔도 나머지 코드는 그대로입니다.</span></li>
             <li><b>운영</b><span>API 키가 없어도 mock 모드로 전체 흐름이 돌아가고, 관리자 대시보드(Next.js)에서 승인과 발주를 처리합니다.</span></li>
+            <li class="lesson"><b>배운 점</b><span>LLM을 어디에 쓸지보다 어디에 쓰지 않을지를 먼저 정하니, 무엇을 테스트해야 하는지가 분명해졌습니다.</span></li>
           </ul>
           <div class="metrics">
             <div class="metric"><strong>3곳</strong><span>LLM을 쓰는 지점</span></div>
@@ -359,33 +348,13 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
             <li><b>리뷰</b><span>새 커밋이 올라오면 바뀐 부분만 다시 봐서, 같은 지적이 반복되지 않고 토큰도 덜 씁니다. 코멘트에서 <code>@codesage</code>를 부르면 해당 diff를 보고 답합니다.</span></li>
             <li><b>보안</b><span>GitHub App 설치 토큰을 JWT로 발급받아 캐싱하고, Webhook은 HMAC 서명으로 검증합니다. PR 본문에 숨긴 지시문에 끌려가지 않도록 프롬프트도 막아 뒀습니다.</span></li>
             <li><b>운영</b><span>pytest 55개. Docker Compose로 api, worker, redis, postgres를 한 번에 띄웁니다.</span></li>
+            <li class="decide"><b>결정</b><span>Webhook 요청 안에서 바로 리뷰하는 대신 Redis 큐와 Worker로 나눴습니다. GitHub이 정한 응답 시간과 LLM이 걸리는 시간을 서로 묶지 않기 위해서입니다.</span></li>
+            <li class="lesson"><b>배운 점</b><span>외부 서비스와 연동할 때는 기능보다 그쪽의 시간 제한과 재시도 방식을 먼저 확인해야 합니다.</span></li>
           </ul>
           <div class="tags"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Gemini</span><span class="chip">Redis</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
         </div>
       </article>
 
-      <article class="proj" id="p-checkmate" data-tags="db fe">
-        <div class="meta">
-          <span class="date">2026.03 ~ 05</span>
-          개인
-          <br><span class="badge solo">개인</span> <span class="badge live">배포 중</span>
-        </div>
-        <div>
-          <h3><a href="https://github.com/SkyWith628/checkmate">CHECKMATE</a><span class="ext">GitHub ↗</span> <a class="ext" href="https://checkmate-virid-kappa.vercel.app">사이트 ↗</a></h3>
-          <p class="summary">주얼리 쇼핑몰을 Next.js와 Supabase로 다시 만든 프로젝트</p>
-          <p class="why">원래는 Firebase로 만든 정적 사이트였는데, 가격과 쿠폰 계산을 브라우저에서 하고 있어서 결제 금액을 바꿀 여지가 있었습니다. 그래서 주문 금액을 정하는 일을 전부 DB로 옮겼습니다.</p>
-          <ul class="points">
-            <li><b>정합성</b><span>주문 확정은 <code>place_order</code>라는 DB 함수 하나에서만 일어납니다. 가격, 재고, 쿠폰을 한 트랜잭션 안에서 확인해서 주문이 몰려도 재고가 음수로 내려가지 않습니다.</span></li>
-            <li><b>권한</b><span>Postgres RLS 정책과 트리거로 남의 주문을 보거나, 사지 않은 상품에 리뷰를 다는 걸 막았습니다.</span></li>
-            <li><b>범위</b><span>장바구니, 주문, 결제, 마이페이지, 관리자 페이지까지 쇼핑몰에 필요한 화면을 모두 만들었습니다.</span></li>
-          </ul>
-          <div class="metrics">
-            <div class="metric"><strong>53</strong><span>RLS 정책</span></div>
-            <div class="metric"><strong>1곳</strong><span>주문 확정 지점</span></div>
-          </div>
-          <div class="tags"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Tailwind</span><span class="chip">Vercel</span></div>
-        </div>
-      </article>
     </section>
 
     <!-- 그 밖에 -->
@@ -397,6 +366,11 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
           <span class="date">2026.11</span>
           <div><h4>Snip</h4><p>URL 단축 서비스. FastAPI·MySQL·Nginx 컨테이너를 AWS ECS Fargate에 배포하고, 동시 생성 시 코드 충돌과 대소문자 중복을 막았습니다. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다.</p></div>
           <span class="go"><a href="https://github.com/SkyWith628/url-shortener">코드</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.11</span>
+          <div><h4>경쟁사 모니터링 Agent</h4><p>4인 팀에서 플랫폼·PM. SPA 브랜드 네 곳의 상품·가격·뉴스·SNS 변화를 매주 슬랙과 메일로 보냅니다. 단계 사이의 데이터 형식을 먼저 정하고, CODEOWNERS·브랜치 보호·CI로 넷이 동시에 작업해도 충돌하지 않게 했습니다.</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/competitor-monitoring-agent">코드</a></span>
         </div>
         <div class="side-row">
           <span class="date">2026.10</span>
@@ -412,6 +386,11 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
           <span class="date">2026.05 ~ 06</span>
           <div><h4>OBLIGE</h4><p>공병 사진을 YOLOv8로 인식해 포인트로 돌려주는 ESG 화장품 쇼핑몰. 반납 안내는 tool-use LLM 어시스턴트가 맡습니다.</p></div>
           <span class="go"><a href="https://github.com/SkyWith628/oblige">코드</a><a href="https://skywith628.github.io/oblige/">사이트</a></span>
+        </div>
+        <div class="side-row">
+          <span class="date">2026.03 ~ 05</span>
+          <div><h4>CHECKMATE</h4><p>주얼리 쇼핑몰을 Next.js·Supabase로 다시 만들었습니다. 브라우저에서 하던 가격·쿠폰 계산을 <code>place_order</code> DB 함수 하나로 모아 한 트랜잭션에서 확정하고, RLS 정책 53개로 권한을 막았습니다.</p></div>
+          <span class="go"><a href="https://github.com/SkyWith628/checkmate">코드</a><a href="https://checkmate-virid-kappa.vercel.app">사이트</a></span>
         </div>
         <div class="side-row">
           <span class="date">2026.03</span>
