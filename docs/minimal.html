@@ -44,8 +44,9 @@ ul{padding:0;list-style:none}
 .head .motto{margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.6}
 .title{white-space:nowrap}
 .photo{position:relative;margin:0;width:112px;aspect-ratio:3/4;border:1px solid var(--ink);background:#f4f4f4;display:grid;place-items:center;overflow:hidden}
-.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
-.photo .ph{font-size:10px;font-weight:700;letter-spacing:.24em;text-align:center;line-height:1.8;color:var(--muted)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;background:#f4f4f4;filter:grayscale(1) contrast(1.05)}
+.photo .ph{font:inherit;font-size:10px;font-weight:700;letter-spacing:.24em;text-align:center;line-height:1.8;color:var(--muted);background:none;border:0;width:100%;height:100%;cursor:pointer}
+.photo .ph:hover{color:var(--ink)}
 
 /* 본문 2단 */
 .cols{display:grid;grid-template-columns:200px 1fr;gap:0 44px;margin-top:30px}
@@ -144,10 +145,9 @@ h2{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
 <article class="paper">
 
   <header class="head">
-    <!-- 사진: docs/photo.jpg 로 저장하면 자동으로 들어갑니다 (3:4 비율 권장, 흑백으로 표시) -->
-    <figure class="photo">
-      <img src="photo.jpg" alt="SkyWith 프로필 사진" onerror="this.parentNode.classList.add('empty');this.remove()">
-      <span class="ph" aria-hidden="true">PHOTO<br>3 : 4</span>
+    <!-- 사진은 저장소에 올리지 않습니다. 'Add photo'로 내 컴퓨터의 사진을 골라 이 브라우저에서만 넣고 PDF로 저장하세요. -->
+    <figure class="photo empty">
+      <button type="button" class="ph" data-pick>PHOTO<br>3 : 4<br><u>Add</u></button>
     </figure>
     <div>
       <h1 class="name">SkyWith</h1>
@@ -284,8 +284,28 @@ h2{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
 
 <nav class="tools" aria-label="도구">
   <a href="./">자세한 버전 보기</a>
+  <button type="button" data-pick>사진 넣기</button>
+  <input type="file" id="photo-input" accept="image/*" hidden>
   <button type="button" onclick="window.print()">PDF로 저장</button>
 </nav>
 
+<script>
+// 사진은 업로드하지 않고, 고른 파일을 이 브라우저 안에서만 표시합니다.
+(() => {
+  const input = document.getElementById('photo-input');
+  const fig = document.querySelector('.photo');
+  document.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => input.click()));
+  input.addEventListener('change', () => {
+    const f = input.files && input.files[0];
+    if (!f) return;
+    let img = fig.querySelector('img');
+    if (!img) { img = new Image(); img.alt = '프로필 사진'; fig.appendChild(img); }
+    if (img.src.startsWith('blob:')) URL.revokeObjectURL(img.src);
+    img.src = URL.createObjectURL(f);
+    img.addEventListener('click', () => input.click());
+    fig.classList.remove('empty');
+  });
+})();
+</script>
 </body>
 </html>
