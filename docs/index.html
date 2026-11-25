@@ -119,6 +119,9 @@ p{margin:0}
 .points{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:10px}
 .points li{display:grid;grid-template-columns:64px 1fr;gap:12px;font-size:14.5px;color:var(--ink-2)}
 .points b{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 0;text-align:center;height:fit-content;margin-top:2px}
+.points li.decide b{background:var(--warm-soft);color:var(--warm)}
+.points li.lesson b{background:var(--ok-soft);color:var(--ok)}
+.points li.lesson span{color:var(--muted)}
 .metrics{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .metric{padding:10px 14px;border:1px solid var(--line);border-radius:10px;min-width:110px}
 .metric strong{display:block;font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink)}
@@ -293,6 +296,8 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
             <li><b>검증</b><span>첨삭 결과는 규칙 검증을 통과해야만 보입니다. 실패하면 한 번 다시 만들고, 그래도 안 되면 원문을 돌려줍니다.</span></li>
             <li><b>실험</b><span>어떤 정보를 넣어야 첨삭이 나아지는지 네 조건(없음 / 상대별 페르소나 / 내 과거 표현 검색 pgvector / 대화 맥락 그래프 Neo4j)으로 비교했습니다. 실패를 보고 검증 규칙 두 개를 고친 뒤 문제 사례 3개를 36회 다시 돌려 모두 통과했습니다.</span></li>
             <li><b>운영</b><span>Docker Compose + Caddy(HTTPS)로 배포하고 백업·배포 후 점검 스크립트를 만들었습니다. 아이폰 앱(SwiftUI)은 CI에서 빌드합니다.</span></li>
+            <li class="decide"><b>결정</b><span>"내용은 바꾸지 마"를 프롬프트에만 맡기지 않고, 규칙 검증을 코드로 두고 통과하지 못하면 원문을 돌려주는 쪽을 골랐습니다. 첨삭이 안 되는 것보다 내 말이 바뀌는 게 더 큰 실패이기 때문입니다.</span></li>
+            <li class="lesson"><b>배운 점</b><span>통과율보다 실패한 2회를 들여다본 게 더 도움이 됐습니다. 검증 규칙 두 개를 고친 것도 그 두 건에서 나왔습니다.</span></li>
           </ul>
           <div class="metrics">
             <div class="metric"><strong>190 / 192</strong><span>16사례 × 4조건 × 3회 통과</span></div>
@@ -317,6 +322,8 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
             <li><b>분업</b><span>수집부터 발송까지 단계마다 주고받는 데이터 형식을 먼저 정하고, 각자 자기 폴더만 고치도록 나눴습니다.</span></li>
             <li><b>플랫폼</b><span>저장소, 슬랙·메일 발송, CLI, 팀원용 대시보드(Next.js)를 만들었습니다.</span></li>
             <li><b>규칙</b><span>CODEOWNERS로 리뷰어를 자동 지정하고, main은 PR·담당자 승인·CI(ruff + pytest) 통과 없이 합칠 수 없게 막았습니다. 매일 수집과 주간 리포트는 GitHub Actions로 돌아갑니다.</span></li>
+            <li class="decide"><b>결정</b><span>기능부터 나눠 만드는 대신 단계 사이의 데이터 형식을 먼저 정했습니다. 형식만 맞으면 넷이 서로를 기다리지 않고 각자 개발하고 테스트할 수 있기 때문입니다.</span></li>
+            <li class="lesson"><b>배운 점</b><span>협업 규칙은 말로 정해 두는 것보다 브랜치 보호와 CI로 강제해야 지켜집니다.</span></li>
           </ul>
           <div class="tags"><span class="chip">Python</span><span class="chip">GitHub Actions</span><span class="chip">PostgreSQL</span><span class="chip">Next.js</span></div>
         </div>
@@ -334,8 +341,10 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
           <p class="why">구매대행은 상품 하나를 잘못 올리면 바로 손해가 납니다. 마진 계산을 틀리거나 통관이 안 되는 상품, KC 인증 대상 상품을 놓치면 돈이나 법 문제로 이어지기 때문에, 이런 판단은 LLM에 맡기지 않기로 했습니다.</p>
           <ul class="points">
             <li><b>통제</b><span>소싱부터 통관·인증 필터, 마진 계산, 등록, 발주까지는 일반 코드로 짰고, 사는 순간 적자가 되는 주문은 사람이 승인해야 넘어갑니다. LLM은 상품성 평가, 한글 상세페이지 작성(DeepL 번역 후 다듬기), 고객 문의 응대 세 곳에만 쓰고, 민감한 문의는 사람에게 넘깁니다.</span></li>
+            <li class="decide"><b>결정</b><span>전체를 LLM 에이전트에 맡기는 대신, 돈과 법이 걸린 판단은 코드로 두고 LLM은 세 곳에만 썼습니다. 틀리면 바로 손해가 나는 판단은 같은 입력에 같은 결과가 나와야 테스트할 수 있기 때문입니다.</span></li>
             <li><b>구조</b><span>상품 출처(AliExpress, Amazon), 판매 채널(네이버, 쿠팡), 저장소를 인터페이스로 분리했습니다. 채널을 추가하거나 SQLite를 PostgreSQL로 바꿔도 나머지 코드는 그대로입니다.</span></li>
             <li><b>운영</b><span>API 키가 없어도 mock 모드로 전체 흐름이 돌아가고, 관리자 대시보드(Next.js)에서 승인과 발주를 처리합니다.</span></li>
+            <li class="lesson"><b>배운 점</b><span>LLM을 어디에 쓸지보다 어디에 쓰지 않을지를 먼저 정하니, 무엇을 테스트해야 하는지가 분명해졌습니다.</span></li>
           </ul>
           <div class="metrics">
             <div class="metric"><strong>3곳</strong><span>LLM을 쓰는 지점</span></div>
@@ -359,6 +368,8 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
             <li><b>리뷰</b><span>새 커밋이 올라오면 바뀐 부분만 다시 봐서, 같은 지적이 반복되지 않고 토큰도 덜 씁니다. 코멘트에서 <code>@codesage</code>를 부르면 해당 diff를 보고 답합니다.</span></li>
             <li><b>보안</b><span>GitHub App 설치 토큰을 JWT로 발급받아 캐싱하고, Webhook은 HMAC 서명으로 검증합니다. PR 본문에 숨긴 지시문에 끌려가지 않도록 프롬프트도 막아 뒀습니다.</span></li>
             <li><b>운영</b><span>pytest 55개. Docker Compose로 api, worker, redis, postgres를 한 번에 띄웁니다.</span></li>
+            <li class="decide"><b>결정</b><span>Webhook 요청 안에서 바로 리뷰하는 대신 Redis 큐와 Worker로 나눴습니다. GitHub이 정한 응답 시간과 LLM이 걸리는 시간을 서로 묶지 않기 위해서입니다.</span></li>
+            <li class="lesson"><b>배운 점</b><span>외부 서비스와 연동할 때는 기능보다 그쪽의 시간 제한과 재시도 방식을 먼저 확인해야 합니다.</span></li>
           </ul>
           <div class="tags"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Gemini</span><span class="chip">Redis</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span></div>
         </div>
@@ -378,6 +389,8 @@ footer{grid-column:1/-1;text-align:center;color:var(--muted);font-size:13px;padd
             <li><b>정합성</b><span>주문 확정은 <code>place_order</code>라는 DB 함수 하나에서만 일어납니다. 가격, 재고, 쿠폰을 한 트랜잭션 안에서 확인해서 주문이 몰려도 재고가 음수로 내려가지 않습니다.</span></li>
             <li><b>권한</b><span>Postgres RLS 정책과 트리거로 남의 주문을 보거나, 사지 않은 상품에 리뷰를 다는 걸 막았습니다.</span></li>
             <li><b>범위</b><span>장바구니, 주문, 결제, 마이페이지, 관리자 페이지까지 쇼핑몰에 필요한 화면을 모두 만들었습니다.</span></li>
+            <li class="decide"><b>결정</b><span>브라우저에서 계산하고 서버에서 한 번 더 검사하는 대신, 금액을 정하는 일 자체를 DB 함수 하나로 모았습니다. 계산하는 곳이 하나면 값을 바꿀 틈도 그곳 하나뿐이기 때문입니다.</span></li>
+            <li class="lesson"><b>배운 점</b><span>계산을 서버로 옮기는 문제가 아니라, 값을 누가 정하는지를 정하는 문제였습니다.</span></li>
           </ul>
           <div class="metrics">
             <div class="metric"><strong>53</strong><span>RLS 정책</span></div>
