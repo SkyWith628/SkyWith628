@@ -13,8 +13,8 @@
 
 ## 대표 프로젝트
 
-### Persona_ize · 2026.11 ~ 진행 중 · 4인 팀, 팀장
-*상대에 맞게 메시지를 다듬어 주되, 내 말투와 원래 내용은 그대로 두는 서비스* (공모전 진행 중이라 아직 비공개입니다)
+### [Persona_ize](https://github.com/SkyWith628/persona-ize) · 2026.11 ~ 진행 중 · 4인 팀, 팀장
+*상대에 맞게 메시지를 다듬어 주되, 내 말투와 원래 내용은 그대로 두는 서비스* (2026.12 공모전 출품작)
 
 상사에게 보내는 말과 친구에게 보내는 말은 다르지만, 그렇다고 내가 하려던 말이 바뀌면 안 됩니다. 그래서 이 프로젝트에서는 "고쳐 쓰되 사실과 의도는 건드리지 않는다"를 가장 먼저 정했습니다.
 
@@ -89,14 +89,14 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 | 프로젝트 | 시기 | 내용 | 링크 |
 | --- | --- | --- | --- |
-| Snip (URL 단축) | 2026.11 | FastAPI, MySQL, Nginx 컨테이너 3개를 AWS ECS Fargate에 올렸습니다. 동시에 20개를 만들어도 코드가 겹치지 않는지, 대소문자만 다른 코드가 같은 걸로 잡히지 않는지 확인했습니다. | 비공개 |
-| toss-llm-trader | 2026.08 | LLM에게 주식 매매를 맡기면 그냥 사 두는 것보다 나은지 모의투자로 재 보는 실험입니다. 백테스트가 미래 가격을 미리 보지 못하게 막는 데 신경을 많이 썼습니다. | 비공개 |
-| 케어노트AI | 2026.10 | 요양보호사가 말로 남긴 내용을 방문요양 기록지 초안으로 바꿔 주는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | 비공개 |
+| Snip (URL 단축) | 2026.11 | FastAPI, MySQL, Nginx 컨테이너 3개를 AWS ECS Fargate에 올렸습니다. 동시에 20개를 만들어도 코드가 겹치지 않는지, 대소문자만 다른 코드가 같은 걸로 잡히지 않는지 확인했습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
+| toss-llm-trader | 2026.08 | LLM에게 주식 매매를 맡기면 그냥 사 두는 것보다 나은지 모의투자로 재 보는 실험입니다. 백테스트가 미래 가격을 미리 보지 못하게 막는 데 신경을 많이 썼습니다. | [코드](https://github.com/SkyWith628/toss-llm-trader) |
+| 케어노트AI | 2026.10 | 요양보호사가 말로 남긴 내용을 방문요양 기록지 초안으로 바꿔 주는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | [코드](https://github.com/SkyWith628/carenote-ai) |
 | OBLIGE | 2026.05 ~ 06 | 화장품 공병을 반납하면 포인트와 등급이 쌓이는 쇼핑몰 | [코드](https://github.com/SkyWith628/oblige) · [사이트](https://skywith628.github.io/oblige/) |
 | JABIS | 2026.03 | 음성으로 대화하는 학습 도우미 데스크톱 앱 (Electron) | [코드](https://github.com/SkyWith628/jabis) |
 | Todo List | 2026.01 | React와 TypeScript로 만든 할 일 관리 앱 | [코드](https://github.com/SkyWith628/todo-list) · [사이트](https://skywith628.github.io/todo-list/) |
 | 환율과 코스피 | 2025.09 ~ 12 | 환율이 코스피에 주는 영향을 회귀, PCA, ARIMA로 분석했고 KIPS 학술대회에서 발표했습니다. | [코드](https://github.com/SkyWith628/kospi-exchange-analysis) |
-| shop69 | 학부 수업 | 프레임워크 없이 PHP와 MySQL로 만든 첫 쇼핑몰입니다. 나중에 같은 주제를 CHECKMATE로 다시 만들었습니다. | 비공개 |
+| shop69 | 학부 수업 | 프레임워크 없이 PHP와 MySQL로 만든 첫 쇼핑몰입니다. 나중에 같은 주제를 CHECKMATE로 다시 만들었습니다. | [코드](https://github.com/SkyWith628/php_shop_project) |
 | iOS Practice | 2025.09 ~ 12 | Swift, UIKit 실습 앱 모음 | [코드](https://github.com/SkyWith628/ios-practice) |
 | Data Analysis | 2025.09 ~ 12 | pandas, numpy 실습 노트북 | [코드](https://github.com/SkyWith628/Data_Analysis_Python) |
 | Unity Game Basics | 2024.09 ~ 12 | Unity, C# 입문 실습 | [코드](https://github.com/SkyWith628/unity-game-basics) |
