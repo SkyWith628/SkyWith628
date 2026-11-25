@@ -26,7 +26,7 @@
 - **검증**: LLM이 낸 결과는 규칙 검사를 통과해야만 사용자에게 나갑니다. 실패하면 다시 만들고, 그래도 안 되면 원문으로 돌아갑니다. → [Persona_ize](#persona_ize)
 - **측정**: 정말 나아졌는지는 감이 아니라 조건을 바꿔 가며 돌려 보고 숫자로 확인합니다. → [Persona_ize](#persona_ize) (4조건 × 192회 실험)
 
-LLM 쪽은 LangGraph와 Claude, Gemini를 씁니다. 인덕대학교 컴퓨터소프트웨어학과에 다니고 있고, 올해는 학과 학회장을 맡고 있습니다.
+LLM 쪽은 LangGraph와 Claude, Gemini를 씁니다. 인덕대학교 컴퓨터소프트웨어학과에 다니고 있습니다.
 
 ---
 
@@ -137,7 +137,7 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 ---
 
-## 학교 활동
+## 활동
 
 - 2026 컴퓨터소프트웨어학과 학회장
 - 38대 총학생회 기획부장
@@ -149,8 +149,6 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 ---
 
 <div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=SkyWith628&show_icons=true&hide_border=true&hide_title=true&count_private=true&title_color=5B6B7F&icon_color=5B6B7F&text_color=8B949E&bg_color=00000000" height="150" alt="GitHub stats" />
 
 <sub>읽어 주셔서 감사합니다.</sub>
 
