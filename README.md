@@ -120,17 +120,46 @@
 
 ---
 
-## 📌 기술 스택 — 어디서 썼는지와 함께
+## 📌 기술 스택 — 직접 해 본 것과 근거
 
-| 영역 | 기술 | 사용한 프로젝트 |
-| --- | --- | --- |
-| **Backend** | Python, FastAPI | Persona_ize · 직구곰 · CodeSage · Snip · 경쟁사 모니터링 |
-| **LLM / Agent** | Claude, Gemini, LangGraph · tool-calling · 구조화 출력 · 프롬프트 캐싱 | Persona_ize · 직구곰 · CodeSage · toss-llm-trader |
-| **LLM 평가** | 조건별 A/B 실험 하니스 · 골든셋 · 반복 측정 | Persona_ize · 경쟁사 모니터링 · toss-llm-trader |
-| **Database** | PostgreSQL (pgvector, RLS, RPC) · Redis · MySQL · SQLite · Neo4j | Persona_ize · CHECKMATE · CodeSage · Snip · 직구곰 |
-| **Infra / DevOps** | Docker Compose · GitHub Actions · AWS ECS Fargate · Nginx · Caddy · Vercel | Persona_ize · CodeSage · Snip · 경쟁사 모니터링 · CHECKMATE |
-| **Frontend** | TypeScript, React, Next.js, Tailwind | CHECKMATE · 직구곰 대시보드 · Todo List |
-| **기타** | Swift (UIKit·SwiftUI) · PHP · Electron · pandas · statsmodels · Unity/C# | iOS Practice · Persona_ize · shop69 · JABIS · 환율-코스피 분석 |
+> 기술 이름 대신 **무엇을 해 봤는지**와 **어디서 확인할 수 있는지**를 적었습니다.
+
+**🗄️ Backend · API** — Python · FastAPI
+- Webhook을 받으면 즉시 200을 반환하고, 처리는 Redis 큐 Worker가 비동기로 → **CodeSage**
+- Webhook HMAC 서명 검증, GitHub App JWT로 1시간짜리 설치 토큰을 발급하고 캐싱 → **CodeSage**
+- `Idempotency-Key` 헤더로 중복 요청 방지, `expected_version`으로 낙관적 잠금 → **Persona_ize**
+- 외부 API·채널·저장소를 Adapter / Repository(ABC)로 추상화해 교체 가능하게 설계 → **직구곰**
+
+**🧮 Database** — PostgreSQL · MySQL · Redis · SQLite · Neo4j
+- Postgres RLS 정책 53개와 security definer RPC로 가격·재고·쿠폰을 한 번에 원자적으로 확정 → **CHECKMATE**
+- UNIQUE 제약과 `ascii_bin` 콜레이션으로 단축 코드 중복·대소문자 충돌 방지, 동시 생성 20건으로 검증 → **Snip**
+- pgvector 벡터 검색과 Neo4j(Graphiti) 그래프 검색을 같은 첨삭 파이프라인에 연결 → **Persona_ize**
+
+**🧠 LLM · Agent** — Claude · Gemini · LangGraph
+- LangGraph 워크플로: 추출 → 검색 → 구조화 출력 → 규칙 검증 → 1회 재생성 → 실패 시 원문 유지 → **Persona_ize**
+- 돈·규제 판단은 결정론 코드로, 정성 판단만 LLM으로. 적자 매입은 사람이 승인(HITL) → **직구곰**
+- 강제 tool-calling으로 결정을 구조화하고, 프롬프트 캐싱으로 호출 비용 절감 → **toss-llm-trader**
+- PR 본문에 섞인 지시를 막는 프롬프트 인젝션 방어 → **CodeSage**
+
+**📏 LLM 평가 · 실험**
+- 4개 조건 × 16사례 × 3회 반복 실험 하니스 → 실패 원인이 된 규칙 수정 → 재측정 → **Persona_ize**
+- point-in-time 시계로 백테스트의 미래 정보 누수를 막고, 규칙 전략·Buy&Hold와 같은 환경에서 비교 → **toss-llm-trader**
+
+**✅ 테스트 · 협업**
+- pytest — Persona_ize 1,564개 · 직구곰 115개 · CodeSage 55개. API 키 없이 mock·fake 모델로 전체 실행 → **직구곰 · Persona_ize**
+- ruff + pytest CI, `main` 보호 규칙(PR 필수 · 코드 오너 승인 · 새 커밋 재승인), CODEOWNERS 자동 리뷰어 지정 → **경쟁사 모니터링**
+
+**🚀 Infra · 배포** — Docker · GitHub Actions · AWS ECS · Nginx · Caddy · Vercel
+- 컨테이너 3개를 AWS ECS Fargate에 배포하고 외부에는 80번 포트만 노출, 멀티스테이지 빌드(frontend 73.7MB) → **Snip**
+- ECS 태스크가 뜨기 전에 멈추는 `ResourceInitializationError`의 원인을 실행 역할의 로그 권한 누락으로 찾아 해결 → **Snip**
+- Caddy 자동 HTTPS · 주기 백업 · 배포 후 스모크 테스트를 묶은 배포 스크립트 → **Persona_ize**
+- GitHub Actions로 일간 수집과 주간 리포트 자동 실행 → **경쟁사 모니터링**
+
+**🖥️ Frontend · App** — TypeScript · React · Next.js · SwiftUI
+- Next.js 16 + Supabase Auth 풀스택 쇼핑몰, 관리자 백오피스 → **CHECKMATE**
+- SwiftUI 아이폰 앱과 보조 키보드 확장, CI에서 시뮬레이터 빌드 → **Persona_ize**
+
+<sub>그 외 사용 경험: PHP(shop69) · Electron(JABIS) · pandas·statsmodels(환율-코스피 분석) · UIKit(iOS Practice) · Unity/C#(Unity Game Basics)</sub>
 
 ---
 
