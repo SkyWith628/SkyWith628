@@ -111,7 +111,7 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 | 프로젝트 | 시기 | 내용 | 링크 |
 | --- | --- | --- | --- |
-| Snip | 2026.11 | URL 단축 서비스. FastAPI·MySQL·Nginx 컨테이너를 AWS ECS Fargate에 배포하고, 동시 생성 시 코드 충돌과 대소문자 중복을 막았습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
+| Snip | 2026.11 | URL 단축 서비스. FastAPI·MySQL·Nginx 컨테이너를 AWS ECS Fargate에 배포하고, 동시 생성 시 코드 충돌과 대소문자 중복을 막았습니다. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
 | toss-llm-trader | 2026.08 | LLM 매매가 단순 보유보다 나은지 모의투자로 재 본 실험. 백테스트가 미래 가격을 미리 보지 못하게 막았습니다. | [코드](https://github.com/SkyWith628/toss-llm-trader) |
 | 케어노트AI | 2026.10 | 요양보호사의 음성 기록을 방문요양 기록지 초안으로 바꾸는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | [코드](https://github.com/SkyWith628/carenote-ai) |
 | OBLIGE | 2026.05 ~ 06 | 공병 사진을 YOLOv8로 인식해 포인트로 돌려주는 ESG 화장품 쇼핑몰. 반납 안내는 tool-use LLM 어시스턴트가 맡습니다. | [코드](https://github.com/SkyWith628/oblige) · [사이트](https://skywith628.github.io/oblige/) |
@@ -124,48 +124,14 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 ---
 
-## 해 본 것들
+## 기술
 
-기술 이름만 적으면 잘 와닿지 않을 것 같아서, 실제로 해 본 일 위주로 적었습니다.
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-**백엔드**
-- 오래 걸리는 작업을 큐로 빼고 요청에는 바로 응답하기 (CodeSage)
-- 같은 요청이 두 번 들어와도 한 번만 처리하기, 동시에 수정할 때 버전을 확인해서 덮어쓰지 않기 (Persona_ize)
-- 외부 API나 DB를 바꿔 끼울 수 있게 인터페이스로 분리하기 (직구곰)
-
-</td>
-<td width="50%" valign="top">
-
-**데이터베이스**
-- 주문 금액 계산을 DB 함수로 옮기고 RLS로 접근 막기 (CHECKMATE)
-- UNIQUE 제약과 콜레이션 설정으로 중복 코드 막기 (Snip)
-- pgvector와 Neo4j 검색 결과를 같은 파이프라인에서 쓰기 (Persona_ize)
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-**LLM 검증과 통제**
-- LLM 출력을 규칙으로 검사하고, 실패하면 다시 만들거나 원문으로 돌아가기 (Persona_ize)
-- LLM이 할 일과 코드가 할 일을 나누고, 위험한 건 사람 승인 받기 (직구곰)
-- 조건을 바꿔 가며 반복 실험하고 결과를 숫자로 남기기 (Persona_ize, toss-llm-trader)
-
-</td>
-<td width="50%" valign="top">
-
-**배포와 협업**
-- AWS ECS에 컨테이너 올리기. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다. (Snip)
-- Docker Compose와 Caddy로 HTTPS 배포하고 백업·점검 스크립트 만들기 (Persona_ize)
-- GitHub Actions로 CI와 정기 작업 돌리기, 브랜치 보호 규칙 걸기 (경쟁사 모니터링)
-
-</td>
-</tr>
-</table>
+| 영역 | 써 본 것 | 어디서 |
+| --- | --- | --- |
+| 백엔드 | FastAPI, Redis 큐, 중복 요청 한 번만 처리, 버전 확인으로 덮어쓰기 방지 | CodeSage, Persona_ize |
+| 데이터베이스 | PostgreSQL 함수·RLS, pgvector, Neo4j, UNIQUE·콜레이션 | CHECKMATE, Persona_ize, Snip |
+| LLM | LangGraph, Claude, Gemini, 출력 검증·재생성, 조건별 반복 실험 | Persona_ize, 직구곰, toss-llm-trader |
+| 배포·협업 | Docker Compose, Caddy, AWS ECS Fargate, GitHub Actions, 브랜치 보호 | Persona_ize, Snip, 경쟁사 모니터링 |
 
 이 밖에 PHP, Electron, Swift, Unity도 수업과 개인 작업에서 써 봤습니다.
 
