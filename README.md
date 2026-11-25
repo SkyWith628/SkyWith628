@@ -50,16 +50,16 @@
 ### [직구곰](https://github.com/SkyWith628/jikgugom)
 <sub>2026.04 ~ 06 · 개인</sub>
 
-> 아마존 상품을 네이버 스마트스토어에 올려 파는 구매대행을 자동화한 프로젝트
+> AliExpress·Amazon 상품을 네이버·쿠팡에 올려 파는 구매대행을 자동화한 프로젝트
 
 구매대행은 상품 하나를 잘못 올리면 바로 손해가 나는 일입니다. 마진 계산을 틀리거나, 통관이 안 되는 상품을 올리거나, KC 인증 대상인 걸 놓치면 돈이나 법 문제로 이어집니다. LLM이 한 번만 잘못 계산해도 적자 매입이 되기 때문에, 이런 판단은 LLM에 맡기지 않기로 했습니다.
 
 - 소싱부터 통관·인증 필터, 마진 계산, 등록, 발주까지는 전부 일반 코드로 짰습니다. 사는 순간 적자가 되는 주문은 사람이 승인해야 넘어갑니다.
 - LLM은 세 군데만 씁니다. 팔릴 만한 상품인지 평가, 한글 상세페이지 작성(DeepL 번역 후 다듬기), 고객 문의 응대입니다. 민감한 문의는 LLM이 답하지 않고 사람에게 넘깁니다.
-- 상품 데이터 출처, 판매 채널, 저장소를 인터페이스로 분리해 뒀습니다. 나중에 쿠팡을 붙이거나 SQLite를 PostgreSQL로 바꿔도 나머지 코드는 손대지 않아도 됩니다.
-- pytest 115개가 있고, API 키가 없어도 mock 모드로 전체 흐름이 돌아갑니다.
+- 상품 출처(AliExpress, Amazon), 판매 채널(네이버, 쿠팡), 저장소를 인터페이스로 분리해 뒀습니다. 채널을 하나 더 붙이거나 SQLite를 PostgreSQL로 바꿔도 나머지 코드는 손대지 않아도 됩니다.
+- pytest 194개가 있고, API 키가 없어도 mock 모드로 전체 흐름이 돌아갑니다. 관리자 대시보드(Next.js)에서 승인과 발주를 처리합니다.
 
-`Python` `FastAPI` `Claude` `Next.js` `SQLAlchemy` `APScheduler`
+`Python` `FastAPI` `Gemini` `Next.js` `SQLAlchemy` `APScheduler`
 
 <br>
 
@@ -118,7 +118,7 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 | Snip (URL 단축) | 2026.11 | FastAPI, MySQL, Nginx 컨테이너 3개를 AWS ECS Fargate에 올렸습니다. 동시에 20개를 만들어도 코드가 겹치지 않는지, 대소문자만 다른 코드가 같은 걸로 잡히지 않는지 확인했습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
 | toss-llm-trader | 2026.08 | LLM에게 주식 매매를 맡기면 그냥 사 두는 것보다 나은지 모의투자로 재 보는 실험입니다. 백테스트가 미래 가격을 미리 보지 못하게 막는 데 신경을 많이 썼습니다. | [코드](https://github.com/SkyWith628/toss-llm-trader) |
 | 케어노트AI | 2026.10 | 요양보호사가 말로 남긴 내용을 방문요양 기록지 초안으로 바꿔 주는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | [코드](https://github.com/SkyWith628/carenote-ai) |
-| OBLIGE | 2026.05 ~ 06 | 화장품 공병을 반납하면 포인트와 등급이 쌓이는 쇼핑몰 | [코드](https://github.com/SkyWith628/oblige) · [사이트](https://skywith628.github.io/oblige/) |
+| OBLIGE | 2026.05 ~ 06 | 공병 사진을 YOLOv8로 인식해 포인트로 돌려주는 ESG 화장품 쇼핑몰. 반납 안내는 tool-use LLM 어시스턴트가 맡습니다. | [코드](https://github.com/SkyWith628/oblige) · [사이트](https://skywith628.github.io/oblige/) |
 | JABIS | 2026.03 | 음성으로 대화하는 학습 도우미 데스크톱 앱 (Electron) | [코드](https://github.com/SkyWith628/jabis) |
 | Todo List | 2026.01 | React와 TypeScript로 만든 할 일 관리 앱 | [코드](https://github.com/SkyWith628/todo-list) · [사이트](https://skywith628.github.io/todo-list/) |
 | 환율과 코스피 | 2025.09 ~ 12 | 환율이 코스피에 주는 영향을 회귀, PCA, ARIMA로 분석했고 KIPS 학술대회에서 발표했습니다. | [코드](https://github.com/SkyWith628/kospi-exchange-analysis) |
