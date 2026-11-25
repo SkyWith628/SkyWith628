@@ -1,8 +1,10 @@
+![banner](https://capsule-render.vercel.app/api?type=waving&color=0:A8C0D8,100:5B6B7F&height=140&section=header)
+
 <div align="center">
 
 # 안녕하세요, SkyWith입니다
 
-LLM을 실제 서비스에 붙이는 백엔드를 만듭니다
+<img src="https://readme-typing-svg.demolab.com?font=Noto+Sans+KR&size=18&duration=3500&pause=1200&color=5B6B7F&center=true&vCenter=true&width=520&height=40&lines=LLM%EC%9D%84%20%EC%8B%A4%EC%A0%9C%20%EC%84%9C%EB%B9%84%EC%8A%A4%EC%97%90%20%EB%B6%99%EC%9D%B4%EB%8A%94%20%EB%B0%B1%EC%97%94%EB%93%9C%EB%A5%BC%20%EB%A7%8C%EB%93%AD%EB%8B%88%EB%8B%A4;%ED%8B%80%EB%A6%AC%EB%A9%B4%20%EC%95%88%20%EB%90%98%EB%8A%94%20%EA%B2%B0%EC%A0%95%EC%9D%80%20%EC%BD%94%EB%93%9C%EB%A1%9C%20%EC%A0%95%ED%95%A9%EB%8B%88%EB%8B%A4;%EB%82%98%EC%95%84%EC%A1%8C%EB%8A%94%EC%A7%80%EB%8A%94%20%EC%B8%A1%EC%A0%95%ED%95%B4%EC%84%9C%20%ED%99%95%EC%9D%B8%ED%95%A9%EB%8B%88%EB%8B%A4" alt="LLM을 실제 서비스에 붙이는 백엔드를 만듭니다" />
 
 <br>
 
@@ -183,6 +185,14 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 정보처리기능사가 있고, 한국어와 영어를 씁니다. 쉬는 날엔 주로 달립니다.
 
-<br>
+---
 
-<div align="center"><sub>읽어 주셔서 감사합니다.</sub></div>
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=SkyWith628&show_icons=true&hide_border=true&hide_title=true&count_private=true&title_color=5B6B7F&icon_color=5B6B7F&text_color=8B949E&bg_color=00000000" height="150" alt="GitHub stats" />
+
+<sub>읽어 주셔서 감사합니다.</sub>
+
+</div>
+
+![footer](https://capsule-render.vercel.app/api?type=waving&color=0:A8C0D8,100:5B6B7F&height=90&section=footer)
