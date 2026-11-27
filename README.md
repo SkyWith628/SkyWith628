@@ -111,6 +111,7 @@ GitHub Webhook은 응답이 늦으면 실패로 처리하는데, PR이 조금만
 
 | 프로젝트 | 시기 | 내용 | 링크 |
 | --- | --- | --- | --- |
+| skywith 하네스 | 2026.11 | Claude Code가 규칙을 잊어도 지켜지게 만든 개인 플러그인. force push, 공개 레포 push, 비밀 파일 읽기는 실행 전에 묻고, 턴을 끝내기 전에는 프로젝트의 린트를 돌립니다. 에이전트에게 일을 나누는 기준은 제 세션 기록의 서브에이전트 호출 42건을 보고 정했습니다. | [코드](https://github.com/SkyWith628/skywith-marketplace) |
 | Snip | 2026.11 | URL 단축 서비스. FastAPI·MySQL·Nginx 컨테이너를 AWS ECS Fargate에 배포하고, 동시 생성 시 코드 충돌과 대소문자 중복을 막았습니다. 처음엔 태스크가 뜨지도 않았는데, 로그 그룹을 만들 권한이 없어서였습니다. | [코드](https://github.com/SkyWith628/url-shortener) |
 | toss-llm-trader | 2026.08 | LLM 매매가 단순 보유보다 나은지 모의투자로 재 본 실험. 백테스트가 미래 가격을 미리 보지 못하게 막았습니다. | [코드](https://github.com/SkyWith628/toss-llm-trader) |
 | 케어노트AI | 2026.10 | 요양보호사의 음성 기록을 방문요양 기록지 초안으로 바꾸는 서비스 기획 (2026 지능정보 SW 아이디어 경진대회) | [코드](https://github.com/SkyWith628/carenote-ai) |
